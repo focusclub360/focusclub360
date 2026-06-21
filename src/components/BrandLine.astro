@@ -3,17 +3,19 @@ import Icon from './Icon.astro';
 import { ROUTES } from '../config';
 ---
 
-<section class="bg-white">
-  <div class="reveal mx-auto flex max-w-[1400px] flex-col items-center justify-center gap-3 px-6 py-10 text-center sm:flex-row sm:gap-5 md:px-10 md:py-12">
-    <p class="font-baslik text-lg font-bold text-[#1b2a5b] md:text-xl">
-      Başarı tesadüf değil, alışkanlıktır.
-    </p>
-    <a
-      href={ROUTES.kulupteNelerVar}
-      class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(80,90,240,.3)] transition hover:brightness-105"
-    >
-      FocusClub 360'ı Keşfet
-      <Icon name="arrow" size={16} />
-    </a>
+<section class="bg-white px-6 pb-4 pt-0 md:px-10 md:pb-5">
+  <div class="reveal mx-auto max-w-[1400px]">
+    <div class="flex flex-col items-center justify-center gap-4 rounded-[8px] bg-bulut px-8 py-8 text-center sm:flex-row sm:gap-6 md:px-12">
+      <p class="font-baslik text-lg font-bold text-[#1b2a5b] md:text-xl">
+        Başarı tesadüf değil, alışkanlıktır.
+      </p>
+      <a
+        href={ROUTES.kulupteNelerVar}
+        class="inline-flex shrink-0 items-center gap-2 rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(80,90,240,.3)] transition hover:brightness-105"
+      >
+        FocusClub 360'ı Keşfet
+        <Icon name="arrow" size={16} />
+      </a>
+    </div>
   </div>
 </section>

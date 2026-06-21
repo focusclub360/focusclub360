@@ -1,48 +1,62 @@
 ---
 import Icon from './Icon.astro';
 
-const rozetler = ['Disiplin Şampiyonu', 'Fokus Lideri', 'Matematik Ustası'];
+const puanlar = [
+  { baslik: 'Katılım puanı', deger: '12.450 P', renk: 'text-turkuaz', bg: 'bg-turkuaz/10' },
+  { baslik: 'Ödev puanı',    deger: '8.760 P',  renk: 'text-amber',   bg: 'bg-amber/10'   },
+];
+
+const rozetler = [
+  { ad: 'Disiplin Şampiyonu', ikon: 'trophy', renk: 'text-amber'   },
+  { ad: 'Odaklanma Lideri',   ikon: 'target', renk: 'text-mor'     },
+  { ad: 'Matematik Ustası',   ikon: 'star',   renk: 'text-mavi'    },
+];
 ---
 
-<section class="konteyner py-16 md:py-24">
-  <div class="grid items-center gap-12 lg:grid-cols-2">
-    <div class="reveal">
-      <h2 class="font-baslik text-3xl font-bold leading-tight md:text-4xl">
-        Anne ve babanın üzerindeki ders çalıştırma yükünü alıyoruz
-      </h2>
-      <p class="mt-5 text-lg text-gri">
-        Canlı ders çalıştırma ve soru çözüm etütleri çocuğu annenin gözetiminden alıp
-        FocusClub 360’a taşır. Etütteki durumu veliye düzenli bildirilir; oyunlaştırılmış çalışma
-        sistemiyle çocuğun katılımı ve becerileri puanlanır, rozetlerle ödüllendirilir.
-      </p>
-    </div>
+<section class="bg-white px-6 pb-6 pt-0 md:px-10 md:pb-8">
+  <div class="mx-auto max-w-[1400px]">
+    <div class="reveal rounded-[8px] bg-bulut px-6 py-12 md:px-10 md:py-14">
 
-    <div class="reveal">
-      <div class="rounded-kart border border-kenar bg-beyaz p-7 shadow-yumusak">
-        <div class="flex items-center gap-2">
-          <Icon name="trophy" size={20} class="text-amber" />
-          <h3 class="font-baslik text-lg font-semibold">Puan ve Rozetler</h3>
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+
+        <!-- Sol: metin -->
+        <div>
+          <h2 class="font-baslik text-2xl font-bold leading-tight text-[#1b2a5b] md:text-3xl">
+            Anne ve babanın üzerindeki ders çalıştırma yükünü alıyoruz
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-[#5b6488]">
+            Canlı ders çalıştırma ve soru çözüm etütleri çocuğu annenin gözetiminden alıp
+            FocusClub 360'a taşır. Etütteki durumu veliye düzenli bildirilir; oyunlaştırılmış çalışma
+            sistemiyle çocuğun katılımı ve becerileri puanlanır, rozetlerle ödüllendirilir.
+          </p>
         </div>
 
-        <div class="mt-5 grid grid-cols-2 gap-4">
-          <div class="rounded-kart bg-turkuaz/8 p-4">
-            <p class="text-sm text-gri">Katılım puanı</p>
-            <p class="mt-1 font-baslik text-2xl font-extrabold text-turkuaz">+1.250</p>
+        <!-- Sağ: puan kartı -->
+        <div class="rounded-[8px] border border-kenar bg-beyaz p-6 shadow-yumusak md:p-8">
+          <div class="flex items-center gap-2">
+            <Icon name="trophy" size={20} class="text-amber" />
+            <h3 class="font-baslik text-base font-semibold text-[#1b2a5b]">Puan ve Rozetler</h3>
           </div>
-          <div class="rounded-kart bg-mor/8 p-4">
-            <p class="text-sm text-gri">Ödev puanı</p>
-            <p class="mt-1 font-baslik text-2xl font-extrabold text-mor">+980</p>
+
+          <div class="mt-5 grid grid-cols-2 gap-4">
+            {puanlar.map((p) => (
+              <div class={`rounded-[8px] p-4 ${p.bg}`}>
+                <p class="text-xs text-[#6b76a0]">{p.baslik}</p>
+                <p class={`mt-1 font-baslik text-xl font-extrabold ${p.renk}`}>{p.deger}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            {rozetler.map((r) => (
+              <span class="inline-flex items-center gap-1.5 rounded-[8px] border border-kenar bg-bulut px-3 py-1.5 text-sm font-medium text-[#1b2a5b]">
+                <Icon name={r.ikon} size={15} class={r.renk} />
+                {r.ad}
+              </span>
+            ))}
           </div>
         </div>
 
-        <div class="mt-5 flex flex-wrap gap-2">
-          {rozetler.map((r) => (
-            <span class="inline-flex items-center gap-1.5 rounded-cip border border-kenar bg-bulut px-3 py-1.5 text-sm font-medium text-lacivert">
-              <Icon name="award" size={15} class="text-amber" />
-              {r}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   </div>

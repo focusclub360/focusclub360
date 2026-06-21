@@ -1,0 +1,108 @@
+---
+import Icon from './Icon.astro';
+
+const sorular = [
+  {
+    soru: '2 hafta ücretsiz deneme nasıl çalışır?',
+    cevap: 'Üye olduktan sonra ilk 14 gün boyunca tüm canlı etütlere, online içeriklere ve koçluk görüşmelerine ücretsiz erişirsiniz. Deneme süresinde herhangi bir ücret alınmaz; istediğiniz zaman iptal edebilirsiniz.',
+  },
+  {
+    soru: 'Canlı etütlere katılamasam ne olur?',
+    cevap: 'Kaçırdığınız etütlerin kayıt videoları platforma yüklenir; dilediğiniz zaman tekrar izleyebilirsiniz. Koçunuz sizi bilgilendirip o haftaki eksik konuları kapatmanıza destek olur.',
+  },
+  {
+    soru: 'Koçluk görüşmeleri nasıl gerçekleşir?',
+    cevap: 'Görüşmeler haftada bir, online video konferans yöntemiyle yapılır. Her seansta hedef takibi, motivasyon değerlendirmesi ve bir sonraki haftanın planlaması birlikte yapılır.',
+  },
+  {
+    soru: 'Veli raporlarını kimler görebilir?',
+    cevap: 'Raporlar yalnızca kayıtlı veli hesabına iletilir. Haftalık devam, puan ve ilerleme bilgileri e-posta ve uygulama bildirimi olarak düzenli şekilde paylaşılır.',
+  },
+  {
+    soru: 'Üyelik iptali ve iade şartları nelerdir?',
+    cevap: '14 günlük deneme süresi içinde iptal eden üyelerden herhangi bir ücret alınmaz. Ücretli dönemde ay başında yapılan iptal taleplerinde o aya ait dönem ücreti tahsil edilmez.',
+  },
+];
+---
+
+<section class="bg-white px-6 pb-6 pt-0 md:px-10 md:pb-8">
+  <div class="mx-auto max-w-[1400px]">
+    <div class="reveal rounded-[8px] bg-bulut px-6 py-12 md:px-10 md:py-14">
+
+      <div class="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
+
+        <!-- Sol: başlık -->
+        <div class="lg:sticky lg:top-28 lg:self-start">
+          <span class="inline-flex items-center rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold text-[#3b6ef0]">
+            SSS
+          </span>
+          <h2 class="mt-4 font-baslik text-3xl font-bold leading-tight text-[#1b2a5b] md:text-4xl">
+            Merak<br />edilen<br />
+            <span class="bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] bg-clip-text text-transparent">sorular</span>
+          </h2>
+          <p class="mt-4 text-sm leading-relaxed text-[#5b6488]">
+            FocusClub 360 hakkında en sık sorulan soruların yanıtlarını burada bulabilirsiniz.
+          </p>
+        </div>
+
+        <!-- Sağ: accordion -->
+        <div class="divide-y divide-kenar">
+          {sorular.map((s, i) => (
+            <div class="faq-item py-5">
+              <button
+                class="faq-btn flex w-full items-center justify-between gap-4 text-left"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+              >
+                <span class="font-baslik text-sm font-semibold text-[#1b2a5b] md:text-base">{s.soru}</span>
+                <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-[8px] border border-kenar bg-beyaz text-[#1b2a5b] transition-transform duration-300">
+                  <Icon name="plus" size={15} />
+                </span>
+              </button>
+              <div
+                class="faq-body overflow-hidden"
+                style={i === 0 ? '' : 'max-height: 0;'}
+              >
+                <p class="pb-1 pt-3 text-sm leading-relaxed text-[#5b6488]">{s.cevap}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-btn')!;
+    const body = item.querySelector<HTMLElement>('.faq-body')!;
+    const icon = item.querySelector<HTMLElement>('.faq-icon')!;
+
+    if (btn.getAttribute('aria-expanded') === 'true') {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      icon.style.transform = 'rotate(45deg)';
+    } else {
+      body.style.maxHeight = '0';
+    }
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll<HTMLElement>('.faq-item').forEach((other) => {
+        const ob = other.querySelector<HTMLButtonElement>('.faq-btn')!;
+        const obody = other.querySelector<HTMLElement>('.faq-body')!;
+        const oicon = other.querySelector<HTMLElement>('.faq-icon')!;
+        ob.setAttribute('aria-expanded', 'false');
+        obody.style.maxHeight = '0';
+        oicon.style.transform = '';
+      });
+
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>

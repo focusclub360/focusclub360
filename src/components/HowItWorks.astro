@@ -2,37 +2,47 @@
 import Icon from './Icon.astro';
 
 const adimlar = [
-  { no: '01', baslik: 'Üye Ol', aciklama: 'Hızlı üyelik ile hesabını oluştur.', ikon: 'user' },
-  { no: '02', baslik: 'Programa Katıl', aciklama: 'Etüt kulübünde yerini al.', ikon: 'list' },
-  { no: '03', baslik: 'Online Dijital İçerikler', aciklama: 'Tüm branşlarda video ve içeriklere ulaş.', ikon: 'video' },
-  { no: '04', baslik: 'Canlı Etüde Başla', aciklama: 'Branş öğretmenleriyle canlı etüt ve soru çözümlerine katıl.', ikon: 'users' },
-  { no: '05', baslik: 'Koçluk Programına Katıl', aciklama: 'Gerçek rehber öğretmenlerden kişiye özel destek al.', ikon: 'target' },
-  { no: '06', baslik: 'Şeffaf Raporlama ve İlerleyiş', aciklama: 'Her anın yapay zekâ ile takip edilip düzenli bildirilsin.', ikon: 'cpu' },
+  { no: '01', baslik: 'Üye Ol',                        aciklama: 'Hızlı üyelik ile hesabını oluştur.',                                         ikon: 'user',   renk: 'bg-turkuaz'  },
+  { no: '02', baslik: 'Programa Katıl',                 aciklama: 'Etüt kulübünde yerini al.',                                                   ikon: 'list',   renk: 'bg-amber'    },
+  { no: '03', baslik: 'Online Dijital İçerikler',       aciklama: 'Tüm branşlarda video ve içeriklere ulaş.',                                    ikon: 'video',  renk: 'bg-mor'      },
+  { no: '04', baslik: 'Canlı Etüde Başla',              aciklama: 'Branş öğretmenleriyle canlı etüt ve soru çözümlerine katıl.',                 ikon: 'users',  renk: 'bg-mavi'     },
+  { no: '05', baslik: 'Koçluk Programına Katıl',        aciklama: 'Gerçek rehber öğretmenlerden kişiye özel destek al.',                         ikon: 'target', renk: 'bg-mercan'   },
+  { no: '06', baslik: 'Şeffaf Raporlama ve İlerleyiş',  aciklama: 'Her anın yapay zekâ ile takip edilip düzenli bildirilsin.',                   ikon: 'cpu',    renk: 'bg-turkuaz'  },
 ];
 ---
 
-<section id="nasil-calisir" class="konteyner py-16 md:py-24">
-  <div class="reveal rounded-bant bg-lacivert px-6 py-14 text-beyaz md:px-12 md:py-16">
-    <div class="mx-auto max-w-2xl text-center">
-      <span class="inline-block rounded-cip bg-turkuaz/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mint">
-        Adım Adım
-      </span>
-      <h2 class="mt-4 font-baslik text-3xl font-bold md:text-4xl">Nasıl Çalışır</h2>
-    </div>
+<section id="nasil-calisir" class="bg-white px-6 pb-6 pt-0 md:px-10 md:pb-8">
+  <div class="mx-auto max-w-[1400px]">
+    <div class="reveal rounded-[8px] bg-lacivert px-6 py-12 md:px-10 md:py-14">
 
-    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {adimlar.map((a) => (
-        <div class="rounded-kart border border-beyaz/10 bg-lacivert2 p-6 transition duration-300 hover:-translate-y-1 hover:border-turkuaz/40">
-          <div class="flex items-center justify-between">
-            <span class="grid h-11 w-11 place-items-center rounded-buton bg-turkuaz/15 text-mint">
+      <!-- Başlık -->
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-baslik text-2xl font-bold text-beyaz md:text-3xl">
+          Canlı Etüt Sistemi Nasıl Çalışır?
+        </h2>
+      </div>
+
+      <!-- Adımlar -->
+      <div class="mt-10 grid gap-px sm:grid-cols-2">
+        {adimlar.map((a, i) => (
+          <div class={`flex items-start gap-4 p-6 ${i < 4 ? 'sm:border-b sm:border-beyaz/10' : ''} ${i % 2 === 0 ? 'sm:border-r sm:border-beyaz/10' : ''}`}>
+            <!-- Numaralı daire -->
+            <span class={`grid h-12 w-12 shrink-0 place-items-center rounded-full font-baslik text-base font-extrabold text-beyaz ${a.renk}`}>
+              {a.no}
+            </span>
+            <!-- İkon -->
+            <span class="mt-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-beyaz/10 text-beyaz/70">
               <Icon name={a.ikon} size={22} />
             </span>
-            <span class="font-baslik text-2xl font-extrabold text-beyaz/15">{a.no}</span>
+            <!-- Metin -->
+            <div class="min-w-0">
+              <p class="font-baslik text-base font-semibold text-beyaz">{a.baslik}</p>
+              <p class="mt-1 text-sm leading-relaxed text-beyaz/60">{a.aciklama}</p>
+            </div>
           </div>
-          <h3 class="mt-4 font-baslik text-lg font-semibold">{a.baslik}</h3>
-          <p class="mt-2 text-sm text-beyaz/65">{a.aciklama}</p>
-        </div>
-      ))}
+        ))}
+      </div>
+
     </div>
   </div>
 </section>

@@ -22,10 +22,10 @@ export default {
         govde: ['Inter', 'sans-serif'],
       },
       borderRadius: {
-        kart: '15px',
-        buton: '12px',
-        cip: '10px',
-        bant: '16px',
+        kart: '8px',
+        buton: '8px',
+        cip: '8px',
+        bant: '8px',
       },
       boxShadow: {
         yumusak: '0 18px 40px rgba(14,27,46,.08)',

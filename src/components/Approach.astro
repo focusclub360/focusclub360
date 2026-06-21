@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import { Image } from 'astro:assets';
+import yaklasimGorsel from '../assets/yaklasim-anasayfa.jpg';
 
 const liste = [
   'Planlı çalışma alışkanlığı kazandırır',
@@ -14,7 +16,7 @@ const liste = [
   <div class="mx-auto grid max-w-[1400px] items-center gap-12 px-6 md:px-10 lg:grid-cols-2">
     <!-- Sol: metin -->
     <div class="reveal">
-      <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#3b6ef0]">
+      <span class="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#3b6ef0]">
         Akademik Yaklaşımımız
       </span>
       <h2 class="mt-4 font-baslik text-3xl font-bold leading-tight text-[#1b2a5b] md:text-4xl">
@@ -37,14 +39,15 @@ const liste = [
       </ul>
     </div>
 
-    <!-- Sağ: görsel alanı (boş placeholder) -->
+    <!-- Sağ: görsel -->
     <div class="reveal">
-      <div class="flex aspect-[4/3] w-full items-center justify-center rounded-[24px] border-2 border-dashed border-[#c3cbe8] bg-gradient-to-br from-[#eef1ff] to-[#e9e3ff] text-[#8b96bd]">
-        <div class="text-center">
-          <Icon name="user" size={48} class="mx-auto" />
-          <p class="mt-2 text-sm">Görsel alanı (eklenecek)</p>
-        </div>
-      </div>
+      <Image
+        src={yaklasimGorsel}
+        alt="Akademik yaklaşım görseli"
+        widths={[640, 1024]}
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        class="aspect-[4/3] w-full rounded-[8px] object-cover shadow-yumusak"
+      />
     </div>
   </div>
 </section>

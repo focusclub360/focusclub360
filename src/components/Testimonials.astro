@@ -3,40 +3,126 @@ import Icon from './Icon.astro';
 
 const yorumlar = [
   {
-    metin: 'Oğlumun düzenli çalışması için aradığımız her şey burada. Raporlar sayesinde içim çok rahat.',
-    isim: 'Ayşe K.',
+    yorum: 'Oğlum artık planlı çalışıyor ve ödevlerini son dakikaya bırakmıyor. Raporları sayesinde her şeyi takip edebiliyorum.',
+    isim: 'Elif K.',
     rol: 'Anne',
   },
   {
-    metin: 'Koçumuz gerçekten çok ilgili. Soru çözümlerindeki hızlanma fark edilir düzeyde.',
+    yorum: 'Etüt ve koçluk desteği sayesinde kızımın özgüveni arttı. Öğretmenleri gerçekten çok ilgili ve destekleyici.',
     isim: 'Mehmet T.',
     rol: 'Baba',
   },
   {
-    metin: 'Eskiden ikna etmek zordu, şimdi kendi isteğiyle etüde katılıyor. Büyük değişim.',
+    yorum: 'Soru çözümleri çok hızlı ve anlaşılır. Rozet sistemi kızımı daha motive etti. Kesinlikle tavsiye ederim.',
     isim: 'Zeynep D.',
     rol: 'Anne',
   },
 ];
 ---
 
-<section class="konteyner py-16 md:py-24">
-  <div class="reveal mx-auto max-w-2xl text-center">
-    <h2 class="font-baslik text-3xl font-bold md:text-4xl">Anne Babalar Ne Diyor</h2>
-  </div>
+<section class="bg-white px-6 pb-6 pt-0 md:px-10 md:pb-8">
+  <div class="mx-auto max-w-[1400px]">
+    <div class="reveal rounded-[8px] bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] px-6 py-10 md:px-10 md:py-12">
 
-  <div class="reveal mt-12 grid gap-6 md:grid-cols-3">
-    {yorumlar.map((y) => (
-      <figure class="flex flex-col rounded-kart border border-kenar bg-beyaz p-6 shadow-kucuk transition duration-300 hover:-translate-y-1 hover:shadow-yumusak">
-        <div class="flex gap-1 text-turkuaz" aria-label="5 üzerinden 5 yıldız">
-          {Array.from({ length: 5 }).map(() => <Icon name="star" size={18} />)}
+      <!-- Başlık -->
+      <div class="text-center">
+        <h2 class="font-baslik text-xl font-bold text-beyaz md:text-2xl">
+          Anne ve Babalar Ne Diyor?
+        </h2>
+      </div>
+
+      <!-- 2 sütun: sol slider, sağ görsel -->
+      <div class="mt-8 grid items-stretch gap-5 lg:grid-cols-2">
+
+        <!-- Sol: slider kartı -->
+        <div class="flex flex-col rounded-[8px] bg-beyaz px-6 py-8 md:px-8 md:py-8">
+
+          <!-- Yorum metinleri: position:relative / grid-area ile aynı hücrede üst üste -->
+          <div class="relative flex-1" style="display:grid;">
+            {yorumlar.map((y, i) => (
+              <p
+                class="testimonial-text font-baslik text-base font-semibold leading-relaxed text-[#1b2a5b] transition-opacity duration-300 md:text-lg"
+                style={`grid-area:1/1; opacity:${i === 0 ? 1 : 0}; pointer-events:${i === 0 ? 'auto' : 'none'};`}
+                data-index={i}
+              >
+                {y.yorum}
+              </p>
+            ))}
+          </div>
+
+          <!-- İsim / rol -->
+          <div class="relative mt-5 h-5">
+            {yorumlar.map((y, i) => (
+              <p
+                class="testimonial-attr absolute inset-0 text-sm font-medium text-[#5b6488] transition-opacity duration-300"
+                style={`opacity:${i === 0 ? 1 : 0}; pointer-events:${i === 0 ? 'auto' : 'none'};`}
+                data-index={i}
+              >
+                {y.isim} &mdash; {y.rol}
+              </p>
+            ))}
+          </div>
+
+          <!-- Navigasyon -->
+          <div class="mt-6 flex items-center gap-4">
+            <button
+              id="tst-prev"
+              aria-label="Önceki yorum"
+              class="grid h-9 w-9 place-items-center rounded-[8px] border border-kenar bg-bulut text-[#1b2a5b] transition hover:bg-[#e8eaf4]"
+            >
+              <Icon name="arrow" size={16} class="rotate-180" />
+            </button>
+            <button
+              id="tst-next"
+              aria-label="Sonraki yorum"
+              class="grid h-9 w-9 place-items-center rounded-[8px] border border-kenar bg-bulut text-[#1b2a5b] transition hover:bg-[#e8eaf4]"
+            >
+              <Icon name="arrow" size={16} />
+            </button>
+
+            <div class="flex items-center gap-2" id="tst-dots">
+              {yorumlar.map((_, i) => (
+                <button
+                  class={`tst-dot rounded-full transition-all duration-300 ${i === 0 ? 'h-2 w-5 bg-[#3b6ef0]' : 'h-2 w-2 bg-[#1b2a5b]/20'}`}
+                  data-index={i}
+                  aria-label={`${i + 1}. yorum`}
+                />
+              ))}
+            </div>
+          </div>
+
         </div>
-        <blockquote class="mt-4 flex-1 text-lacivert">“{y.metin}”</blockquote>
-        <figcaption class="mt-5 border-t border-kenar pt-4">
-          <span class="font-semibold text-lacivert">{y.isim}</span>
-          <span class="text-sm text-gri">, {y.rol}</span>
-        </figcaption>
-      </figure>
-    ))}
+
+        <!-- Sağ: görsel (anne-baba-cocuk.jpg eklenince Image bileşeniyle değiştirilecek) -->
+        <div class="hidden overflow-hidden rounded-[8px] bg-beyaz/20 lg:block"></div>
+
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  const texts = Array.from(document.querySelectorAll<HTMLElement>('.testimonial-text'));
+  const attrs = Array.from(document.querySelectorAll<HTMLElement>('.testimonial-attr'));
+  const dots  = Array.from(document.querySelectorAll<HTMLElement>('.tst-dot'));
+  let cur = 0;
+
+  function show(next: number) {
+    const n = ((next % texts.length) + texts.length) % texts.length;
+
+    texts.forEach((el, i) => { el.style.opacity = i === n ? '1' : '0'; el.style.pointerEvents = i === n ? 'auto' : 'none'; });
+    attrs.forEach((el, i) => { el.style.opacity = i === n ? '1' : '0'; });
+    dots.forEach((el, i) => {
+      el.classList.toggle('w-5', i === n);
+      el.classList.toggle('w-2', i !== n);
+      el.classList.toggle('bg-[#3b6ef0]', i === n);
+      el.classList.toggle('bg-[#1b2a5b]/20', i !== n);
+    });
+
+    cur = n;
+  }
+
+  document.getElementById('tst-prev')?.addEventListener('click', () => show(cur - 1));
+  document.getElementById('tst-next')?.addEventListener('click', () => show(cur + 1));
+  dots.forEach((el, i) => el.addEventListener('click', () => show(i)));
+</script>

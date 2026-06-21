@@ -2,33 +2,39 @@
 import Icon from './Icon.astro';
 
 const sorunlar = [
-  { metin: 'Telefon dikkati dağıtıyor', ikon: 'smartphone' },
-  { metin: 'Veli sürekli hatırlatmak zorunda kalıyor', ikon: 'bell' },
-  { metin: 'Ödevler son dakikaya kalıyor', ikon: 'clock' },
-  { metin: 'Düzenli çalışma alışkanlığı oluşmuyor', ikon: 'list' },
-  { metin: 'Çalışıyor mu çalışmıyor mu tam takip edilemiyor', ikon: 'eye' },
+  { metin: 'Telefon dikkati dağıtıyor',                          ikon: 'smartphone' },
+  { metin: 'Veli sürekli hatırlatmak zorunda kalıyor',           ikon: 'bell'       },
+  { metin: 'Ödevler son dakikaya kalıyor',                       ikon: 'clock'      },
+  { metin: 'Düzenli çalışma alışkanlığı oluşmuyor',             ikon: 'list'       },
+  { metin: 'Çalışıyor mu çalışmıyor mu tam takip edilemiyor',   ikon: 'eye'        },
 ];
 ---
 
-<section class="konteyner py-16 md:py-24">
-  <div class="reveal mx-auto max-w-2xl text-center">
-    <h2 class="font-baslik text-3xl font-bold md:text-4xl">
-      Anne babaların ders çalıştırma sorunlarını çözüyoruz
-    </h2>
-  </div>
+<section class="bg-[#f5f8ff] pb-4 pt-14 md:pb-6 md:pt-20">
+  <div class="mx-auto max-w-[1400px] px-6 md:px-10">
 
-  <div class="reveal mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-    {sorunlar.map((s) => (
-      <div class="flex flex-col items-center rounded-kart border border-kenar bg-beyaz p-5 text-center shadow-kucuk">
-        <span class="grid h-12 w-12 place-items-center rounded-full bg-mercan/10 text-mercan">
-          <Icon name={s.ikon} size={22} />
-        </span>
-        <p class="mt-3 text-sm font-medium text-lacivert">{s.metin}</p>
-      </div>
-    ))}
-  </div>
+    <div class="reveal text-center">
+      <h2 class="font-baslik text-2xl font-bold text-[#1b2a5b] md:text-3xl">
+        Anne ve Babaların Ders Çalıştırma Sorunlarını Çözüyoruz
+      </h2>
+    </div>
 
-  <p class="reveal mt-10 text-center font-baslik text-lg font-semibold text-lacivert">
-    FocusClub 360 tam da bu sorunları çözmek için var.
-  </p>
+    <div class="reveal mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {sorunlar.map((s) => (
+        <div class="flex flex-col items-center rounded-[8px] border border-kenar bg-beyaz p-5 text-center shadow-kucuk">
+          <span class="grid h-12 w-12 place-items-center rounded-[8px] bg-mercan/10 text-mercan">
+            <Icon name={s.ikon} size={22} />
+          </span>
+          <p class="mt-3 text-sm font-medium text-[#1b2a5b]">{s.metin}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="reveal mt-8 text-center">
+      <p class="font-baslik text-base font-semibold text-[#1b2a5b]">
+        FocusClub 360 tam da bu sorunları çözmek için var.
+      </p>
+    </div>
+
+  </div>
 </section>
