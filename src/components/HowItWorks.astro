@@ -25,13 +25,13 @@ const adimlar = [
       <!-- Adımlar -->
       <div class="mt-10 grid gap-px sm:grid-cols-2">
         {adimlar.map((a, i) => (
-          <div class={`flex items-start gap-4 p-6 ${i < 4 ? 'sm:border-b sm:border-beyaz/10' : ''} ${i % 2 === 0 ? 'sm:border-r sm:border-beyaz/10' : ''}`}>
+          <div class={`flex items-start gap-3 p-4 sm:gap-4 sm:p-6 ${i < 4 ? 'sm:border-b sm:border-beyaz/10' : ''} ${i % 2 === 0 ? 'sm:border-r sm:border-beyaz/10' : ''}`}>
             <!-- Numaralı daire -->
-            <span class={`grid h-12 w-12 shrink-0 place-items-center rounded-full font-baslik text-base font-extrabold text-beyaz ${a.renk}`}>
+            <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-full font-baslik text-sm font-extrabold text-beyaz sm:h-12 sm:w-12 sm:text-base ${a.renk}`}>
               {a.no}
             </span>
-            <!-- İkon -->
-            <span class="mt-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-beyaz/10 text-beyaz/70">
+            <!-- İkon: sadece sm ve üzeri -->
+            <span class="mt-0.5 hidden h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-beyaz/10 text-beyaz/70 sm:grid">
               <Icon name={a.ikon} size={22} />
             </span>
             <!-- Metin -->

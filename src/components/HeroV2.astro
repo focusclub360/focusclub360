@@ -34,9 +34,10 @@ const ozellikler = [
         class="absolute inset-0 h-full w-full object-cover object-center"
         loading="eager"
       />
-      <!-- Overlay: solda yoğun mavi, sağda fotoğraf görünsün -->
+      <!-- Overlay: mobilde düzgün, masaüstünde soldan sağa gradient -->
+      <div class="absolute inset-0 bg-[rgba(28,55,185,0.75)] md:hidden"></div>
       <div
-        class="absolute inset-0"
+        class="absolute inset-0 hidden md:block"
         style="background: linear-gradient(to right, rgba(30,60,200,0.82) 0%, rgba(30,60,200,0.60) 30%, rgba(30,60,200,0.22) 60%, rgba(30,60,200,0.06) 100%);"
       ></div>
 
@@ -54,15 +55,15 @@ const ozellikler = [
           </p>
 
           <!-- Özellik kartları 2×2 -->
-          <div class="mt-5 grid grid-cols-2 gap-3">
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
             {ozellikler.map((o) => (
-              <div class="flex h-16 items-center gap-3 rounded-kart bg-white/95 px-4 shadow-md backdrop-blur-sm md:h-[72px]">
-                <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-cip text-white ${o.renk}`}>
-                  <Icon name={o.ikon} size={18} />
+              <div class="flex h-14 items-center gap-2 rounded-kart bg-white/95 px-3 shadow-md backdrop-blur-sm sm:h-16 sm:gap-3 sm:px-4 md:h-[72px]">
+                <span class={`grid h-8 w-8 shrink-0 place-items-center rounded-cip text-white sm:h-10 sm:w-10 ${o.renk}`}>
+                  <Icon name={o.ikon} size={15} />
                 </span>
                 <div class="min-w-0">
-                  <p class="font-baslik text-sm font-bold leading-snug text-[#1b2a5b]">{o.baslik}</p>
-                  <p class="text-xs leading-tight text-[#6b76a0]">{o.alt}</p>
+                  <p class="line-clamp-2 font-baslik text-xs font-bold leading-snug text-[#1b2a5b] sm:text-sm">{o.baslik}</p>
+                  <p class="hidden text-xs leading-tight text-[#6b76a0] sm:block">{o.alt}</p>
                 </div>
               </div>
             ))}

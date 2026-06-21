@@ -20,9 +20,9 @@ const satirlar = [
 
       <div class="mt-6 divide-y divide-kenar">
         {satirlar.map((r) => (
-          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 sm:gap-8">
+          <div class="flex flex-col gap-2 py-4 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-8">
             <p class="text-sm font-medium text-[#5b6488] md:text-base">{r.sol}</p>
-            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] text-beyaz">
+            <span class="grid h-8 w-8 shrink-0 place-items-center self-center rounded-[8px] bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] text-beyaz rotate-90 lg:rotate-0">
               <Icon name="arrow" size={15} />
             </span>
             <p class="text-sm font-semibold text-[#1b2a5b] md:text-base">{r.sag}</p>

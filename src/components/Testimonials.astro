@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import { Image } from 'astro:assets';
+import veliFoto from '../assets/sss-bolum.jpg';
 
 const yorumlar = [
   {
@@ -38,7 +40,7 @@ const yorumlar = [
         <div class="flex flex-col rounded-[8px] bg-beyaz px-6 py-8 md:px-8 md:py-8">
 
           <!-- Yorum metinleri: position:relative / grid-area ile aynı hücrede üst üste -->
-          <div class="relative flex-1" style="display:grid;">
+          <div class="relative min-h-[90px] flex-1" style="display:grid;">
             {yorumlar.map((y, i) => (
               <p
                 class="testimonial-text font-baslik text-base font-semibold leading-relaxed text-[#1b2a5b] transition-opacity duration-300 md:text-lg"
@@ -93,8 +95,10 @@ const yorumlar = [
 
         </div>
 
-        <!-- Sağ: görsel (anne-baba-cocuk.jpg eklenince Image bileşeniyle değiştirilecek) -->
-        <div class="hidden overflow-hidden rounded-[8px] bg-beyaz/20 lg:block"></div>
+        <!-- Sağ: görsel -->
+        <div class="hidden overflow-hidden rounded-[8px] lg:block">
+          <Image src={veliFoto} alt="Anne ve çocuk" class="h-full w-full object-cover" />
+        </div>
 
       </div>
     </div>
