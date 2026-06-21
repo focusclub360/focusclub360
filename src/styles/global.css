@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bulut font-govde text-lacivert antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-baslik;
+  }
+}
+
+@layer components {
+  /* İçerik konteyneri */
+  .konteyner {
+    @apply max-w-icerik mx-auto px-7;
+  }
+
+  /* Birincil amber CTA */
+  .btn-amber {
+    @apply inline-flex items-center justify-center gap-2 rounded-buton bg-amber px-6 py-3
+           font-semibold text-lacivert shadow-kucuk transition
+           hover:brightness-105 hover:shadow-yumusak focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-amber/60 focus-visible:ring-offset-2;
+  }
+
+  /* Outline buton */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-buton border border-kenar
+           bg-beyaz px-6 py-3 font-semibold text-lacivert transition
+           hover:border-turkuaz hover:text-turkuaz focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-turkuaz/50;
+  }
+
+  /* Menü linki — hover'da turkuaz alt çizgi */
+  .menu-link {
+    @apply relative font-medium text-gri transition-colors hover:text-lacivert
+           after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0
+           after:rounded-full after:bg-turkuaz after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+}
+
+/* Hero görseli: sert çerçeve yerine kenarları arka plana yumuşakça karışsın */
+.hero-gorsel-maske {
+  -webkit-mask-image: radial-gradient(135% 125% at 52% 42%, #000 70%, transparent 100%);
+  mask-image: radial-gradient(135% 125% at 52% 42%, #000 70%, transparent 100%);
+}
+
+/* Reveal: konum kaydırmadan yalnızca yumuşak görünürlük (hiçbir alan kaymaz) */
+@keyframes reveal-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.gorunur {
+  animation: reveal-fade 0.5s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; animation: none; }
+}

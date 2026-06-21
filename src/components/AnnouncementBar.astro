@@ -1,0 +1,30 @@
+---
+import Icon from './Icon.astro';
+import { ROUTES } from '../config';
+---
+
+<div id="duyuru-bar" class="relative bg-amber text-lacivert">
+  <div class="konteyner flex items-center justify-center gap-3 py-2.5 text-center text-sm">
+    <p class="font-medium">
+      Kısa süreliğine: <span class="font-semibold">2 hafta ücretsiz deneme fırsatı</span>
+    </p>
+    <a href={ROUTES.kulupteNelerVar} class="hidden items-center gap-1 font-semibold underline underline-offset-2 hover:opacity-80 sm:inline-flex">
+      Hemen Keşfet
+      <Icon name="arrow" size={15} />
+    </a>
+    <button
+      type="button"
+      id="duyuru-kapat"
+      class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 transition hover:bg-lacivert/10"
+      aria-label="Duyuruyu kapat"
+    >
+      <Icon name="x" size={18} />
+    </button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('duyuru-kapat')?.addEventListener('click', () => {
+    document.getElementById('duyuru-bar')?.remove();
+  });
+</script>

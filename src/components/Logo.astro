@@ -1,0 +1,22 @@
+---
+interface Props {
+  // light: koyu zeminde (footer) kullanım için açık metin
+  variant?: 'default' | 'light';
+}
+const { variant = 'default' } = Astro.props;
+const adRengi = variant === 'light' ? 'text-beyaz' : 'text-lacivert';
+const sloganRengi = variant === 'light' ? 'text-beyaz/55' : 'text-gri';
+---
+
+<a href="/" class="inline-flex flex-col leading-none" aria-label="FocusClub 360 anasayfa">
+  <span class="flex items-center gap-1.5">
+    <span class={`font-baslik text-xl font-extrabold tracking-tight ${adRengi}`}>FocusClub</span>
+    <span
+      class="grid h-7 w-9 place-items-center rounded-full bg-turkuaz font-baslik text-sm font-bold text-beyaz"
+      >360</span
+    >
+  </span>
+  <span class={`mt-1 whitespace-nowrap text-[10.5px] leading-none ${sloganRengi}`}>
+    Türkiye’nin ilk ve tek Dijital Etüd Kulübü
+  </span>
+</a>

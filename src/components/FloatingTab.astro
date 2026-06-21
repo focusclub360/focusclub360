@@ -1,0 +1,79 @@
+---
+import Icon from './Icon.astro';
+import { UYELIK_URL } from '../config';
+---
+
+<div id="yuzen-sekme" class="fixed right-0 top-1/2 z-40 flex -translate-y-1/2 items-center">
+  <!-- Tetikleyici sekme -->
+  <button
+    type="button"
+    id="sekme-buton"
+    class="flex flex-col items-center gap-1.5 rounded-l-bant bg-amber px-2.5 py-4 text-lacivert shadow-yumusak transition hover:px-3.5"
+    aria-expanded="false"
+    aria-controls="sekme-panel"
+    aria-label="2 hafta ücretsiz bilgilendirmesini aç"
+  >
+    <Icon name="gift" size={22} />
+    <span class="text-[11px] font-bold leading-tight [writing-mode:vertical-rl]">2 Hafta · Ücretsiz</span>
+  </button>
+
+  <!-- Soldan kayan bilgilendirme paneli (sekmenin soluna açılır) -->
+  <div
+    id="sekme-panel"
+    class="pointer-events-none absolute right-full top-1/2 mr-2 w-72 max-w-[80vw] -translate-y-1/2 translate-x-6 rounded-kart border border-kenar bg-beyaz p-5 opacity-0 shadow-yumusak transition-all duration-300 ease-out"
+    role="dialog"
+    aria-label="2 hafta ücretsiz deneme bilgilendirmesi"
+  >
+    <button
+      type="button"
+      id="sekme-kapat"
+      class="absolute right-3 top-3 rounded-full p-1 text-gri transition hover:bg-bulut hover:text-lacivert"
+      aria-label="Bilgilendirmeyi kapat"
+    >
+      <Icon name="x" size={16} />
+    </button>
+
+    <div class="grid h-11 w-11 place-items-center rounded-buton bg-amber/15 text-amber">
+      <Icon name="gift" size={22} />
+    </div>
+    <h3 class="mt-3 font-baslik text-base font-semibold text-lacivert">2 hafta ücretsiz, tam erişim</h3>
+    <p class="mt-1 text-sm text-gri">
+      Canlı etüt, koçluk ve tüm içeriklere koşulsuz erişin. Ücretsiz denemede kredi kartı gerekmez.
+    </p>
+    <a href={UYELIK_URL} class="btn-amber mt-4 w-full text-sm">Ücretsiz Üye Olun</a>
+  </div>
+</div>
+
+<script>
+  const sekme = document.getElementById('yuzen-sekme');
+  const btn = document.getElementById('sekme-buton');
+  const panel = document.getElementById('sekme-panel');
+  const kapat = document.getElementById('sekme-kapat');
+
+  const acikSiniflar = ['!translate-x-0', '!opacity-100', '!pointer-events-auto'];
+
+  function ac() {
+    panel?.classList.add(...acikSiniflar);
+    btn?.setAttribute('aria-expanded', 'true');
+  }
+  function kapatPanel() {
+    panel?.classList.remove(...acikSiniflar);
+    btn?.setAttribute('aria-expanded', 'false');
+  }
+  function degistir() {
+    if (btn?.getAttribute('aria-expanded') === 'true') kapatPanel();
+    else ac();
+  }
+
+  btn?.addEventListener('click', degistir);
+  kapat?.addEventListener('click', kapatPanel);
+
+  // Dışarı tıklayınca kapat
+  document.addEventListener('click', (e) => {
+    if (sekme && !sekme.contains(e.target as Node)) kapatPanel();
+  });
+  // Esc ile kapat
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') kapatPanel();
+  });
+</script>

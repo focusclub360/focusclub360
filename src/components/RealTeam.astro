@@ -1,0 +1,66 @@
+---
+import Icon from './Icon.astro';
+
+const kisiler = [
+  {
+    baslik: 'Gerçek Branş Öğretmeni',
+    aciklama: 'Uzman branş öğretmeni canlı etütlerde yanınızda.',
+    ikon: 'users',
+    renk: 'turkuaz',
+  },
+  {
+    baslik: 'Gerçek Başarı Koçu',
+    aciklama: 'Motivasyon ve hedef odaklı koçluk desteği.',
+    ikon: 'target',
+    renk: 'mor',
+  },
+];
+---
+
+<section id="rehber" class="konteyner py-16 md:py-24">
+  <div class="reveal mx-auto max-w-2xl text-center">
+    <h2 class="font-baslik text-3xl font-bold md:text-4xl">Gerçek Ekip, Akıllı Takip</h2>
+  </div>
+
+  <div class="reveal mt-12 grid gap-6 md:grid-cols-2">
+    {kisiler.map((k) => (
+      <article class="flex items-start gap-4 rounded-kart border border-kenar bg-beyaz p-6 shadow-kucuk transition duration-300 hover:-translate-y-1 hover:shadow-yumusak">
+        <span class={`grid h-14 w-14 shrink-0 place-items-center rounded-kart text-beyaz ${k.renk === 'turkuaz' ? 'bg-turkuaz' : 'bg-mor'}`}>
+          <Icon name={k.ikon} size={26} />
+        </span>
+        <div>
+          <h3 class="font-baslik text-lg font-semibold">{k.baslik}</h3>
+          <p class="mt-1 text-sm text-gri">{k.aciklama}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Geniş bant: Yapay Zekâ Takibi -->
+  <div class="reveal mt-6 flex flex-col items-center gap-4 rounded-bant bg-gradient-to-r from-lacivert to-lacivert2 px-6 py-8 text-center text-beyaz md:flex-row md:text-left">
+    <span class="grid h-14 w-14 shrink-0 place-items-center rounded-kart bg-turkuaz/15 text-mint">
+      <Icon name="cpu" size={28} />
+    </span>
+    <div>
+      <h3 class="font-baslik text-xl font-semibold">Yapay Zekâ Takibi</h3>
+      <p class="mt-1 text-beyaz/70">Her adımın akıllı analizle izlenir.</p>
+    </div>
+  </div>
+
+  <!-- Güven rozetleri -->
+  <div class="reveal mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+    <div class="flex items-center gap-3 rounded-kart border border-kenar bg-beyaz px-5 py-4 shadow-kucuk">
+      <span class="grid h-11 w-11 place-items-center rounded-buton bg-turkuaz/10 text-turkuaz">
+        <Icon name="flask" size={22} />
+      </span>
+      <span class="font-semibold text-lacivert">TÜBİTAK Destekli</span>
+    </div>
+    <div class="flex items-center gap-3 rounded-kart border border-kenar bg-beyaz px-5 py-4 shadow-kucuk">
+      <span class="grid h-11 w-11 place-items-center rounded-buton bg-mavi/10 text-mavi">
+        <Icon name="award" size={22} />
+      </span>
+      <span class="font-semibold text-lacivert">Yıldız Teknik Üniversitesi Teknokent</span>
+    </div>
+  </div>
+  <p class="reveal mt-3 text-center text-xs text-gri">Gerçek kurum logoları eklenecek (placeholder).</p>
+</section>

@@ -1,0 +1,60 @@
+---
+const metrikler = [
+  { hedef: 120, son: '+', etiket: 'Uzman Öğretmen' },
+  { hedef: 90, on: '%', son: '+', etiket: 'Düzenli Katılım' },
+  { hedef: 4.8, son: '/5', etiket: 'Veli Memnuniyeti', ondalik: true },
+  { hedef: 10134, son: '', etiket: 'Video Çözümlü Soru' },
+];
+---
+
+<section class="konteyner py-16 md:py-24">
+  <div class="reveal grid grid-cols-2 gap-6 rounded-kart border border-kenar bg-beyaz p-8 shadow-kucuk md:grid-cols-4 md:p-10">
+    {metrikler.map((m) => (
+      <div class="text-center">
+        <p class="font-baslik text-3xl font-extrabold text-lacivert md:text-4xl">
+          {m.on ?? ''}<span
+            class="sayac"
+            data-hedef={m.hedef}
+            data-ondalik={m.ondalik ? '1' : '0'}
+          >0</span>{m.son}
+        </p>
+        <p class="mt-1 text-sm text-gri">{m.etiket}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const sayaclar = document.querySelectorAll<HTMLElement>('.sayac');
+  const animate = (el: HTMLElement) => {
+    const hedef = parseFloat(el.dataset.hedef || '0');
+    const ondalik = el.dataset.ondalik === '1';
+    const sure = 1400;
+    const baslangic = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - baslangic) / sure, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const deger = hedef * eased;
+      el.textContent = ondalik
+        ? deger.toFixed(1)
+        : Math.round(deger).toLocaleString('tr-TR');
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = ondalik ? hedef.toFixed(1) : hedef.toLocaleString('tr-TR');
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          animate(e.target as HTMLElement);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    sayaclar.forEach((s) => io.observe(s));
+  } else {
+    sayaclar.forEach((s) => animate(s));
+  }
+</script>

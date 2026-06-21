@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+
+const liste = [
+  'Planlı çalışma alışkanlığı kazandırır',
+  'Dikkat dağınıklığını azaltır',
+  'Eksikleri zamanında tespit eder',
+  'Motivasyonu ve özgüveni artırır',
+  'Sürekli takip ve geri bildirim sağlar',
+];
+---
+
+<section class="bg-[#f5f8ff] py-16 md:py-24">
+  <div class="mx-auto grid max-w-[1400px] items-center gap-12 px-6 md:px-10 lg:grid-cols-2">
+    <!-- Sol: metin -->
+    <div class="reveal">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#3b6ef0]">
+        Akademik Yaklaşımımız
+      </span>
+      <h2 class="mt-4 font-baslik text-3xl font-bold leading-tight text-[#1b2a5b] md:text-4xl">
+        Sorun ders eksikliği değil, çalışma düzeni eksikliği
+      </h2>
+      <p class="mt-4 text-lg text-[#5b6488]">
+        Çocuğunuzun ihtiyacı daha fazla kaynak değil; onu her gün çalıştıran bir düzen ve yanında
+        gerçek bir ekip.
+      </p>
+
+      <ul class="mt-8 space-y-3.5">
+        {liste.map((m) => (
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] text-beyaz">
+              <Icon name="check" size={14} />
+            </span>
+            <span class="text-[#1b2a5b]">{m}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Sağ: görsel alanı (boş placeholder) -->
+    <div class="reveal">
+      <div class="flex aspect-[4/3] w-full items-center justify-center rounded-[24px] border-2 border-dashed border-[#c3cbe8] bg-gradient-to-br from-[#eef1ff] to-[#e9e3ff] text-[#8b96bd]">
+        <div class="text-center">
+          <Icon name="user" size={48} class="mx-auto" />
+          <p class="mt-2 text-sm">Görsel alanı (eklenecek)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

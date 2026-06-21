@@ -1,0 +1,107 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import { UYELIK_URL, GIRIS_URL, ROUTES, ANCHORS } from '../config';
+
+const sutunlar = [
+  {
+    baslik: 'Kulüp',
+    linkler: [
+      { ad: 'Etüd Kulübü Nedir', href: ROUTES.kulupteNelerVar },
+      { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
+      { ad: 'Nasıl Çalışır', href: ROUTES.nasilCalisir },
+      { ad: 'Velilere', href: ROUTES.velilere },
+    ],
+  },
+  {
+    baslik: 'Üyelik',
+    linkler: [
+      { ad: 'Nasıl Üye Olunur', href: ROUTES.nasilUyeOlunur },
+      { ad: '2 Hafta Ücretsiz Deneme', href: UYELIK_URL },
+      { ad: 'Kulübe Giriş', href: GIRIS_URL },
+    ],
+  },
+  {
+    baslik: 'Destek',
+    linkler: [
+      { ad: 'Merak Edilenler', href: ANCHORS.sss },
+      { ad: 'Bize Ulaşın', href: ANCHORS.iletisim },
+      { ad: 'Rehber', href: ROUTES.rehber },
+    ],
+  },
+];
+
+const sosyal = [
+  { ad: 'Facebook', ikon: 'facebook' },
+  { ad: 'Instagram', ikon: 'instagram' },
+  { ad: 'YouTube', ikon: 'youtube' },
+  { ad: 'LinkedIn', ikon: 'linkedin' },
+  { ad: 'X', ikon: 'twitter' },
+];
+---
+
+<footer class="bg-lacivert text-beyaz/70">
+  <div class="konteyner py-16">
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+      <!-- Logo + sosyal -->
+      <div>
+        <Logo variant="light" />
+        <p class="mt-5 max-w-xs text-sm text-beyaz/55">
+          Türkiye’nin ilk ve tek Dijital Etüd Kulübü
+        </p>
+        <div class="mt-5 flex gap-3">
+          {sosyal.map((s) => (
+            <a
+              href="#"
+              aria-label={s.ad}
+              class="grid h-9 w-9 place-items-center rounded-full border border-beyaz/15 text-beyaz/70 transition hover:border-turkuaz hover:bg-turkuaz hover:text-beyaz"
+            >
+              <Icon name={s.ikon} size={17} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Link sütunları -->
+      {sutunlar.map((c) => (
+        <div>
+          <h3 class="font-baslik text-sm font-semibold uppercase tracking-wide text-beyaz">{c.baslik}</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            {c.linkler.map((l) => (
+              <li><a href={l.href} class="transition hover:text-beyaz">{l.ad}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <!-- İletişim -->
+      <div>
+        <h3 class="font-baslik text-sm font-semibold uppercase tracking-wide text-beyaz">İletişim</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li class="flex items-center gap-2">
+            <Icon name="phone" size={16} class="text-mint" />
+            <a href="tel:08503083636" class="transition hover:text-beyaz">0850 308 36 360</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="mail" size={16} class="text-mint" />
+            <a href="mailto:info@focusclub360.com" class="transition hover:text-beyaz">info@focusclub360.com</a>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="pin" size={16} class="mt-0.5 shrink-0 text-mint" />
+            <span>YTÜ Teknokent İstanbul</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Alt satır -->
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-beyaz/10 pt-6 text-sm sm:flex-row">
+      <p class="text-beyaz/55">© 2026 FocusClub 360. Tüm hakları saklıdır.</p>
+      <div class="flex gap-5 text-beyaz/55">
+        <a href="#" class="hover:text-beyaz">Gizlilik Politikası</a>
+        <a href="#" class="hover:text-beyaz">Kullanım Koşulları</a>
+        <a href="#" class="hover:text-beyaz">KVKK</a>
+      </div>
+    </div>
+  </div>
+</footer>

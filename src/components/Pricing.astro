@@ -1,0 +1,52 @@
+---
+import Icon from './Icon.astro';
+import { UYELIK_URL } from '../config';
+
+const ozellikler = [
+  { baslik: 'Canlı etüt ve soru çözüm', aciklama: 'Branş öğretmenleriyle canlı etüt ve anında soru çözüm.', ikon: 'users' },
+  { baslik: 'Gerçek koçluk', aciklama: 'Kişiye özel rehber öğretmen ve hedef takibi.', ikon: 'target' },
+  { baslik: 'Yapay zekâ takibi ve veli raporlama', aciklama: 'Her adımın akıllı analizle izlenir, veliye düzenli bildirilir.', ikon: 'cpu' },
+  { baslik: 'Online ders içerikleri', aciklama: 'Tüm branşlarda video anlatım ve çözümlü sorular.', ikon: 'book' },
+  { baslik: 'Motivasyon ve rozetler', aciklama: 'Oyunlaştırılmış sistemle katılım ve ödevler ödüllendirilir.', ikon: 'award' },
+  { baslik: '2 hafta ücretsiz tam erişim', aciklama: 'Tüm özelliklere koşulsuz, kredi kartı gerekmeden erişim.', ikon: 'gift' },
+];
+---
+
+<section id="uyelik" class="konteyner py-16 md:py-24">
+  <div class="reveal mx-auto mb-12 max-w-2xl text-center">
+    <span class="inline-block rounded-cip bg-turkuaz/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-turkuaz">
+      Üyelikte Neler Var
+    </span>
+    <h2 class="mt-4 font-baslik text-3xl font-bold md:text-4xl">Her şey tek üyelikte dahil</h2>
+    <p class="mt-3 text-lg text-gri">
+      Önce ücretsiz deneyin; ikna olunca tek üyelikle kulübün tüm imkânlarına katılın.
+    </p>
+  </div>
+
+  <div class="reveal grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {ozellikler.map((o) => (
+      <article class="flex items-start gap-4 rounded-kart border border-kenar bg-beyaz p-6 shadow-kucuk transition duration-300 hover:-translate-y-1 hover:shadow-yumusak">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-buton bg-turkuaz/10 text-turkuaz">
+          <Icon name={o.ikon} size={22} />
+        </span>
+        <div>
+          <h3 class="font-baslik text-base font-semibold leading-snug">{o.baslik}</h3>
+          <p class="mt-1 text-sm text-gri">{o.aciklama}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="reveal mt-10 flex flex-col items-center justify-center gap-4 rounded-bant bg-bulut px-6 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
+    <div class="flex items-center gap-3">
+      <span class="grid h-12 w-12 shrink-0 place-items-center rounded-buton bg-turkuaz/10 text-turkuaz">
+        <Icon name="shield" size={24} />
+      </span>
+      <div>
+        <p class="font-baslik text-lg font-semibold text-lacivert">Önce 2 hafta ücretsiz deneyin</p>
+        <p class="text-sm text-gri">Tam erişim, kredi kartı gerekmez.</p>
+      </div>
+    </div>
+    <a href={UYELIK_URL} class="btn-amber shrink-0">Ücretsiz Üye Olun</a>
+  </div>
+</section>

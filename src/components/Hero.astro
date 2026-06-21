@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { UYELIK_URL, ROUTES } from '../config';
+// TODO: Tam ekran için yatay, yüksek çözünürlüklü (~1920px) bir görselle değiştir.
+import heroGorsel from '../assets/hero-masaustu.jpg';
+
+const kartlar = [
+  { baslik: 'Canlı Etüt', alt: 'Öğretmen gözetiminde', ikon: 'users', renk: 'turkuaz' },
+  { baslik: 'Canlı Soru Çözüm', alt: 'Anında çözüm', ikon: 'flask', renk: 'mercan' },
+  { baslik: 'Gerçek Koçluk', alt: 'Birebir rehber öğretmen', ikon: 'target', renk: 'mor' },
+  { baslik: 'Online Ders İçerikleri', alt: 'Tüm müfredat', ikon: 'book', renk: 'mavi' },
+];
+
+const renkMap: Record<string, string> = {
+  turkuaz: 'bg-turkuaz',
+  mercan: 'bg-mercan',
+  mor: 'bg-mor',
+  mavi: 'bg-mavi',
+};
+---
+
+<!-- Tam ekran hero: arka plan görseli + üstte koyu okunabilirlik katmanı + içerik -->
+<section class="relative isolate -mt-[84px] flex min-h-[640px] items-center overflow-hidden lg:min-h-[100svh]">
+  <!-- Tam ekran arka plan görseli -->
+  <Image
+    src={heroGorsel}
+    alt="Kulaklıkla tabletten canlı etüte katılıp not alan öğrenci"
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
+    class="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+    loading="eager"
+  />
+  <!-- Karartma katmanı (metin okunaklılığı) -->
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-r from-lacivert/80 via-lacivert/45 to-lacivert/5"
+  >
+  </div>
+
+  <div class="konteyner w-full pb-14 pt-[120px] md:pt-[132px]">
+    <div class="reveal max-w-2xl text-beyaz">
+      <h1 class="font-baslik text-4xl font-extrabold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+        Çocuğunuz verimli çalışıyor mu?
+        <span class="text-mint">Artık emin olacaksınız.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-beyaz/85">
+        Canlı etüt, canlı soru çözüm ve birebir koçluk ile çocuğunuzun hedeflerine ulaşması için
+        her adımda yanındayız.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href={UYELIK_URL} class="btn-amber">Ücretsiz Üye Olun</a>
+        <a
+          href={ROUTES.kulupteNelerVar}
+          class="inline-flex items-center justify-center gap-2 rounded-buton border border-beyaz/40 bg-beyaz/5 px-6 py-3 font-semibold text-beyaz backdrop-blur transition hover:border-beyaz hover:bg-beyaz/15"
+          >Kulübü Keşfet</a
+        >
+      </div>
+
+      <p class="mt-5 flex items-center gap-2 text-sm text-beyaz/80">
+        <Icon name="shield" size={18} class="text-mint" />
+        Ücretsiz denemede kredi kartı gerekmez.
+      </p>
+    </div>
+
+    <!-- Özellik kartları (hero altında, görselin üzerinde) -->
+    <div class="reveal mt-12 grid gap-3 sm:grid-cols-2 lg:mt-16 lg:max-w-4xl lg:grid-cols-4">
+      {kartlar.map((k) => (
+        <div class="rounded-kart border border-beyaz/15 bg-beyaz/10 p-4 backdrop-blur-md">
+          <div class={`grid h-10 w-10 place-items-center rounded-buton text-beyaz ${renkMap[k.renk]}`}>
+            <Icon name={k.ikon} size={20} />
+          </div>
+          <p class="mt-3 text-sm font-semibold leading-tight text-beyaz">{k.baslik}</p>
+          <p class="text-xs text-beyaz/70">{k.alt}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+
+const rozetler = ['Disiplin Şampiyonu', 'Fokus Lideri', 'Matematik Ustası'];
+---
+
+<section class="konteyner py-16 md:py-24">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div class="reveal">
+      <h2 class="font-baslik text-3xl font-bold leading-tight md:text-4xl">
+        Anne ve babanın üzerindeki ders çalıştırma yükünü alıyoruz
+      </h2>
+      <p class="mt-5 text-lg text-gri">
+        Canlı ders çalıştırma ve soru çözüm etütleri çocuğu annenin gözetiminden alıp
+        FocusClub 360’a taşır. Etütteki durumu veliye düzenli bildirilir; oyunlaştırılmış çalışma
+        sistemiyle çocuğun katılımı ve becerileri puanlanır, rozetlerle ödüllendirilir.
+      </p>
+    </div>
+
+    <div class="reveal">
+      <div class="rounded-kart border border-kenar bg-beyaz p-7 shadow-yumusak">
+        <div class="flex items-center gap-2">
+          <Icon name="trophy" size={20} class="text-amber" />
+          <h3 class="font-baslik text-lg font-semibold">Puan ve Rozetler</h3>
+        </div>
+
+        <div class="mt-5 grid grid-cols-2 gap-4">
+          <div class="rounded-kart bg-turkuaz/8 p-4">
+            <p class="text-sm text-gri">Katılım puanı</p>
+            <p class="mt-1 font-baslik text-2xl font-extrabold text-turkuaz">+1.250</p>
+          </div>
+          <div class="rounded-kart bg-mor/8 p-4">
+            <p class="text-sm text-gri">Ödev puanı</p>
+            <p class="mt-1 font-baslik text-2xl font-extrabold text-mor">+980</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          {rozetler.map((r) => (
+            <span class="inline-flex items-center gap-1.5 rounded-cip border border-kenar bg-bulut px-3 py-1.5 text-sm font-medium text-lacivert">
+              <Icon name="award" size={15} class="text-amber" />
+              {r}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

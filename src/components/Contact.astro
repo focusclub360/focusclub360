@@ -1,0 +1,134 @@
+---
+import Icon from './Icon.astro';
+
+const bilgiler = [
+  { ikon: 'phone', etiket: 'Telefon', deger: '0850 308 36 360', href: 'tel:08503083636' },
+  { ikon: 'mail', etiket: 'E-posta', deger: 'info@focusclub360.com', href: 'mailto:info@focusclub360.com' },
+  { ikon: 'pin', etiket: 'Adres', deger: 'YTÜ Teknokent İstanbul', href: null },
+];
+---
+
+<section id="iletisim" class="konteyner py-16 md:py-24">
+  <div class="grid gap-10 lg:grid-cols-2">
+    <!-- Sol: bilgi -->
+    <div class="reveal">
+      <span class="inline-block rounded-cip bg-turkuaz/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-turkuaz">
+        Bize Ulaşın
+      </span>
+      <h2 class="mt-4 font-baslik text-3xl font-bold md:text-4xl">Sorularınız için buradayız</h2>
+      <p class="mt-4 text-lg text-gri">
+        Kulüp, üyelik ve ücretsiz deneme hakkında merak ettiklerinizi bize iletin; en kısa sürede
+        size dönüş yapalım.
+      </p>
+
+      <ul class="mt-8 space-y-4">
+        {bilgiler.map((b) => (
+          <li class="flex items-center gap-3">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-buton bg-turkuaz/10 text-turkuaz">
+              <Icon name={b.ikon} size={20} />
+            </span>
+            <div>
+              <p class="text-xs uppercase tracking-wide text-gri">{b.etiket}</p>
+              {b.href ? (
+                <a href={b.href} class="font-semibold text-lacivert transition hover:text-turkuaz">{b.deger}</a>
+              ) : (
+                <p class="font-semibold text-lacivert">{b.deger}</p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Sağ: form -->
+    <div class="reveal">
+      <form
+        id="iletisim-form"
+        class="rounded-kart border border-kenar bg-beyaz p-6 shadow-kucuk md:p-8"
+        novalidate
+      >
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <label for="ad" class="mb-1.5 block text-sm font-medium text-lacivert">Ad Soyad</label>
+            <input
+              id="ad"
+              name="ad"
+              type="text"
+              required
+              autocomplete="name"
+              placeholder="Adınız ve soyadınız"
+              class="w-full rounded-buton border border-kenar bg-bulut px-4 py-3 text-sm text-lacivert outline-none transition placeholder:text-gri/70 focus:border-turkuaz focus:bg-beyaz focus:ring-2 focus:ring-turkuaz/30"
+            />
+          </div>
+          <div>
+            <label for="telefon" class="mb-1.5 block text-sm font-medium text-lacivert">Telefon</label>
+            <input
+              id="telefon"
+              name="telefon"
+              type="tel"
+              required
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="05xx xxx xx xx"
+              class="w-full rounded-buton border border-kenar bg-bulut px-4 py-3 text-sm text-lacivert outline-none transition placeholder:text-gri/70 focus:border-turkuaz focus:bg-beyaz focus:ring-2 focus:ring-turkuaz/30"
+            />
+          </div>
+          <div>
+            <label for="eposta" class="mb-1.5 block text-sm font-medium text-lacivert">E-posta</label>
+            <input
+              id="eposta"
+              name="eposta"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="ornek@eposta.com"
+              class="w-full rounded-buton border border-kenar bg-bulut px-4 py-3 text-sm text-lacivert outline-none transition placeholder:text-gri/70 focus:border-turkuaz focus:bg-beyaz focus:ring-2 focus:ring-turkuaz/30"
+            />
+          </div>
+          <div class="sm:col-span-2">
+            <label for="mesaj" class="mb-1.5 block text-sm font-medium text-lacivert">Mesajınız</label>
+            <textarea
+              id="mesaj"
+              name="mesaj"
+              rows="4"
+              required
+              placeholder="Size nasıl yardımcı olabiliriz?"
+              class="w-full resize-y rounded-buton border border-kenar bg-bulut px-4 py-3 text-sm text-lacivert outline-none transition placeholder:text-gri/70 focus:border-turkuaz focus:bg-beyaz focus:ring-2 focus:ring-turkuaz/30"
+            ></textarea>
+          </div>
+          <label class="flex items-start gap-2.5 text-sm text-gri sm:col-span-2">
+            <input
+              type="checkbox"
+              name="kvkk"
+              required
+              class="mt-0.5 h-4 w-4 shrink-0 rounded border-kenar text-turkuaz focus:ring-turkuaz/40"
+            />
+            <span>Kişisel verilerimin işlenmesine ilişkin <a href="#" class="font-medium text-turkuaz hover:underline">aydınlatma metnini</a> okudum, onaylıyorum.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-amber mt-6 w-full">Mesaj Gönder</button>
+
+        <p id="iletisim-sonuc" class="mt-4 hidden rounded-buton bg-turkuaz/10 px-4 py-3 text-sm font-medium text-turkuaz" role="status">
+          Teşekkürler! Mesajınız alındı, en kısa sürede size dönüş yapacağız.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('iletisim-form') as HTMLFormElement | null;
+  const sonuc = document.getElementById('iletisim-sonuc');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    // TODO: Form gönderimi backend/servis bağlanınca buraya eklenecek.
+    sonuc?.classList.remove('hidden');
+    form.reset();
+  });
+</script>

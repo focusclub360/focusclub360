@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroV2 from '../components/HeroV2.astro';
+import BrandLine from '../components/BrandLine.astro';
+import Approach from '../components/Approach.astro';
+import Features from '../components/Features.astro';
+---
+
+<Layout>
+  <div class="bg-gradient-to-br from-[#e9e3ff] via-[#eef1ff] to-[#d9e9ff] p-3 md:p-4">
+    <div class="mx-auto max-w-[1400px] overflow-hidden rounded-[28px] bg-white shadow-[0_30px_80px_rgba(60,80,180,.18)]">
+      <HeroV2 />
+      <BrandLine />
+      <Approach />
+      <Features />
+    </div>
+  </div>
+</Layout>

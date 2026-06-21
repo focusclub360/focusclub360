@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  baslik: string;
+  aciklama?: string;
+}
+const { baslik, aciklama } = Astro.props;
+---
+
+<section class="konteyner py-24 text-center md:py-32">
+  <span class="mx-auto grid h-16 w-16 place-items-center rounded-kart bg-turkuaz/10 text-turkuaz">
+    <Icon name="sparkles" size={30} />
+  </span>
+  <h1 class="mt-6 font-baslik text-3xl font-bold md:text-4xl">{baslik}</h1>
+  <p class="mx-auto mt-4 max-w-xl text-lg text-gri">
+    {aciklama ?? 'Bu sayfanın içeriği yakında burada olacak.'}
+  </p>
+  <a href="/" class="btn-outline mt-8">
+    <Icon name="arrow" size={16} class="rotate-180" />
+    Anasayfaya dön
+  </a>
+</section>

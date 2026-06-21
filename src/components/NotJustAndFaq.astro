@@ -1,0 +1,130 @@
+---
+import Icon from './Icon.astro';
+
+const satirlar = [
+  { sol: 'Sadece video izleme değil', sag: 'Canlı etkileşim, anında geri bildirim' },
+  { sol: 'Sadece soru çözümü değil', sag: 'Koçluk desteğiyle sürdürülebilir çalışma' },
+  { sol: 'Sadece deneme çözmek değil', sag: 'Yapay zekâ destekli takip ve analiz' },
+  { sol: 'Sadece düzen değil', sag: 'Ölçülebilir akademik gelişim ve LGS başarısı' },
+  { sol: 'Sadece bilgi değil', sag: 'Alışkanlık kazandıran bütünsel gelişim' },
+];
+
+const sss = [
+  {
+    s: '2 hafta ücretsiz deneme nasıl çalışır?',
+    c: '2 hafta boyunca tüm içeriklere ve canlı etütlere tam erişim sağlarsınız. Ücretsiz denemede kredi kartı gerekmez; dilediğiniz an üyeliğe devam edebilir ya da ayrılabilirsiniz.',
+  },
+  {
+    s: 'Canlı etütlere katılamazsam ne olur?',
+    c: 'Katılamadığınız etütlerin kayıtlarına ve içeriklerine sonradan ulaşabilirsiniz. Koçunuz eksik kalan konular için size ayrı bir plan sunar.',
+  },
+  {
+    s: 'Koçluk görüşmeleri nasıl gerçekleşir?',
+    c: 'Gerçek rehber öğretmenler, çocuğunuzla düzenli birebir görüşmeler yapar; hedef belirleme, motivasyon ve çalışma planı bu görüşmelerde takip edilir.',
+  },
+  {
+    s: 'Veli raporlarını kimler görebilir?',
+    c: 'Raporlara yalnızca veli hesabı erişebilir. Çocuğunuzun katılımı, ödevleri ve gelişimi şeffaf biçimde size düzenli olarak bildirilir.',
+  },
+  {
+    s: 'Üyelik iptali ve iade şartları nelerdir?',
+    c: 'Ücretsiz deneme süresi boyunca herhangi bir ücret alınmaz. Üyelik sonrası iptal ve iade taleplerinizi destek ekibimizle kolayca çözüme kavuşturabilirsiniz.',
+  },
+];
+---
+
+<section class="konteyner py-16 md:py-24">
+  <div class="grid gap-12 lg:grid-cols-2">
+    <!-- Sol: Sadece ... değil -->
+    <div class="reveal">
+      <h2 class="font-baslik text-3xl font-bold md:text-4xl">
+        Sadece bir program değil, bütünsel bir sistem
+      </h2>
+      <ul class="mt-8 space-y-4">
+        {satirlar.map((r) => (
+          <li class="rounded-kart border border-kenar bg-beyaz p-5 shadow-kucuk">
+            <p class="font-medium text-gri">{r.sol}</p>
+            <p class="mt-1 flex items-center gap-2 font-semibold text-lacivert">
+              <Icon name="arrow" size={16} class="text-turkuaz" />
+              {r.sag}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Sağ: Merak Edilenler accordion -->
+    <div class="reveal">
+      <h2 class="font-baslik text-3xl font-bold md:text-4xl">Merak Edilenler</h2>
+      <div class="mt-8 space-y-3" id="sss">
+        {sss.map((q, i) => (
+          <div class="overflow-hidden rounded-kart border border-kenar bg-beyaz shadow-kucuk">
+            <h3>
+              <button
+                type="button"
+                class="sss-btn flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-lacivert"
+                aria-expanded={i === 0 ? 'true' : 'false'}
+                aria-controls={`sss-panel-${i}`}
+                id={`sss-btn-${i}`}
+              >
+                {q.s}
+                <span class="sss-ikon shrink-0 text-turkuaz transition-transform duration-300">
+                  <Icon name="chevron" size={20} />
+                </span>
+              </button>
+            </h3>
+            <div
+              id={`sss-panel-${i}`}
+              role="region"
+              aria-labelledby={`sss-btn-${i}`}
+              class="sss-panel grid grid-rows-[0fr] transition-all duration-300"
+            >
+              <div class="overflow-hidden">
+                <p class="px-5 pb-5 text-sm text-gri">{q.c}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const butonlar = document.querySelectorAll<HTMLButtonElement>('.sss-btn');
+
+  const panelOf = (btn: HTMLButtonElement) =>
+    btn.closest('h3')?.nextElementSibling as HTMLElement | null;
+  const ikonOf = (btn: HTMLButtonElement) =>
+    btn.querySelector('.sss-ikon') as HTMLElement | null;
+
+  function kapat(btn: HTMLButtonElement) {
+    btn.setAttribute('aria-expanded', 'false');
+    const panel = panelOf(btn);
+    const ikon = ikonOf(btn);
+    panel?.classList.remove('grid-rows-[1fr]');
+    panel?.classList.add('grid-rows-[0fr]');
+    if (ikon) ikon.style.transform = 'rotate(0deg)';
+  }
+
+  function ac(btn: HTMLButtonElement) {
+    btn.setAttribute('aria-expanded', 'true');
+    const panel = panelOf(btn);
+    const ikon = ikonOf(btn);
+    panel?.classList.remove('grid-rows-[0fr]');
+    panel?.classList.add('grid-rows-[1fr]');
+    if (ikon) ikon.style.transform = 'rotate(180deg)';
+  }
+
+  butonlar.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const acik = btn.getAttribute('aria-expanded') === 'true';
+      // Aynı anda tek açık
+      butonlar.forEach((b) => kapat(b));
+      if (!acik) ac(btn);
+    });
+  });
+
+  // İlk öğeyi açık başlat
+  if (butonlar[0]) ac(butonlar[0]);
+</script>
