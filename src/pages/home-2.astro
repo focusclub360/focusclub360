@@ -17,10 +17,10 @@ import Icon from '../components/Icon.astro';
 import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
 
 const menu = [
-  { ad: 'Kulupte Neler Var', href: ROUTES.kulupteNelerVar },
-  { ad: 'Nasil Calisir', href: ROUTES.nasilCalisir },
+  { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
+  { ad: 'Nasıl Çalışır', href: ROUTES.nasilCalisir },
   { ad: 'Velilere', href: ROUTES.velilere },
-  { ad: 'Nasil Uye Olunur', href: ROUTES.nasilUyeOlunur },
+  { ad: 'Nasıl Üye Olunur', href: ROUTES.nasilUyeOlunur },
   { ad: 'Rehber', href: ROUTES.rehber },
 ];
 ---
@@ -33,7 +33,7 @@ const menu = [
       <div class="sticky top-0 z-50">
         <div class="flex items-center justify-center gap-2 bg-gradient-to-r from-[#1D4ED8] to-[#10B981] px-4 py-2 text-center text-sm font-medium text-beyaz md:rounded-t-[8px]">
           <Icon name="gift" size={16} />
-          Sinirli sure icin ucretsiz 2 hafta deneme firsati
+          Sınırlı süre için ücretsiz 2 hafta deneme fırsatı
         </div>
 
         <header class="flex items-center justify-between gap-4 bg-white/95 px-6 py-4 backdrop-blur-sm md:px-10">
@@ -42,7 +42,7 @@ const menu = [
               <Icon name="sparkles" size={20} />
             </span>
             <span class="font-baslik text-xl font-extrabold tracking-tight text-[#16315E]">FocusClub
-              <span class="bg-gradient-to-r from-[#1D4ED8] to-[#10B981] bg-clip-text text-transparent">360</span>
+              <span class="text-[#10B981]">360</span>
             </span>
           </a>
 
@@ -53,12 +53,12 @@ const menu = [
           </nav>
 
           <div class="flex items-center gap-2 sm:gap-3">
-            <a href={GIRIS_URL} class="hidden text-sm font-semibold text-[#16315E] hover:opacity-70 sm:block">Giris</a>
+            <a href={GIRIS_URL} class="hidden text-sm font-semibold text-[#16315E] hover:opacity-70 sm:block">Giriş</a>
             <a
               href={UYELIK_URL}
               class="hidden rounded-buton bg-gradient-to-r from-[#1D4ED8] to-[#10B981] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(29,78,216,.35)] transition hover:brightness-105 sm:inline-block"
-            >2 Hafta Ucretsiz</a>
-            <button id="mob-tog" aria-label="Menuyu ac" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#16315E] transition hover:bg-bulut lg:hidden">
+            >2 Hafta Ücretsiz</a>
+            <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#16315E] transition hover:bg-bulut lg:hidden">
               <Icon name="menu" size={20} />
             </button>
           </div>
@@ -74,7 +74,7 @@ const menu = [
             href={UYELIK_URL}
             class="mt-3 flex items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#1D4ED8] to-[#10B981] py-3 text-sm font-semibold text-beyaz"
           >
-            2 Hafta Ucretsiz Dene
+            2 Hafta Ücretsiz Dene
             <Icon name="arrow" size={16} />
           </a>
         </nav>
@@ -123,10 +123,11 @@ const menu = [
     background-color: rgba(29, 78, 216, 0.75);
   }
 
-  /* Badge mobile bg */
-  .theme-v2 .bg-\[\#ede8ff\] {
-    background-color: #dce8ff;
-  }
+  /* Acik mor arka planlar -> acik mavi */
+  .theme-v2 .bg-\[\#ede8ff\]  { background-color: #dce8ff; }
+  .theme-v2 .bg-\[\#dfe5f5\]  { background-color: #d8e6ff; }
+  .theme-v2 .bg-\[\#e8eaf4\]  { background-color: #e0eaff; }
+  .theme-v2 .bg-\[\#f5f8ff\]  { background-color: #f0f5ff; }
 
   /* Text renkleri */
   .theme-v2 .text-\[\#1b2a5b\] { color: #16315E; }
@@ -135,6 +136,12 @@ const menu = [
   .theme-v2 .text-\[\#3b6ef0\] { color: #1D4ED8; }
   .theme-v2 .text-\[\#7c5cfc\] { color: #1D4ED8; }
   .theme-v2 .hover\:text-\[\#1b2a5b\]:hover { color: #16315E; }
+
+  /* Shadow renkleri */
+  .theme-v2 .shadow-\[0_8px_20px_rgba\(80\,90\,240\,\.35\)\]  { box-shadow: 0 8px 20px rgba(29,78,216,.35); }
+  .theme-v2 .shadow-\[0_8px_20px_rgba\(80\,90\,240\,\.30\)\]  { box-shadow: 0 8px 20px rgba(29,78,216,.30); }
+  .theme-v2 .shadow-\[0_12px_30px_rgba\(40\,40\,120\,\.35\)\] { box-shadow: 0 12px 30px rgba(29,78,216,.30); }
+  .theme-v2 .shadow-\[0_8px_20px_rgba\(20\,40\,120\,\.35\)\]  { box-shadow: 0 8px 20px rgba(29,78,216,.25); }
 
   /* Tailwind token override */
   .theme-v2 .bg-mor      { background-color: #1D4ED8; }
