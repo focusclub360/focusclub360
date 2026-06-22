@@ -36,10 +36,7 @@ const ozellikler = [
       />
       <!-- Overlay: mobilde düzgün, masaüstünde soldan sağa gradient -->
       <div class="absolute inset-0 bg-[rgba(28,55,185,0.75)] md:hidden"></div>
-      <div
-        class="absolute inset-0 hidden md:block"
-        style="background: linear-gradient(to right, rgba(30,60,200,0.82) 0%, rgba(30,60,200,0.60) 30%, rgba(30,60,200,0.22) 60%, rgba(30,60,200,0.06) 100%);"
-      ></div>
+      <div class="hero-desktop-overlay absolute inset-0 hidden md:block"></div>
 
       <!-- İçerik katmanı -->
       <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-6 py-8 md:px-10 md:py-10">
@@ -90,3 +87,9 @@ const ozellikler = [
     </div>
   </div>
 </div>
+
+<style is:global>
+  .hero-desktop-overlay {
+    background: linear-gradient(to right, rgba(30,60,200,0.82) 0%, rgba(30,60,200,0.60) 30%, rgba(30,60,200,0.22) 60%, rgba(30,60,200,0.06) 100%);
+  }
+</style>
