@@ -28,7 +28,7 @@ const kartlar: Kart[] = [
     renk: 'bg-turkuaz',
     ikon: 'users',
     baslik: 'Canlı Etüt',
-    aciklama: 'Haftanın belirli akşamları, gerçek branş öğretmeni gözetiminde canlı online etüt. Kayıttan video değil; o an birlikte çalışılan, interaktif bir etüt.',
+    aciklama: 'Haftanın belirli akşamları, gerçek branş öğretmeni gözetiminde canlı online etüt. O an birlikte çalışma ile interaktif bir etüt.',
     maddeler: [
       'Branş bazlı etütler (Matematik, Fen, Türkçe ve diğer LGS dersleri).',
       'Öğrenme etüdü, pekiştirme, canlı soru çözüm akışıyla ilerleyen düzen.',
@@ -39,7 +39,7 @@ const kartlar: Kart[] = [
     renk: 'bg-mercan',
     ikon: 'flask',
     baslik: 'Canlı Soru Çözüm',
-    aciklama: 'Takıldığı soruyu yalnız bırakmadan, gerçek branş öğretmeniyle canlı çözen bir öğrenci. Soru, soru olarak kalmaz.',
+    aciklama: 'Takıldığı soruyu yalnız bırakmadan, gerçek branş öğretmeniyle canlı çözen bir öğrenci. Sorular ilgili branş öğretmeninin yardımıyla canlı olarak çözülür.',
     maddeler: [
       'Branş öğretmeniyle canlı, anında soru çözüm seansları.',
       'Yanlış ve eksiklerin anında giderilmesi.',
@@ -50,9 +50,9 @@ const kartlar: Kart[] = [
     renk: 'bg-mor',
     ikon: 'target',
     baslik: 'Gerçek Koçluk',
-    aciklama: 'Dijital koçluğun ötesinde, gerçek rehber öğretmenle birebir ve canlı koçluk. Çocuğunuzla birebir ilgilenen, yönlendiren bir insan.',
+    aciklama: 'Dijital koçluğun ötesinde, gerçek rehber öğretmenle bireysel ve canlı koçluk. Çocuğunuzla yakından ilgilenen, yönlendiren bir gerçek rehber öğretmenler.',
     maddeler: [
-      'Gerçek rehber öğretmenle birebir, canlı koçluk görüşmeleri.',
+      'Gerçek rehber öğretmenle bireysel, canlı koçluk görüşmeleri.',
       'Kişiye özel hedef belirleme ve motivasyon takibi.',
       'Gerileme ve düşüşlerde erken müdahale.',
     ],
@@ -61,7 +61,7 @@ const kartlar: Kart[] = [
     renk: 'bg-amber',
     ikon: 'cpu',
     baslik: 'Yapay Zekâ Takibi ve Veli Raporlaması',
-    aciklama: 'Kayıttan LGS\'ye kadar tüm süreci takip eden akıllı katman. Yapay zekâ sadece rapor üretmez; eksiği bulur, neye nasıl çalışılacağını yönlendirir, riski erken yakalar ve insan ekibine taşır.',
+    aciklama: 'Kayıttan LGS sınavına kadar tüm süreci takip eden akıllı katman. Yapay zekâ sadece rapor üretmez; eksiği bulur, neye nasıl çalışılacağını yönlendirir, riski erken yakalar ve gerçek öğretmenlerden oluşan ekibe taşır.',
     maddeler: [
       'Eksik tespiti ve kişiye özel çalışma yönlendirmesi.',
       'Tam öğrenme ve akıllı tekrar ile sürekli gelişim ölçümü.',
@@ -76,7 +76,7 @@ const kartlar: Kart[] = [
     aciklama: 'Canlı yapının yanında, istediği an erişebileceği zengin bir dijital içerik arşivi. Tüm LGS branşlarında anlatım, soru çözüm ve denemeler.',
     maddeler: [
       'Tüm branşlarda video anlatım ve video çözümlü sorular.',
-      'Online ders dökümanları ve çalışma kaynakları.',
+      'Dijital ders dökümanları ve çalışma kaynakları.',
       'Deneme sınavları ve test çözümleri.',
     ],
   },
@@ -160,7 +160,7 @@ const adimlar = [
           <div class="pb-2 pt-3 md:pb-3 md:pt-4">
             <span class="flex w-full items-center gap-1 rounded-md bg-[#ede8ff] px-2.5 py-1 text-[11px] font-semibold text-[#3b6ef0] md:inline-flex md:w-auto md:gap-1.5 md:bg-gradient-to-r md:from-[#7c5cfc]/12 md:to-[#3b6ef0]/12 md:px-3 md:py-1 md:text-sm">
               <Icon name="star" size={12} class="text-[#7c5cfc] md:size-[14px]" />
-              Türkiye'nin İlk ve Tek Dijital Akademik Etüt Kulübü
+              Kulüpte Neler Var?
             </span>
           </div>
 
@@ -175,14 +175,14 @@ const adimlar = [
               loading="eager"
             />
             <div class="absolute inset-0 bg-[rgba(28,55,185,0.75)] md:hidden"></div>
-            <div class="absolute inset-0 hidden md:block" style="background: linear-gradient(to right, rgba(19,22,41,0.55) 0%, rgba(19,22,41,0.25) 45%, rgba(19,22,41,0.06) 100%);"></div>
+            <div class="absolute inset-0 hidden md:block" style="background: linear-gradient(to right, rgba(19,22,41,0.83) 0%, rgba(19,22,41,0.38) 45%, rgba(19,22,41,0.09) 100%);"></div>
 
             <!-- İçerik -->
             <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-5 py-4 md:px-10 md:py-10">
 
               <div class="max-w-lg">
                 <h1 class="font-baslik text-xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
-                  Bir Üyelik, Eksiksiz Bir Etüt Sistemi
+                  Bir Üyelik İle Eksiksiz Bir Etüt Sistemi
                 </h1>
                 <p class="mt-2 text-xs text-white/80 md:text-base md:mt-4">
                   FocusClub 360 üyeliğiyle çocuğunuz; gerçek branş öğretmenleri ve gerçek koçlarla, baştan sona yapay zekâ takibiyle LGS'ye hazırlanır. Aşağıda üyelikte birebir neler olduğunu görün.
@@ -222,7 +222,7 @@ const adimlar = [
         <div class="mx-auto max-w-[1400px]">
           <div class="reveal mx-auto max-w-2xl text-center">
             <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Üyelikte Tam Olarak Neler Var?</h2>
-            <p class="mt-3 text-base text-[#5b6488]">Beş parça birlikte çalışır: insan önde, yapay zekâ her an devrede.</p>
+            <p class="mt-3 text-base text-[#5b6488]">Gerçek öğretmenler ve gerçek koçlarla, baştan sona yapay zekâ takibiyle LGS'ye hazırlar ve ders çalıştırma yükünü sizden alır.</p>
           </div>
 
           <div class="mt-10 space-y-4 md:mt-12 md:space-y-5">
@@ -268,7 +268,7 @@ const adimlar = [
       <section class="bg-white px-6 py-6 md:px-10 md:py-8">
         <div class="mx-auto max-w-[1400px]">
           <div class="reveal rounded-[8px] bg-lacivert px-6 py-12 md:px-10 md:py-14">
-            <p class="text-center font-baslik text-xl font-bold text-beyaz md:text-2xl">Sadece Söz Değil, Dolu Bir Arşiv</p>
+            <p class="text-center font-baslik text-xl font-bold text-beyaz md:text-2xl">Sadece Sözde Değil, Dolu Dolu Bir İçerik Arşivi</p>
             <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 md:gap-10">
               <div class="text-center">
                 <p class="font-baslik text-4xl font-extrabold text-beyaz md:text-5xl">
@@ -358,10 +358,10 @@ const adimlar = [
                   <span class="grid h-8 w-8 place-items-center rounded-full bg-turkuaz text-beyaz">
                     <Icon name="users" size={16} />
                   </span>
-                  <h3 class="font-baslik text-base font-semibold text-beyaz">Gerçek İnsan</h3>
+                  <h3 class="font-baslik text-base font-semibold text-beyaz">Gerçek Branş Öğretmenleri ve Rehber Öğretmenler</h3>
                 </div>
                 <ul class="mt-4 space-y-3">
-                  {['Branş öğretmeni canlı etütte yanında.', 'Rehber öğretmen birebir koçluk yapar.', 'Karar veren, yönlendiren, ilgilenen insandır.'].map((m) => (
+                  {['Branş öğretmeni canlı etütte yanında.', 'Rehber öğretmen birebir koçluk yapar.', 'Karar veren, yönlendiren, ilgilenen öğretmenlerdir.'].map((m) => (
                     <li class="flex items-start gap-2">
                       <Icon name="check" size={14} class="mt-0.5 shrink-0 text-turkuaz" />
                       <span class="text-sm text-beyaz/80">{m}</span>
@@ -396,7 +396,7 @@ const adimlar = [
           <div class="reveal rounded-[8px] bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] px-6 py-12 text-center md:px-10 md:py-16">
             <h2 class="font-baslik text-3xl font-bold text-beyaz md:text-4xl">Hepsini İki Hafta Boyunca Ücretsiz Deneyin</h2>
             <p class="mx-auto mt-4 max-w-lg text-base text-beyaz/80">
-              Tüm canlı etütlere, koçluğa ve dijital içeriklere tam erişim. Kredi kartı gerekmez, istediğiniz an iptal.
+              2 haftalık deneyim boyunca canlı etütlere, koçluğa ve dijital içeriklere erişebilirsiniz. Ücretsiz deneyim için kredi kartı gerekmez, süre bitince devam edip etmemek sizin elinizde.
             </p>
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
