@@ -16,7 +16,7 @@ const ozellikler = [
   <div class="flex min-h-0 flex-1 flex-col px-6 pb-4 md:px-10 md:pb-6">
 
     <!-- Badge — banner dışında beyaz alanda -->
-    <div class="pb-3 pt-4">
+    <div class="pb-2 pt-3 md:pb-3 md:pt-4">
       <span class="flex w-full items-center gap-1 rounded-md bg-[#ede8ff] px-2.5 py-1 text-[11px] font-semibold text-[#3b6ef0] md:inline-flex md:w-auto md:gap-1.5 md:bg-gradient-to-r md:from-[#7c5cfc]/12 md:to-[#3b6ef0]/12 md:px-3 md:py-1 md:text-sm">
         <Icon name="star" size={12} class="text-[#7c5cfc] md:size-[14px]" />
         Türkiye'nin İlk ve Tek Dijital Akademik Etüt Kulübü
@@ -39,29 +39,29 @@ const ozellikler = [
       <div class="hero-desktop-overlay absolute inset-0 hidden md:block"></div>
 
       <!-- İçerik katmanı -->
-      <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-6 py-8 md:px-10 md:py-10">
+      <div class="absolute inset-0 z-10 flex flex-col justify-between px-5 py-4 md:justify-evenly md:px-10 md:py-10">
 
         <!-- Üst: başlık + kartlar -->
         <div class="max-w-md">
-          <h1 class="font-baslik text-xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
+          <h1 class="font-baslik text-lg font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
             Her Akşam Ders Çalıştırma Münakaşasına Son!
           </h1>
-          <p class="mt-1.5 text-xs text-white/80 md:text-base">
+          <p class="mt-1 text-[10px] text-white/80 md:text-base">
             Sevgili Veliler;<br />
             Çocuğunuza Her Akşam Ders Çalışmasını Hatırlatmaktan Yoruldunuz mu?<br />
             FocusClub 360'ta haftanın 4 günü branş öğretmeni gözetiminde canlı online etüt ile ders çalışma vardır.
           </p>
 
           <!-- Özellik kartları 2×2 -->
-          <div class="mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
+          <div class="mt-2 grid grid-cols-2 gap-1.5 md:mt-5 md:gap-3">
             {ozellikler.map((o) => (
-              <div class="flex items-center gap-2 rounded-kart bg-white/95 px-3 py-1.5 shadow-md backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-3">
-                <span class={`grid h-7 w-7 shrink-0 place-items-center rounded-cip text-white sm:h-10 sm:w-10 ${o.renk}`}>
-                  <Icon name={o.ikon} size={14} />
+              <div class="flex items-center gap-1.5 rounded-kart bg-white/95 px-2 py-1.5 shadow-md backdrop-blur-sm md:gap-3 md:px-4 md:py-3">
+                <span class={`grid h-6 w-6 shrink-0 place-items-center rounded-cip text-white md:h-10 md:w-10 ${o.renk}`}>
+                  <Icon name={o.ikon} size={12} />
                 </span>
                 <div class="min-w-0">
-                  <p class="line-clamp-2 font-baslik text-xs font-bold leading-snug text-[#1b2a5b] sm:text-sm">{o.baslik}</p>
-                  <p class="line-clamp-1 text-[11px] leading-tight text-[#6b76a0] sm:text-xs">{o.alt}</p>
+                  <p class="font-baslik text-[11px] font-bold leading-snug text-[#1b2a5b] md:text-sm">{o.baslik}</p>
+                  <p class="hidden text-xs leading-tight text-[#6b76a0] md:block">{o.alt}</p>
                 </div>
               </div>
             ))}
@@ -72,14 +72,14 @@ const ozellikler = [
         <div>
           <a
             href={UYELIK_URL}
-            class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-2 pl-4 pr-2 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 md:gap-3 md:py-2.5 md:pl-6 md:pr-2.5 md:text-base"
+            class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-1.5 pl-4 pr-1.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 md:gap-3 md:py-2.5 md:pl-6 md:pr-2.5 md:text-base"
           >
             Ücretsiz Deneyim
-            <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-[#3b6ef0] md:h-9 md:w-9">
-              <Icon name="arrow" size={16} />
+            <span class="grid h-7 w-7 place-items-center rounded-full bg-white text-[#3b6ef0] md:h-9 md:w-9">
+              <Icon name="arrow" size={15} />
             </span>
           </a>
-          <p class="mt-1.5 text-xs font-medium text-white/90 md:text-sm">
+          <p class="mt-1 text-[10px] font-medium text-white/90 md:text-sm">
             2 Haftalık Ücretsiz Deneyim süresince kredi kartınızı kayıt ettirmenize gerek yoktur.
           </p>
         </div>
