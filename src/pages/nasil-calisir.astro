@@ -143,9 +143,9 @@ const veliKartlari = [
       </div>
 
       <!-- ── 1. HERO ───────────────────────────────────────────────────────── -->
-      <section class="bg-white px-6 pb-10 pt-8 md:px-10 md:pb-16 md:pt-12">
+      <section class="bg-white px-6 pb-16 pt-14 md:px-10 md:pb-24 md:pt-20">
         <div class="mx-auto max-w-[1400px]">
-          <div class="flex flex-col gap-10 md:flex-row md:items-center md:gap-12 lg:gap-20">
+          <div class="flex flex-col gap-12 md:flex-row md:items-center md:gap-14 lg:gap-24">
 
             <!-- Sol: metin -->
             <div class="flex-1">
@@ -154,15 +154,15 @@ const veliKartlari = [
                 NASIL ÇALIŞIR
               </span>
 
-              <h1 class="mt-4 font-baslik text-3xl font-extrabold tracking-tight text-[#1b2a5b] md:text-4xl lg:text-[2.8rem]" style="line-height: 1.15;">
+              <h1 class="mt-5 font-baslik text-3xl font-extrabold tracking-tight text-[#1b2a5b] md:text-4xl lg:text-[2.6rem]" style="line-height: 1.18;">
                 Kayıttan LGS'ye Kadar Tek Bir Akıllı Sistem
               </h1>
 
-              <p class="mt-4 text-base leading-relaxed text-[#5b6488] md:text-lg">
+              <p class="mt-6 max-w-lg text-base leading-relaxed text-[#5b6488] md:text-lg">
                 Çocuğunuz üye olduğu andan sınava kadar; gerçek öğretmenler ve koçlarla çalışır, her adımı yapay zekâ takip eder. Süreç baştan sona planlıdır, siz de her aşamada bilgilendirilirsiniz.
               </p>
 
-              <div class="mt-8 flex flex-wrap items-center gap-3">
+              <div class="mt-10 flex flex-wrap items-center gap-3">
                 <a
                   href={UYELIK_URL}
                   class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-2.5 pl-6 pr-2 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105"
@@ -181,9 +181,14 @@ const veliKartlari = [
               </div>
             </div>
 
-            <!-- Sağ: görsel (4:5) -->
+            <!-- Sağ: görsel placeholder (4:5) -->
             <div class="hidden shrink-0 overflow-hidden rounded-[16px] border border-kenar md:block md:w-[260px] lg:w-[320px]">
-              <div class="aspect-[4/5] w-full bg-gradient-to-br from-[#1E2848] via-[#1B2140] to-[#131629]"></div>
+              <div class="flex aspect-[4/5] w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#1E2848] to-[#2A3060]">
+                <span class="grid h-16 w-16 place-items-center rounded-full bg-[#6E7CFF]/20 text-[#6E7CFF]">
+                  <Icon name="rocket" size={32} />
+                </span>
+                <p class="text-center text-xs text-[#5b6488]">Görsel yakında<br/>ekleniyor</p>
+              </div>
             </div>
 
           </div>
@@ -199,28 +204,68 @@ const veliKartlari = [
             <p class="mt-3 text-base text-[#5b6488]">Her aşama planlı, her aşama takip altında.</p>
           </div>
 
-          <div class="reveal mt-14 mx-auto max-w-3xl">
-            {adimlar.map((a, i) => (
-              <div class="relative flex gap-6 pb-10 last:pb-0">
-                <!-- Sol: numara rozeti + dikey çizgi -->
-                <div class="flex flex-col items-center">
-                  <span class={`grid h-12 w-12 shrink-0 place-items-center rounded-full text-sm font-extrabold text-white ${a.renk}`}>
-                    {a.no}
-                  </span>
-                  {i < adimlar.length - 1 && (
-                    <div class="mt-2 w-0.5 flex-1 bg-kenar"></div>
+          <!-- Masaüstü: 2 satır × 3 akış kartı -->
+          <div class="reveal mt-14 hidden md:flex md:flex-col md:gap-4">
+
+            <!-- Satır 1: Adım 01–03 -->
+            <div class="flex items-stretch gap-0">
+              {adimlar.slice(0, 3).map((a, i) => (
+                <div class="flex flex-1 items-stretch">
+                  <div class="flex flex-1 flex-col rounded-[8px] border border-kenar bg-white p-6 shadow-[0_4px_16px_rgba(60,80,180,.06)]">
+                    <span class={`grid h-11 w-11 place-items-center rounded-full text-base font-extrabold text-white shadow-[0_4px_12px_rgba(110,124,255,.25)] ${a.renk}`}>
+                      {a.no}
+                    </span>
+                    <h3 class="mt-4 font-baslik text-base font-bold text-[#1b2a5b]">{a.baslik}</h3>
+                    <p class="mt-2 flex-1 text-sm leading-relaxed text-[#5b6488]">{a.aciklama}</p>
+                  </div>
+                  {i < 2 && (
+                    <div class="flex w-10 shrink-0 items-center justify-center text-[#5b6488]">
+                      <Icon name="arrow" size={18} />
+                    </div>
                   )}
                 </div>
+              ))}
+            </div>
 
-                <!-- Sağ: içerik -->
-                <div class="pb-2 pt-2">
-                  <h3 class="font-baslik text-lg font-bold text-[#1b2a5b]">{a.baslik}</h3>
-                  <p class="mt-1 text-sm leading-relaxed text-[#5b6488]">
-                    {a.link
-                      ? <a href={a.link} class="text-[#3b6ef0] underline-offset-2 hover:underline">{a.aciklama}</a>
-                      : a.aciklama
-                    }
-                  </p>
+            <!-- Satır arası ok -->
+            <div class="flex justify-end pr-[calc(50%+20px)]">
+              <div class="flex h-7 w-10 items-center justify-center">
+                <Icon name="chevron" size={20} class="text-[#5b6488]" />
+              </div>
+            </div>
+
+            <!-- Satır 2: Adım 04–06 -->
+            <div class="flex items-stretch gap-0">
+              {adimlar.slice(3).map((a, i) => (
+                <div class="flex flex-1 items-stretch">
+                  <div class="flex flex-1 flex-col rounded-[8px] border border-kenar bg-white p-6 shadow-[0_4px_16px_rgba(60,80,180,.06)]">
+                    <span class={`grid h-11 w-11 place-items-center rounded-full text-base font-extrabold text-white shadow-[0_4px_12px_rgba(110,124,255,.25)] ${a.renk}`}>
+                      {a.no}
+                    </span>
+                    <h3 class="mt-4 font-baslik text-base font-bold text-[#1b2a5b]">{a.baslik}</h3>
+                    <p class="mt-2 flex-1 text-sm leading-relaxed text-[#5b6488]">{a.aciklama}</p>
+                  </div>
+                  {i < 2 && (
+                    <div class="flex w-10 shrink-0 items-center justify-center text-[#5b6488]">
+                      <Icon name="arrow" size={18} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          <!-- Mobil: dikey kart listesi -->
+          <div class="reveal mt-10 flex flex-col gap-3 md:hidden">
+            {adimlar.map((a) => (
+              <div class="flex items-start gap-4 rounded-[8px] border border-kenar bg-white p-5">
+                <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-extrabold text-white ${a.renk}`}>
+                  {a.no}
+                </span>
+                <div>
+                  <h3 class="font-baslik text-sm font-bold text-[#1b2a5b]">{a.baslik}</h3>
+                  <p class="mt-1 text-xs leading-relaxed text-[#5b6488]">{a.aciklama}</p>
                 </div>
               </div>
             ))}
@@ -369,10 +414,11 @@ const veliKartlari = [
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
                 href={UYELIK_URL}
-                class="inline-flex items-center gap-2 rounded-buton bg-white py-2.5 pl-6 pr-2 text-sm font-semibold text-[#2D3AAE] shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
+                class="inline-flex items-center gap-2 rounded-buton py-2.5 pl-6 pr-2 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
+                style="background-color: #FFFFFF; color: #2D3AAE;"
               >
                 2 Hafta Ücretsiz Dene
-                <span class="grid h-8 w-8 place-items-center rounded-full bg-[#3b6ef0] text-white">
+                <span class="grid h-8 w-8 place-items-center rounded-full text-white" style="background-color: #3b6ef0;">
                   <Icon name="arrow" size={15} />
                 </span>
               </a>
