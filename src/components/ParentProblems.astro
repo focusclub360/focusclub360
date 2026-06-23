@@ -2,11 +2,12 @@
 import Icon from './Icon.astro';
 
 const sorunlar = [
-  { metin: 'Telefon dikkati dağıtıyor',                          ikon: 'smartphone' },
-  { metin: 'Veli sürekli hatırlatmak zorunda kalıyor',           ikon: 'bell'       },
-  { metin: 'Ödevler son dakikaya kalıyor',                       ikon: 'clock'      },
-  { metin: 'Düzenli çalışma alışkanlığı oluşmuyor',             ikon: 'list'       },
-  { metin: 'Çalışıyor mu çalışmıyor mu tam takip edilemiyor',   ikon: 'eye'        },
+  { metin: 'Telefon ve ekran bağımlılığı dikkat dağıtıyor ve çok zaman kaybettiriyorsa',  ikon: 'smartphone' },
+  { metin: 'Hangi derse ne kadar çalışacak bilinemiyor ve planlama yapılamıyorsa',         ikon: 'list'       },
+  { metin: 'Düzenli çalışma alışkanlığı yoksa',                                            ikon: 'clock'      },
+  { metin: 'Çalışıp çalışmadığı tam takip edilemiyorsa',                                  ikon: 'eye'        },
+  { metin: 'Sürekli ders çalış hatırlatması yapılmak zorunda kalınıyorsa',                 ikon: 'bell'       },
+  { metin: 'Motivasyon eksikliği varsa',                                                   ikon: 'target'     },
 ];
 ---
 
@@ -15,11 +16,11 @@ const sorunlar = [
 
     <div class="reveal text-center">
       <h2 class="font-baslik text-2xl font-bold text-[#1b2a5b] md:text-3xl">
-        Anne ve Babaların Ders Çalıştırma Sorunlarını Çözüyoruz
+        Sevgili Velilerimiz, Ders Çalıştırma İle İlgili Sorunlarınızı Çok İyi Biliyoruz ve Çözüyoruz
       </h2>
     </div>
 
-    <div class="reveal mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+    <div class="reveal mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
       {sorunlar.map((s) => (
         <div class="flex flex-col items-center rounded-[8px] border border-kenar bg-beyaz p-5 text-center shadow-kucuk">
           <span class="grid h-12 w-12 place-items-center rounded-[8px] bg-mercan/10 text-mercan">
