@@ -55,13 +55,13 @@ const ozellikler = [
           <!-- Özellik kartları 2×2 -->
           <div class="mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
             {ozellikler.map((o) => (
-              <div class="flex items-center gap-2 rounded-kart bg-white/95 px-3 py-2.5 shadow-md backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-3">
-                <span class={`grid h-8 w-8 shrink-0 place-items-center rounded-cip text-white sm:h-10 sm:w-10 ${o.renk}`}>
-                  <Icon name={o.ikon} size={15} />
+              <div class="flex items-center gap-2 rounded-kart bg-white/95 px-3 py-1.5 shadow-md backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-3">
+                <span class={`grid h-7 w-7 shrink-0 place-items-center rounded-cip text-white sm:h-10 sm:w-10 ${o.renk}`}>
+                  <Icon name={o.ikon} size={14} />
                 </span>
                 <div class="min-w-0">
                   <p class="line-clamp-2 font-baslik text-xs font-bold leading-snug text-[#1b2a5b] sm:text-sm">{o.baslik}</p>
-                  <p class="text-xs leading-tight text-[#6b76a0]">{o.alt}</p>
+                  <p class="line-clamp-1 text-[11px] leading-tight text-[#6b76a0] sm:text-xs">{o.alt}</p>
                 </div>
               </div>
             ))}
