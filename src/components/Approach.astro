@@ -4,11 +4,11 @@ import { Image } from 'astro:assets';
 import yaklasimGorsel from '../assets/yaklasim-anasayfa.jpg';
 
 const liste = [
-  { baslik: 'Planlı çalışma alışkanlığı kazandırır',    aciklama: 'Haftada 4 gün canlı etüt ile planlı çalışma alışkanlığı kazandırır.'              },
-  { baslik: 'Dikkat dağınıklığını azaltır',             aciklama: 'Bireylere özel çalışma ile dikkat dağınıklığını azaltır.'                        },
-  { baslik: 'Eksikleri zamanında tespit eder',          aciklama: 'Yapay zeka takibi ile eksikleri zamanında tespit eder.'                          },
-  { baslik: 'Motivasyonu ve özgüveni artırır',          aciklama: 'Bireysel rehber öğretmen koçluğu ile motivasyonu ve özgüveni artırır.'           },
-  { baslik: 'Sürekli takip ve geri bildirim sağlar',    aciklama: 'Veli bilgilendirme raporları ile sürekli takip ve geri bildirim sağlar.'         },
+  'Haftada 4 gün canlı etüt ile planlı çalışma alışkanlığı kazandırır.',
+  'Bireylere özel çalışma ile dikkat dağınıklığını azaltır.',
+  'Yapay zeka takibi ile eksikleri zamanında tespit eder.',
+  'Bireysel rehber öğretmen koçluğu ile motivasyonu ve özgüveni artırır.',
+  'Veli bilgilendirme raporları ile sürekli takip ve geri bildirim sağlar.',
 ];
 ---
 
@@ -33,10 +33,7 @@ const liste = [
             <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] text-beyaz">
               <Icon name="check" size={14} />
             </span>
-            <span>
-              <span class="font-semibold text-[#1b2a5b]">{m.baslik}</span>
-              <span class="block text-sm text-[#5b6488]">{m.aciklama}</span>
-            </span>
+            <span class="text-[#1b2a5b]">{m}</span>
           </li>
         ))}
       </ul>
