@@ -153,48 +153,69 @@ const adimlar = [
       </div>
 
       <!-- 1. Hero -->
-      <section class="bg-white px-6 py-14 md:px-10 md:py-20">
-        <div class="mx-auto max-w-[1400px] grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <!-- Sol: metin -->
-          <div>
-            <span class="reveal inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#3b6ef0]">
+      <div class="flex min-h-[calc(100svh-8rem)] flex-col md:min-h-[calc(100vh-9rem)]">
+        <div class="flex min-h-0 flex-1 flex-col px-6 pb-4 md:px-10 md:pb-6">
+
+          <!-- Badge -->
+          <div class="pb-2 pt-3 md:pb-3 md:pt-4">
+            <span class="flex w-full items-center gap-1 rounded-md bg-[#ede8ff] px-2.5 py-1 text-[11px] font-semibold text-[#3b6ef0] md:inline-flex md:w-auto md:gap-1.5 md:bg-gradient-to-r md:from-[#7c5cfc]/12 md:to-[#3b6ef0]/12 md:px-3 md:py-1 md:text-sm">
+              <Icon name="star" size={12} class="text-[#7c5cfc] md:size-[14px]" />
               Kulüpte Neler Var
             </span>
-            <h1 class="reveal mt-5 font-baslik text-3xl font-extrabold leading-tight text-[#1b2a5b] md:text-5xl" style="animation-delay:80ms">
-              Bir Üyelik, Eksiksiz Bir Etüt Sistemi
-            </h1>
-            <p class="reveal mt-5 text-base leading-relaxed text-[#5b6488] md:text-lg" style="animation-delay:200ms">
-              FocusClub 360 üyeliğiyle çocuğunuz; gerçek branş öğretmenleri ve gerçek koçlarla, baştan sona yapay zekâ takibiyle LGS'ye hazırlanır. Aşağıda üyelikte birebir neler olduğunu görün.
-            </p>
-            <div class="reveal mt-8 flex flex-wrap gap-3" style="animation-delay:320ms">
-              <a
-                href={UYELIK_URL}
-                class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(80,90,240,.35)] transition hover:brightness-105 md:text-base"
-              >
-                2 Hafta Ücretsiz Dene
-                <Icon name="arrow" size={16} />
-              </a>
-              <a
-                href={ROUTES.nasilUyeOlunur}
-                class="inline-flex items-center gap-2 rounded-buton border border-kenar px-6 py-3 text-sm font-semibold text-[#1b2a5b] transition hover:border-[#7c5cfc] hover:text-[#7c5cfc] md:text-base"
-              >
-                Nasıl Üye Olunur
-              </a>
-            </div>
           </div>
-          <!-- Sağ: görsel -->
-          <div class="reveal">
+
+          <!-- Banner -->
+          <div class="relative min-h-0 flex-1 overflow-hidden rounded-[8px]">
             <Image
               src={heroGorsel}
               alt="FocusClub 360 etüt kulübü"
-              widths={[640, 1024]}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              class="aspect-[4/3] w-full rounded-[8px] object-cover shadow-yumusak"
+              widths={[768, 1280, 1600]}
+              sizes="100vw"
+              class="absolute inset-0 h-full w-full object-cover object-center"
               loading="eager"
             />
+            <div class="absolute inset-0 bg-[rgba(28,55,185,0.75)] md:hidden"></div>
+            <div class="hero-desktop-overlay absolute inset-0 hidden md:block"></div>
+
+            <!-- İçerik -->
+            <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-5 py-4 md:px-10 md:py-10">
+
+              <div class="max-w-lg">
+                <h1 class="font-baslik text-xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
+                  Bir Üyelik, Eksiksiz Bir Etüt Sistemi
+                </h1>
+                <p class="mt-2 text-xs text-white/80 md:text-base md:mt-4">
+                  FocusClub 360 üyeliğiyle çocuğunuz; gerçek branş öğretmenleri ve gerçek koçlarla, baştan sona yapay zekâ takibiyle LGS'ye hazırlanır. Aşağıda üyelikte birebir neler olduğunu görün.
+                </p>
+              </div>
+
+              <div>
+                <div class="flex flex-wrap gap-2 md:gap-3">
+                  <a
+                    href={UYELIK_URL}
+                    class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-1.5 pl-4 pr-1.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 md:gap-3 md:py-2.5 md:pl-6 md:pr-2.5 md:text-base"
+                  >
+                    2 Hafta Ücretsiz Dene
+                    <span class="grid h-7 w-7 place-items-center rounded-full bg-white text-[#3b6ef0] md:h-9 md:w-9">
+                      <Icon name="arrow" size={15} />
+                    </span>
+                  </a>
+                  <a
+                    href={ROUTES.nasilUyeOlunur}
+                    class="inline-flex items-center gap-2 rounded-buton border border-white/40 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-white/10 md:px-6 md:py-2.5 md:text-base"
+                  >
+                    Nasıl Üye Olunur
+                  </a>
+                </div>
+                <p class="mt-1 text-[10px] font-medium text-white/90 md:text-sm">
+                  2 Haftalık Ücretsiz Deneyim süresince kredi kartınızı kayıt ettirmenize gerek yoktur.
+                </p>
+              </div>
+
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- 2. Beş Ana Kolon -->
       <section class="bg-[#f5f8ff] px-6 pb-14 pt-12 md:px-10 md:pb-20 md:pt-16">
