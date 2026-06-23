@@ -103,7 +103,7 @@ const adimlar = [
           Ücretsiz İki Hafta Deneyim Fırsatı
         </div>
 
-        <header class="flex items-center justify-between gap-4 bg-white/95 px-6 py-4 backdrop-blur-sm md:px-10">
+        <header class="flex items-center justify-between gap-4 px-6 py-4 backdrop-blur-sm md:px-10" style="background-color: rgba(27,33,64,0.97);">
           <a href="/" class="flex items-center gap-2" aria-label="FocusClub 360">
             <span class="grid h-9 w-9 place-items-center rounded-kart bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-beyaz">
               <Icon name="sparkles" size={20} />
@@ -130,13 +130,13 @@ const adimlar = [
               href={UYELIK_URL}
               class="hidden rounded-buton bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(110,124,255,.40)] transition hover:brightness-110 sm:inline-block"
             >2 Hafta Ücretsiz</a>
-            <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#FFFFFF] transition hover:bg-bulut lg:hidden">
+            <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#FFFFFF] transition hover:bg-bulut focus:outline-none active:bg-[#1E2848] lg:hidden" style="-webkit-tap-highlight-color: transparent;">
               <Icon name="menu" size={20} />
             </button>
           </div>
         </header>
 
-        <nav id="mob-nav" class="hidden border-b border-kenar bg-white px-6 pb-5 pt-2 lg:hidden">
+        <nav id="mob-nav" class="hidden border-b border-kenar px-6 pb-5 pt-2 lg:hidden" style="background-color: #1B2140;">
           <div class="flex flex-col">
             {menu.map((m) => (
               <a href={m.href} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">{m.ad}</a>
