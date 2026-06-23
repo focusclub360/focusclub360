@@ -1,0 +1,479 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
+
+const menu = [
+  { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
+  { ad: 'Nasıl Çalışır',     href: ROUTES.nasilCalisir    },
+  { ad: 'Velilere',          href: ROUTES.velilere         },
+  { ad: 'Nasıl Üye Olunur',  href: ROUTES.nasilUyeOlunur  },
+  { ad: 'Rehber',            href: ROUTES.rehber           },
+];
+
+const adimlar = [
+  {
+    no: '01',
+    baslik: 'Üye Ol',
+    aciklama: 'Hızlı üyelikle hesabını oluştur, 2 haftalık ücretsiz deneyim hemen başlar.',
+    renk: 'bg-mor',
+  },
+  {
+    no: '02',
+    baslik: 'Programa Katıl',
+    aciklama: 'Etüt kulübündeki yerini al, haftalık etüt düzenine dahil ol.',
+    renk: 'bg-mavi',
+  },
+  {
+    no: '03',
+    baslik: 'Dijital Ders İçeriklerine Ulaş',
+    aciklama: 'Tüm branşlarda video anlatım, çözümlü soru ve dökümanlara eriş.',
+    renk: 'bg-turkuaz',
+  },
+  {
+    no: '04',
+    baslik: 'Canlı Etüde Başla',
+    aciklama: 'Branş öğretmeniyle canlı etüt ve canlı soru çözüm seanslarına katıl.',
+    renk: 'bg-mercan',
+  },
+  {
+    no: '05',
+    baslik: 'Koçluk Programına Katıl',
+    aciklama: 'Gerçek rehber öğretmenden birebir, kişiye özel destek al.',
+    renk: 'bg-mor',
+    link: ROUTES.kulupteNelerVar,
+  },
+  {
+    no: '06',
+    baslik: 'Şeffaf Raporlama ve İlerleyiş',
+    aciklama: 'Her adım yapay zekâ ile takip edilir, veliye düzenli bildirilir.',
+    renk: 'bg-lacivert',
+  },
+];
+
+const haftaAkisi = [
+  { etiket: 'Etüt Akşamı 1',  aciklama: 'Branş etüdü ve test',                    ikon: 'users'  },
+  { etiket: 'Etüt Akşamı 2',  aciklama: 'Branş etüdü ve canlı soru çözüm',        ikon: 'flask'  },
+  { etiket: 'Deneme Gecesi',   aciklama: 'Deneme ve canlı çözüm',                  ikon: 'list'   },
+  { etiket: 'Koç Görüşmesi',   aciklama: 'Birebir motivasyon ve hedef',             ikon: 'target' },
+  { etiket: 'Veli Raporu',     aciklama: 'Haftalık özet veliye iletilir',           ikon: 'bell'   },
+];
+
+const veliKartlari = [
+  {
+    baslik: 'Haftalık Rapor',
+    aciklama: "Çocuğunuzun o haftaki çalışması ve katılımı özetlenir.",
+    ikon: 'bell',
+    renk: 'bg-mor',
+  },
+  {
+    baslik: 'Aylık Değerlendirme',
+    aciklama: 'Gelişim, eksikler ve sıradaki hedefler bütüncül paylaşılır.',
+    ikon: 'eye',
+    renk: 'bg-mavi',
+  },
+  {
+    baslik: 'Dönem Seminerleri ve Atölyeler',
+    aciklama: 'Veliye yönelik bilgilendirme ve destek buluşmaları.',
+    ikon: 'users',
+    renk: 'bg-turkuaz',
+  },
+];
+---
+
+<Layout>
+  <div class="theme-v13 bg-[#131629] md:bg-[#131629] md:p-4">
+    <div class="mx-auto max-w-[1400px] bg-white md:rounded-[8px] md:shadow-[0_30px_80px_rgba(110,124,255,.18)]">
+
+      <!-- Sticky header -->
+      <div class="sticky top-0 z-50">
+        <div class="flex items-center justify-center gap-2 bg-gradient-to-r from-[#2D3AAE] to-[#5060E0] px-4 py-2 text-center text-sm font-medium text-beyaz md:rounded-t-[8px]">
+          <Icon name="gift" size={16} />
+          Ücretsiz İki Hafta Deneyim Fırsatı
+        </div>
+
+        <header class="flex items-center justify-between gap-4 px-6 py-4 backdrop-blur-sm md:px-10" style="background-color: rgba(27,33,64,0.97);">
+          <a href="/" class="flex items-center gap-2" aria-label="FocusClub 360">
+            <span class="grid h-9 w-9 place-items-center rounded-kart bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-beyaz">
+              <Icon name="sparkles" size={20} />
+            </span>
+            <span class="font-baslik text-xl font-extrabold tracking-tight text-[#FFFFFF]">FocusClub
+              <span class="text-[#6E7CFF]">360</span>
+            </span>
+          </a>
+
+          <nav class="hidden items-center gap-7 lg:flex">
+            {menu.map((m) => (
+              <a
+                href={m.href}
+                class={`text-sm transition ${m.href === ROUTES.nasilCalisir ? 'font-semibold text-[#FFFFFF]' : 'font-medium text-[#8B96CC] hover:text-[#FFFFFF]'}`}
+              >
+                {m.ad}
+              </a>
+            ))}
+          </nav>
+
+          <div class="flex items-center gap-2 sm:gap-3">
+            <a href={GIRIS_URL} class="hidden text-sm font-semibold text-[#FFFFFF] hover:opacity-70 sm:block">Giriş</a>
+            <a
+              href={UYELIK_URL}
+              class="hidden rounded-buton bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(110,124,255,.40)] transition hover:brightness-110 sm:inline-block"
+            >2 Hafta Ücretsiz</a>
+            <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#FFFFFF] transition hover:bg-bulut focus:outline-none active:bg-[#1E2848] lg:hidden" style="-webkit-tap-highlight-color: transparent; background-color: #1B2140; -webkit-appearance: none; appearance: none;">
+              <Icon name="menu" size={20} />
+            </button>
+          </div>
+        </header>
+
+        <nav id="mob-nav" class="hidden border-b border-kenar px-6 pb-5 pt-2 lg:hidden" style="background-color: #1B2140;">
+          <div class="flex flex-col">
+            {menu.map((m) => (
+              <a href={m.href} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">{m.ad}</a>
+            ))}
+          </div>
+          <a
+            href={UYELIK_URL}
+            class="mt-3 flex items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] py-3 text-sm font-semibold text-beyaz"
+          >
+            2 Hafta Ücretsiz Dene
+            <Icon name="arrow" size={16} />
+          </a>
+        </nav>
+      </div>
+
+      <!-- ── 1. HERO ───────────────────────────────────────────────────────── -->
+      <section class="bg-white px-6 pb-10 pt-8 md:px-10 md:pb-16 md:pt-12">
+        <div class="mx-auto max-w-[1400px]">
+          <div class="flex flex-col gap-10 md:flex-row md:items-center md:gap-12 lg:gap-20">
+
+            <!-- Sol: metin -->
+            <div class="flex-1">
+              <span class="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold text-[#3b6ef0]">
+                <Icon name="star" size={12} class="text-[#7c5cfc]" />
+                NASIL ÇALIŞIR
+              </span>
+
+              <h1 class="mt-4 font-baslik text-3xl font-extrabold tracking-tight text-[#1b2a5b] md:text-4xl lg:text-[2.8rem]" style="line-height: 1.15;">
+                Kayıttan LGS'ye Kadar Tek Bir Akıllı Sistem
+              </h1>
+
+              <p class="mt-4 text-base leading-relaxed text-[#5b6488] md:text-lg">
+                Çocuğunuz üye olduğu andan sınava kadar; gerçek öğretmenler ve koçlarla çalışır, her adımı yapay zekâ takip eder. Süreç baştan sona planlıdır, siz de her aşamada bilgilendirilirsiniz.
+              </p>
+
+              <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href={UYELIK_URL}
+                  class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-2.5 pl-6 pr-2 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105"
+                >
+                  2 Hafta Ücretsiz Dene
+                  <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-[#3b6ef0]">
+                    <Icon name="arrow" size={15} />
+                  </span>
+                </a>
+                <a
+                  href={ROUTES.nasilUyeOlunur}
+                  class="inline-flex items-center rounded-buton border border-kenar px-5 py-2.5 text-sm font-semibold text-[#1b2a5b] transition hover:bg-bulut hover:text-[#FFFFFF]"
+                >
+                  Nasıl Üye Olunur
+                </a>
+              </div>
+            </div>
+
+            <!-- Sağ: görsel (4:5) -->
+            <div class="hidden shrink-0 overflow-hidden rounded-[16px] border border-kenar md:block md:w-[260px] lg:w-[320px]">
+              <div class="aspect-[4/5] w-full bg-gradient-to-br from-[#1E2848] via-[#1B2140] to-[#131629]"></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 2. ALTI ADIMLIK SÜREÇ ──────────────────────────────────────────── -->
+      <section class="bg-[#f5f8ff] px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Üyelikten Sınava, Adım Adım Süreç</h2>
+            <p class="mt-3 text-base text-[#5b6488]">Her aşama planlı, her aşama takip altında.</p>
+          </div>
+
+          <div class="reveal mt-14 mx-auto max-w-3xl">
+            {adimlar.map((a, i) => (
+              <div class="relative flex gap-6 pb-10 last:pb-0">
+                <!-- Sol: numara rozeti + dikey çizgi -->
+                <div class="flex flex-col items-center">
+                  <span class={`grid h-12 w-12 shrink-0 place-items-center rounded-full text-sm font-extrabold text-white ${a.renk}`}>
+                    {a.no}
+                  </span>
+                  {i < adimlar.length - 1 && (
+                    <div class="mt-2 w-0.5 flex-1 bg-kenar"></div>
+                  )}
+                </div>
+
+                <!-- Sağ: içerik -->
+                <div class="pb-2 pt-2">
+                  <h3 class="font-baslik text-lg font-bold text-[#1b2a5b]">{a.baslik}</h3>
+                  <p class="mt-1 text-sm leading-relaxed text-[#5b6488]">
+                    {a.link
+                      ? <a href={a.link} class="text-[#3b6ef0] underline-offset-2 hover:underline">{a.aciklama}</a>
+                      : a.aciklama
+                    }
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── 3. BİR HAFTA NASIL GEÇER ──────────────────────────────────────── -->
+      <section class="bg-white px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Bir Haftası Nasıl Geçer?</h2>
+            <p class="mt-3 text-base text-[#5b6488]">Etüt kulübünde standart bir haftalık akış.</p>
+          </div>
+
+          <!-- Masaüstü: yatay çizgi -->
+          <div class="reveal mt-14 hidden md:block">
+            <div class="relative flex items-start gap-4">
+              <!-- Yatay bağlantı çizgisi -->
+              <div class="absolute left-[calc(10%+24px)] right-[calc(10%+24px)] top-5 h-0.5 bg-kenar"></div>
+
+              {haftaAkisi.map((h) => (
+                <div class="relative flex flex-1 flex-col items-center text-center">
+                  <span class="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-white shadow-[0_4px_12px_rgba(110,124,255,.35)]">
+                    <Icon name={h.ikon} size={16} />
+                  </span>
+                  <p class="mt-3 font-baslik text-sm font-bold text-[#1b2a5b]">{h.etiket}</p>
+                  <p class="mt-1 text-xs leading-relaxed text-[#5b6488]">{h.aciklama}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Mobil: dikey liste -->
+          <div class="reveal mt-10 flex flex-col gap-4 md:hidden">
+            {haftaAkisi.map((h) => (
+              <div class="flex items-start gap-4 rounded-[8px] border border-kenar bg-bulut px-4 py-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-white">
+                  <Icon name={h.ikon} size={16} />
+                </span>
+                <div>
+                  <p class="font-baslik text-sm font-bold text-[#1b2a5b]">{h.etiket}</p>
+                  <p class="mt-0.5 text-xs text-[#5b6488]">{h.aciklama}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p class="reveal mt-8 text-center text-xs text-[#5b6488]/70">
+            Bu akış temsilidir. Gün, saat ve branş dağılımı döneme göre değişebilir.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ── 4. İNSAN + YAPAY ZEKA DENGESİ ────────────────────────────────── -->
+      <section class="bg-[#f5f8ff] px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+          <div class="reveal rounded-[8px] bg-lacivert px-6 py-12 md:px-10 md:py-14">
+
+            <p class="mx-auto max-w-2xl text-center font-baslik text-xl font-bold leading-snug text-beyaz md:text-2xl">
+              İnsan önde karar verir, yapay zekâ her an süreci takip eder. Markamızın temel farkı bu dengededir.
+            </p>
+
+            <div class="mt-10 grid gap-6 md:grid-cols-2 md:gap-8">
+
+              <!-- Gerçek İnsan -->
+              <div class="rounded-[8px] border border-kenar bg-beyaz p-6 md:p-8">
+                <div class="flex items-center gap-3">
+                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-mor text-white">
+                    <Icon name="users" size={20} />
+                  </span>
+                  <h3 class="font-baslik text-base font-semibold text-beyaz">Gerçek Öğretmen ve Koç</h3>
+                </div>
+                <ul class="mt-5 space-y-3">
+                  {['Branş öğretmeni canlı etütte yanında.', 'Rehber öğretmen birebir koçluk yapar.', 'Yönlendiren, ilgilenen, motive eden öğretmendir.'].map((m) => (
+                    <li class="flex items-start gap-2 text-sm leading-relaxed text-[#8B96CC]">
+                      <Icon name="check" size={15} class="mt-0.5 shrink-0 text-mor" />
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Yapay Zekâ -->
+              <div class="rounded-[8px] border border-kenar bg-beyaz p-6 md:p-8">
+                <div class="flex items-center gap-3">
+                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-turkuaz text-white">
+                    <Icon name="cpu" size={20} />
+                  </span>
+                  <h3 class="font-baslik text-base font-semibold text-beyaz">Yapay Zekâ</h3>
+                </div>
+                <ul class="mt-5 space-y-3">
+                  {['Eksiği bulur, neye nasıl çalışılacağını yönlendirir.', 'Gelişimi ölçer, gerilemeyi erken yakalar.', 'Öğretmene, koça ve veliye anlamlı bilgi taşır.'].map((m) => (
+                    <li class="flex items-start gap-2 text-sm leading-relaxed text-[#8B96CC]">
+                      <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 5. VELİ BİLGİLENDİRME DÖNGÜSÜ ───────────────────────────────── -->
+      <section class="bg-white px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Siz Her Zaman Bilgilendirilesiniz</h2>
+            <p class="mt-3 text-base text-[#5b6488]">Çocuğunuzun süreci sizden gizli değil; düzenli, şeffaf ve anlaşılır.</p>
+          </div>
+
+          <div class="reveal mt-12 grid gap-6 sm:grid-cols-3">
+            {veliKartlari.map((k) => (
+              <article class="rounded-[8px] border border-[#e7ecf2] bg-white p-6 shadow-[0_10px_30px_rgba(60,80,180,.06)]">
+                <span class={`grid h-12 w-12 place-items-center rounded-[8px] text-beyaz ${k.renk}`}>
+                  <Icon name={k.ikon} size={22} />
+                </span>
+                <h3 class="mt-4 font-baslik text-lg font-semibold text-[#1b2a5b]">{k.baslik}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#5b6488]">{k.aciklama}</p>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── 6. KAPANIŞ CTA BANDI ──────────────────────────────────────────── -->
+      <section class="bg-[#f5f8ff] px-6 pb-14 pt-0 md:px-10 md:pb-20">
+        <div class="mx-auto max-w-[1400px]">
+          <div class="reveal overflow-hidden rounded-[8px] bg-gradient-to-br from-[#2D3AAE] via-[#3D4EC8] to-[#5060E0] px-6 py-12 text-center md:px-10 md:py-16">
+
+            <h2 class="font-baslik text-2xl font-bold text-white md:text-3xl">
+              Süreci İki Hafta Ücretsiz Deneyin
+            </h2>
+            <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/80 md:text-base">
+              Tüm canlı etütlere, koçluğa ve içeriklere tam erişim. Kredi kartı gerekmez.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={UYELIK_URL}
+                class="inline-flex items-center gap-2 rounded-buton bg-white py-2.5 pl-6 pr-2 text-sm font-semibold text-[#2D3AAE] shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
+              >
+                2 Hafta Ücretsiz Dene
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-[#3b6ef0] text-white">
+                  <Icon name="arrow" size={15} />
+                </span>
+              </a>
+              <a
+                href={ROUTES.nasilUyeOlunur}
+                class="inline-flex items-center rounded-buton border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Nasıl Üye Olunur
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  /* === THEME V13: Deep Purple + Navy === */
+  .theme-v13 .bg-white      { background-color: #1B2140; }
+  .theme-v13 .bg-white\/95  { background-color: rgba(27, 33, 64, 0.97); }
+  .theme-v13 .bg-beyaz      { background-color: #1B2140; }
+  .theme-v13 .bg-beyaz\/90  { background-color: rgba(27, 33, 64, 0.90); }
+
+  .theme-v13 .text-lacivert       { color: #8B96CC; }
+  .theme-v13 .placeholder\:text-gri\/70::placeholder { color: rgba(100, 110, 170, 0.70); }
+
+  .theme-v13 .from-\[\#7c5cfc\] {
+    --tw-gradient-from: #6E7CFF var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(110 124 255 / 0));
+  }
+  .theme-v13 .from-\[\#7c5cfc\]\/12 {
+    --tw-gradient-from: rgb(110 124 255 / 0.12) var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(110 124 255 / 0));
+  }
+  .theme-v13 .to-\[\#3b6ef0\] {
+    --tw-gradient-to: #2D3AAE var(--tw-gradient-to-position);
+  }
+  .theme-v13 .to-\[\#3b6ef0\]\/12 {
+    --tw-gradient-to: rgb(45 58 174 / 0.12) var(--tw-gradient-to-position);
+  }
+
+  .theme-v13 .bg-\[\#ede8ff\]  { background-color: #1B2140; }
+  .theme-v13 .bg-\[\#dfe5f5\]  { background-color: #1E2545; }
+  .theme-v13 .bg-\[\#e8eaf4\]  { background-color: #1C2240; }
+  .theme-v13 .bg-\[\#f5f8ff\]  { background-color: #181E38; }
+
+  .theme-v13 .text-\[\#1b2a5b\]              { color: #FFFFFF; }
+  .theme-v13 .text-\[\#5b6488\]              { color: #8B96CC; }
+  .theme-v13 .text-\[\#6b76a0\]              { color: #6B78AA; }
+  .theme-v13 .text-\[\#3b6ef0\]              { color: #6E7CFF; }
+  .theme-v13 .text-\[\#7c5cfc\]              { color: #6E7CFF; }
+  .theme-v13 .hover\:text-\[\#1b2a5b\]:hover { color: #FFFFFF; }
+
+  .theme-v13 .shadow-\[0_8px_20px_rgba\(80\,90\,240\,\.35\)\]  { box-shadow: 0 8px 20px rgba(110,124,255,.40); }
+  .theme-v13 .shadow-\[0_8px_20px_rgba\(80\,90\,240\,\.30\)\]  { box-shadow: 0 8px 20px rgba(110,124,255,.35); }
+  .theme-v13 .shadow-\[0_12px_30px_rgba\(40\,40\,120\,\.35\)\] { box-shadow: 0 12px 30px rgba(110,124,255,.28); }
+  .theme-v13 .shadow-\[0_8px_20px_rgba\(20\,40\,120\,\.35\)\]  { box-shadow: 0 8px 20px rgba(110,124,255,.25); }
+
+  .theme-v13 .bg-mor       { background-color: #6E7CFF; }
+  .theme-v13 .bg-turkuaz   { background-color: #22D3EE; }
+  .theme-v13 .bg-lacivert  { background-color: #131629; }
+  .theme-v13 .bg-bulut     { background-color: #1E2848; }
+  .theme-v13 .border-kenar { border-color: #2A3060; }
+  .theme-v13 .text-mor     { color: #6E7CFF; }
+  .theme-v13 .text-turkuaz { color: #22D3EE; }
+  .theme-v13 .divide-kenar > * + * { border-color: #2A3060; }
+
+  .theme-v13 .bg-\[#e7ecf2\]  { border-color: #2A3060; }
+  .theme-v13 .border-\[\#e7ecf2\] { border-color: #2A3060; }
+  .theme-v13 .shadow-\[0_10px_30px_rgba\(60\,80\,180\,\.06\)\] { box-shadow: 0 10px 30px rgba(110,124,255,.08); }
+</style>
+
+<script>
+  // Hamburger toggle
+  const tog = document.getElementById('mob-tog');
+  const nav = document.getElementById('mob-nav');
+  tog?.addEventListener('click', () => { nav?.classList.toggle('hidden'); });
+  document.querySelectorAll('.mob-link').forEach((l) => {
+    l.addEventListener('click', () => nav?.classList.add('hidden'));
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { (e.target as HTMLElement).classList.add('gorunur'); } }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.gorunur {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
