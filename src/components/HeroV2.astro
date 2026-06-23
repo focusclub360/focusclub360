@@ -41,29 +41,44 @@ const ozellikler = [
       <!-- İçerik katmanı -->
       <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-5 py-4 md:px-10 md:py-10">
 
-        <!-- Üst: başlık + kartlar -->
+        <!-- Üst: başlık + alt yazı (masaüstünde kartlar da dahil) -->
         <div class="max-w-md">
-          <h1 class="font-baslik text-xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
+          <h1 class="font-baslik text-2xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
             Velilik Yapın,<br class="md:hidden" /> Öğretmenlik Değil!
           </h1>
           <p class="mt-3 text-xs text-white/80 md:mt-1 md:text-base">
             Canlı Etütler, Dijital Dersler, Canlı Soru Çözüm Desteği, Akademik Takip ve Gerçek Koç ile Çocuğunuz Düzenli Çalışsın; Siz Sadece Gelişimini İzleyin.
           </p>
 
-          <!-- Özellik kartları 2×2 -->
-          <div class="mt-4 grid grid-cols-2 gap-1.5 md:mt-5 md:gap-3">
+          <!-- Özellik kartları 2×2: masaüstünde bu blokta -->
+          <div class="hidden md:mt-5 md:grid md:grid-cols-2 md:gap-3">
             {ozellikler.map((o) => (
-              <div class="flex items-center gap-1.5 rounded-kart bg-white/95 px-2 py-1.5 shadow-md backdrop-blur-sm md:gap-3 md:px-4 md:py-3">
-                <span class={`grid h-6 w-6 shrink-0 place-items-center rounded-cip text-white md:h-10 md:w-10 ${o.renk}`}>
-                  <Icon name={o.ikon} size={12} />
+              <div class="flex items-center gap-3 rounded-kart bg-white/95 px-4 py-3 shadow-md backdrop-blur-sm">
+                <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-cip text-white ${o.renk}`}>
+                  <Icon name={o.ikon} size={20} />
                 </span>
                 <div class="min-w-0">
-                  <p class="font-baslik text-[11px] font-bold leading-snug text-[#1b2a5b] md:text-sm">{o.baslik}</p>
-                  <p class="line-clamp-2 text-[10px] leading-tight text-[#6b76a0] md:text-xs">{o.alt}</p>
+                  <p class="font-baslik text-sm font-bold leading-snug text-[#1b2a5b]">{o.baslik}</p>
+                  <p class="line-clamp-2 text-xs leading-tight text-[#6b76a0]">{o.alt}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+
+        <!-- Özellik kartları 2×2: yalnızca mobilde ayrı blok (eşit boşluk için) -->
+        <div class="grid grid-cols-2 gap-1.5 md:hidden">
+          {ozellikler.map((o) => (
+            <div class="flex items-center gap-1.5 rounded-kart bg-white/95 px-2 py-1.5 shadow-md backdrop-blur-sm">
+              <span class={`grid h-6 w-6 shrink-0 place-items-center rounded-cip text-white ${o.renk}`}>
+                <Icon name={o.ikon} size={12} />
+              </span>
+              <div class="min-w-0">
+                <p class="font-baslik text-[11px] font-bold leading-snug text-[#1b2a5b]">{o.baslik}</p>
+                <p class="line-clamp-2 text-[10px] leading-tight text-[#6b76a0]">{o.alt}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
         <!-- Alt: CTA + not -->
