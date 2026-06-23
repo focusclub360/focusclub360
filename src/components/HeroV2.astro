@@ -39,7 +39,7 @@ const ozellikler = [
       <div class="hero-desktop-overlay absolute inset-0 hidden md:block"></div>
 
       <!-- İçerik katmanı -->
-      <div class="absolute inset-0 z-10 flex flex-col justify-between px-5 py-6 md:justify-evenly md:px-10 md:py-10">
+      <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-6 py-8 md:px-10 md:py-10">
 
         <!-- Üst: başlık + kartlar -->
         <div class="max-w-md">
@@ -48,12 +48,12 @@ const ozellikler = [
           </h1>
           <p class="mt-2 text-sm text-white/80 md:text-base">
             Sevgili Veliler;<br />
-            Çocuğunuza Her Akşam Ders Çalışmasını Hatırlatmaktan Yoruldunuz mu?<span class="hidden md:inline"><br />
-            FocusClub 360'ta haftanın 4 günü branş öğretmeni gözetiminde canlı online etüt ile ders çalışma vardır.</span>
+            Çocuğunuza Her Akşam Ders Çalışmasını Hatırlatmaktan Yoruldunuz mu?<br />
+            FocusClub 360'ta haftanın 4 günü branş öğretmeni gözetiminde canlı online etüt ile ders çalışma vardır.
           </p>
 
           <!-- Özellik kartları 2×2 -->
-          <div class="mt-3 grid grid-cols-2 gap-2 md:mt-5 md:gap-3">
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
             {ozellikler.map((o) => (
               <div class="flex items-center gap-2 rounded-kart bg-white/95 px-3 py-2.5 shadow-md backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-3">
                 <span class={`grid h-8 w-8 shrink-0 place-items-center rounded-cip text-white sm:h-10 sm:w-10 ${o.renk}`}>
