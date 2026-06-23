@@ -53,11 +53,12 @@ const adimlar = [
 ];
 
 const haftaAkisi = [
-  { etiket: 'Etüt Akşamı 1',  aciklama: 'Branş etüdü ve test',                    ikon: 'users'  },
-  { etiket: 'Etüt Akşamı 2',  aciklama: 'Branş etüdü ve canlı soru çözüm',        ikon: 'flask'  },
-  { etiket: 'Deneme Gecesi',   aciklama: 'Deneme ve canlı çözüm',                  ikon: 'list'   },
-  { etiket: 'Koç Görüşmesi',   aciklama: 'Birebir motivasyon ve hedef',             ikon: 'target' },
-  { etiket: 'Veli Raporu',     aciklama: 'Haftalık özet veliye iletilir',           ikon: 'bell'   },
+  { etiket: 'Etüt Akşamı 1',  aciklama: 'Branş dersi etüdü',                             ikon: 'users'  },
+  { etiket: 'Etüt Akşamı 2',  aciklama: 'Branş dersi etüdü',                             ikon: 'users'  },
+  { etiket: 'Etüt Akşamı 3',  aciklama: 'Branş dersi etüdü',                             ikon: 'users'  },
+  { etiket: 'Etüt Akşamı 4',  aciklama: 'Test ya da deneme sınavı ve canlı çözüm',       ikon: 'list'   },
+  { etiket: 'Koç Görüşmesi',  aciklama: 'Birebir motivasyon ve hedef',                    ikon: 'target' },
+  { etiket: 'Veli Raporu',    aciklama: 'Haftalık özet veliye iletilir',                  ikon: 'bell'   },
 ];
 
 const veliKartlari = [
@@ -287,7 +288,7 @@ const veliKartlari = [
           <div class="reveal mt-14 hidden md:block">
             <div class="relative flex items-start gap-4">
               <!-- Yatay bağlantı çizgisi -->
-              <div class="absolute left-[calc(10%+24px)] right-[calc(10%+24px)] top-5 h-0.5 bg-kenar"></div>
+              <div class="absolute left-[calc(8.33%+20px)] right-[calc(8.33%+20px)] top-5 h-0.5 bg-kenar"></div>
 
               {haftaAkisi.map((h) => (
                 <div class="relative flex flex-1 flex-col items-center text-center">
