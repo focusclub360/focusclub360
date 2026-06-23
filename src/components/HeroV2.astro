@@ -8,7 +8,7 @@ const ozellikler = [
   { baslik: 'Canlı Etüt',             alt: 'Branş Öğretmeni Gözetiminde',          ikon: 'users',  renk: 'bg-turkuaz' },
   { baslik: 'Canlı Soru Çözüm',       alt: 'Anında çözüm',                         ikon: 'flask',  renk: 'bg-mercan'  },
   { baslik: 'Gerçek Koçluk',          alt: 'Birebir Rehber Öğretmen Eşliğinde',    ikon: 'target', renk: 'bg-mor'     },
-  { baslik: 'Online Ders İçerikleri', alt: 'Tüm müfredat',                         ikon: 'video',  renk: 'bg-mavi'    },
+  { baslik: 'Dijital Ders İçerikleri', alt: 'Tüm Dersler',                          ikon: 'video',  renk: 'bg-mavi'    },
 ];
 ---
 
@@ -19,7 +19,7 @@ const ozellikler = [
     <div class="pb-3 pt-4">
       <span class="flex w-full items-center gap-1.5 rounded-md bg-[#ede8ff] px-3 py-1 text-xs font-semibold text-[#3b6ef0] md:inline-flex md:w-auto md:bg-gradient-to-r md:from-[#7c5cfc]/12 md:to-[#3b6ef0]/12 md:text-sm">
         <Icon name="star" size={14} class="text-[#7c5cfc]" />
-        Türkiye'nin İlk ve Tek Dijital Etüt Kulübü
+        Türkiye'nin İlk ve Tek Dijital Akademik Etüt Kulübü
       </span>
     </div>
 
@@ -44,43 +44,44 @@ const ozellikler = [
         <!-- Üst: başlık + kartlar -->
         <div class="max-w-md">
           <h1 class="font-baslik text-2xl font-extrabold leading-tight tracking-tight text-white md:text-4xl lg:text-[2.8rem]">
-            Çocuğunuz verimli
-            <span class="font-bold italic text-white/90">çalışıyor mu?</span>
+            Her Akşam Ders Çalıştırma Münakaşasına Son!
           </h1>
           <p class="mt-2 text-sm text-white/80 md:text-base">
-            Çocuğunuzun akademik gelişimini tek panelden takip edin.
+            Sevgili Veliler;<br />
+            Çocuğunuza Her Akşam Ders Çalışmasını Hatırlatmaktan Yorulmadınız mı? Yoruldunuz mu?<br />
+            FocusClub 360'ta haftanın 4 günü branş öğretmeni gözetiminde canlı online etüt ile ders çalışma vardır.
           </p>
 
           <!-- Özellik kartları 2×2 -->
           <div class="mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
             {ozellikler.map((o) => (
-              <div class="flex h-14 items-center gap-2 rounded-kart bg-white/95 px-3 shadow-md backdrop-blur-sm sm:h-16 sm:gap-3 sm:px-4 md:h-[72px]">
+              <div class="flex items-center gap-2 rounded-kart bg-white/95 px-3 py-2.5 shadow-md backdrop-blur-sm sm:gap-3 sm:px-4 sm:py-3">
                 <span class={`grid h-8 w-8 shrink-0 place-items-center rounded-cip text-white sm:h-10 sm:w-10 ${o.renk}`}>
                   <Icon name={o.ikon} size={15} />
                 </span>
                 <div class="min-w-0">
                   <p class="line-clamp-2 font-baslik text-xs font-bold leading-snug text-[#1b2a5b] sm:text-sm">{o.baslik}</p>
-                  <p class="hidden text-xs leading-tight text-[#6b76a0] sm:block">{o.alt}</p>
+                  <p class="text-xs leading-tight text-[#6b76a0]">{o.alt}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <!-- Alt: not + CTA -->
+        <!-- Alt: CTA + not -->
         <div>
-          <p class="mb-2 text-sm font-medium text-white/90">
-            Ücretsiz üyelik için kredi kartı kaydetmeniz gerekmez.
-          </p>
           <a
             href={UYELIK_URL}
             class="inline-flex items-center gap-3 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-2.5 pl-6 pr-2.5 font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105"
           >
-            Ücretsiz Üye Ol
+            Ücretsiz Deneyim
             <span class="grid h-9 w-9 place-items-center rounded-full bg-white text-[#3b6ef0]">
               <Icon name="arrow" size={18} />
             </span>
           </a>
+          <p class="mt-2 text-sm font-medium text-white/90">
+            2 Haftalık Ücretsiz Deneyim süresince kredi kartınızı kayıt ettirmenize gerek yoktur.
+          </p>
         </div>
 
       </div>
