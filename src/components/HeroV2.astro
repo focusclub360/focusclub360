@@ -12,7 +12,7 @@ const ozellikler = [
 ];
 ---
 
-<div class="flex min-h-[calc(100vh-8rem)] flex-col md:min-h-[calc(100vh-9rem)]">
+<div class="flex max-h-[90vh] min-h-0 flex-col md:max-h-none md:min-h-[calc(100vh-9rem)]">
   <div class="flex min-h-0 flex-1 flex-col px-6 pb-4 md:px-10 md:pb-6">
 
     <!-- Badge — banner dışında beyaz alanda -->
@@ -39,7 +39,7 @@ const ozellikler = [
       <div class="hero-desktop-overlay absolute inset-0 hidden md:block"></div>
 
       <!-- İçerik katmanı -->
-      <div class="absolute inset-0 z-10 flex flex-col justify-between px-5 py-4 md:justify-evenly md:px-10 md:py-10">
+      <div class="absolute inset-0 z-10 flex flex-col justify-start gap-3 px-5 py-4 md:justify-evenly md:gap-0 md:px-10 md:py-10">
 
         <!-- Üst: başlık + kartlar -->
         <div class="max-w-md">
