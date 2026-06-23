@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
 import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
+import heroGorsel from '../assets/kulupte-neler-var-hero.jpg';
 
 const menu = [
   { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
@@ -151,31 +153,45 @@ const adimlar = [
       </div>
 
       <!-- 1. Hero -->
-      <section class="bg-white px-6 py-16 md:px-10 md:py-24">
-        <div class="mx-auto max-w-[820px] text-center">
-          <span class="reveal inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#3b6ef0]">
-            Kulüpte Neler Var
-          </span>
-          <h1 class="reveal mt-5 font-baslik text-3xl font-extrabold leading-tight text-[#1b2a5b] md:text-5xl" style="animation-delay:80ms">
-            Bir Üyelik, Eksiksiz Bir Etüt Sistemi
-          </h1>
-          <p class="reveal mx-auto mt-5 max-w-[640px] text-base leading-relaxed text-[#5b6488] md:text-lg" style="animation-delay:200ms">
-            FocusClub 360 üyeliğiyle çocuğunuz; gerçek branş öğretmenleri ve gerçek koçlarla, baştan sona yapay zekâ takibiyle LGS'ye hazırlanır. Aşağıda üyelikte birebir neler olduğunu görün.
-          </p>
-          <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-3" style="animation-delay:320ms">
-            <a
-              href={UYELIK_URL}
-              class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(80,90,240,.35)] transition hover:brightness-105 md:text-base"
-            >
-              2 Hafta Ücretsiz Dene
-              <Icon name="arrow" size={16} />
-            </a>
-            <a
-              href={ROUTES.nasilUyeOlunur}
-              class="inline-flex items-center gap-2 rounded-buton border border-kenar px-6 py-3 text-sm font-semibold text-[#1b2a5b] transition hover:border-[#7c5cfc] hover:text-[#7c5cfc] md:text-base"
-            >
-              Nasıl Üye Olunur
-            </a>
+      <section class="bg-white px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px] grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <!-- Sol: metin -->
+          <div>
+            <span class="reveal inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#3b6ef0]">
+              Kulüpte Neler Var
+            </span>
+            <h1 class="reveal mt-5 font-baslik text-3xl font-extrabold leading-tight text-[#1b2a5b] md:text-5xl" style="animation-delay:80ms">
+              Bir Üyelik, Eksiksiz Bir Etüt Sistemi
+            </h1>
+            <p class="reveal mt-5 text-base leading-relaxed text-[#5b6488] md:text-lg" style="animation-delay:200ms">
+              FocusClub 360 üyeliğiyle çocuğunuz; gerçek branş öğretmenleri ve gerçek koçlarla, baştan sona yapay zekâ takibiyle LGS'ye hazırlanır. Aşağıda üyelikte birebir neler olduğunu görün.
+            </p>
+            <div class="reveal mt-8 flex flex-wrap gap-3" style="animation-delay:320ms">
+              <a
+                href={UYELIK_URL}
+                class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(80,90,240,.35)] transition hover:brightness-105 md:text-base"
+              >
+                2 Hafta Ücretsiz Dene
+                <Icon name="arrow" size={16} />
+              </a>
+              <a
+                href={ROUTES.nasilUyeOlunur}
+                class="inline-flex items-center gap-2 rounded-buton border border-kenar px-6 py-3 text-sm font-semibold text-[#1b2a5b] transition hover:border-[#7c5cfc] hover:text-[#7c5cfc] md:text-base"
+              >
+                Nasıl Üye Olunur
+              </a>
+            </div>
+          </div>
+          <!-- Sağ: görsel -->
+          <div class="reveal">
+            <Image
+              src={heroGorsel}
+              alt="FocusClub 360 etüt kulübü"
+              widths={[640, 1024]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              class="aspect-[4/3] w-full rounded-[8px] object-cover shadow-yumusak"
+              loading="eager"
+            />
           </div>
         </div>
       </section>
