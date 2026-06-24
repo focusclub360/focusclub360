@@ -1,14 +1,11 @@
 ---
 import Icon from './Icon.astro';
-import { Image } from 'astro:assets';
-import tubitak from '../assets/tubitak-beyaz logo.png';
-import ytuTeknopark from '../assets/yet-teknopark-beyaz-logo.png';
 import { ROUTES } from '../config';
 
 const kartlar = [
-  { baslik: 'Gerçek Branş Öğretmeni', aciklama: 'Uzman branş öğretmeni canlı etütlerde yanınızda.',  ikon: 'users',  renk: 'bg-turkuaz' },
+  { baslik: 'Gerçek Branş Öğretmenleri', aciklama: 'Uzman branş öğretmenleri canlı etütlerde yanınızda.',  ikon: 'users',  renk: 'bg-turkuaz' },
   { baslik: 'Yapay Zekâ Takibi',      aciklama: 'Her adımın akıllı analizle izlenir.',               ikon: 'cpu',    renk: 'bg-lacivert' },
-  { baslik: 'Gerçek Başarı Koçu',     aciklama: 'Bireysel rehber eşliğinde motivasyon ve hedef odaklı koçluk desteği.',        ikon: 'target', renk: 'bg-mor'      },
+  { baslik: 'Gerçek Başarı Koçu',     aciklama: 'Rehber öğretmenler eşliğinde bireysel motivasyon ve destek.',        ikon: 'target', renk: 'bg-mor'      },
 ];
 ---
 
@@ -31,16 +28,6 @@ const kartlar = [
             <p class="mt-1.5 text-xs leading-relaxed text-[#5b6488]">{k.aciklama}</p>
           </div>
         ))}
-      </div>
-
-      <!-- Logolar -->
-      <div class="mt-6 flex items-center justify-center gap-6">
-        <div class="flex h-[140px] w-[180px] items-center justify-center rounded-[8px] border border-kenar bg-[#1b2a5b] p-5 shadow-kucuk">
-          <Image src={tubitak} alt="TÜBİTAK" height={100} class="h-full w-full object-contain" />
-        </div>
-        <div class="flex h-[140px] w-[180px] items-center justify-center rounded-[8px] border border-kenar bg-[#1b2a5b] p-5 shadow-kucuk">
-          <Image src={ytuTeknopark} alt="YTÜ Teknopark" height={100} class="h-full w-full object-contain" />
-        </div>
       </div>
 
       <!-- Buton -->

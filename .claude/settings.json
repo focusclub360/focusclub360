@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 commit -m ' *)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 diff --stat)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 log --oneline -5)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/pages/velilere.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/pages/velilere.astro src/pages/nasil-uye-olunur.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/pages/nasil-uye-olunur.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/layouts/BlogLayout.astro src/components/RehberCTA.astro src/pages/rehber/)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/components/RealTeam.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 push origin main)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/pages/merak-edilenler.astro src/config.ts src/components/Footer.astro src/components/RealTeam.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/components/HeroV2.astro src/components/ParentProblems.astro src/components/Approach.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 revert HEAD --no-edit)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 show 9dc5987 --stat)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 show 9dc5987:.github/workflows/deploy.yml)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/components/ParentProblems.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/components/Approach.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/components/Features.astro)",
+      "Bash(git -C /Users/hidayetkoc/focusclub-360 add src/components/BurdenGamification.astro src/components/Features.astro)"
+    ]
+  }
+}
