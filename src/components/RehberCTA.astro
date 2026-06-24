@@ -1,0 +1,38 @@
+---
+import Icon from './Icon.astro';
+import { UYELIK_URL, ROUTES } from '../config';
+---
+
+<section class="bg-[#f5f8ff] px-6 pb-14 pt-0 md:px-10 md:pb-20">
+  <div class="mx-auto max-w-[1400px]">
+    <div class="reveal overflow-hidden rounded-[8px] bg-gradient-to-br from-[#2D3AAE] via-[#3D4EC8] to-[#5060E0] px-6 py-12 text-center md:px-14 md:py-16">
+
+      <h2 class="font-baslik text-2xl font-bold text-white md:text-3xl">
+        Bu Düzeni Çocuğunuz İçin Biz Kuralım
+      </h2>
+      <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/75 md:text-base">
+        Çocuğunuzun düzenli çalışma alışkanlığı kazanmasına yardımcı oluyoruz. İki hafta ücretsiz deneyimleyin.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href={UYELIK_URL}
+          class="inline-flex items-center gap-2 rounded-buton py-2.5 pl-6 pr-2 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
+          style="background-color: #FFFFFF; color: #2D3AAE;"
+        >
+          Ücretsiz Üye Ol
+          <span class="grid h-8 w-8 place-items-center rounded-full text-white" style="background-color: #3b6ef0;">
+            <Icon name="arrow" size={15} />
+          </span>
+        </a>
+        <a
+          href={ROUTES.velilere}
+          class="inline-flex items-center rounded-buton border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+        >
+          Velilere
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

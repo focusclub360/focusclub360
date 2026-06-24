@@ -1,0 +1,88 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import RehberCTA from '../../components/RehberCTA.astro';
+import Icon from '../../components/Icon.astro';
+
+const yazilar = [
+  {
+    kategori: 'Çalışma Alışkanlığı',
+    baslik:   'Çocuğum Ders Çalışmıyor: Veliler İçin Sakin Bir Yol Haritası',
+    ozet:     'Çocuğunuz ders çalışmıyorsa sorun çoğu zaman tembellik değildir. Sebebini anlamanın ve çözüme dönmenin sakin yolu.',
+    slug:     'cocugum-ders-calismiyor',
+  },
+  {
+    kategori: 'Veli Rehberi',
+    baslik:   'Her Akşam Ders Kavgasını Bitirmenin Yolu',
+    ozet:     "Her akşam tekrarlayan 'ders çalış' tartışması hem sizi hem çocuğunuzu yıpratıyor. Bu döngüyü kırmanın somut yolları.",
+    slug:     'ders-kavgasini-bitirmek',
+  },
+  {
+    kategori: 'Odaklanma',
+    baslik:   'Telefon ve Ekran Dikkati Nasıl Dağıtıyor, Ne Yapılır?',
+    ozet:     'Telefon, çalışma masasındaki en sessiz ama en güçlü dikkat hırsızı. Ekranla ilişkiyi sağlıklı bir düzene sokmanın yolları.',
+    slug:     'telefon-ekran-dikkat',
+  },
+  {
+    kategori: 'Çalışma Alışkanlığı',
+    baslik:   'Düzenli Çalışma Alışkanlığı Nasıl Kazandırılır?',
+    ozet:     'Başarı çoğu zaman zekânın değil, tekrar eden doğru alışkanlıkların sonucudur. Kalıcı bir çalışma düzeni kurmanın yolları.',
+    slug:     'duzenli-calisma-aliskanligi',
+  },
+  {
+    kategori: 'LGS Süreci',
+    baslik:   "LGS Sürecinde Çalışma Düzeni Nasıl Kurulur?",
+    ozet:     "LGS'ye hazırlıkta fark yaratan şey daha fazla kaynak değil, sürdürülebilir bir çalışma düzeni. Bu düzeni kurmanın temelleri.",
+    slug:     'lgs-calisma-duzeni',
+  },
+];
+
+const kategoriRenk: Record<string, string> = {
+  'Çalışma Alışkanlığı': 'bg-[#6E7CFF]/10 text-[#8B9BFF]',
+  'Veli Rehberi':         'bg-[#3B82F6]/10 text-[#60A5FA]',
+  'Odaklanma':            'bg-[#22D3EE]/10 text-[#22D3EE]',
+  'LGS Süreci':           'bg-[#F2683C]/10 text-[#F97066]',
+};
+---
+
+<BlogLayout
+  title="FocusClub 360 LGS Rehberi"
+  description="Çocuğunuzun LGS hazırlığında işinize yarayacak rehber yazılar. Çalışma alışkanlığı, odaklanma, ders kavgası ve daha fazlası."
+>
+
+  <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+  <section class="bg-white px-6 pb-10 pt-14 text-center md:px-10 md:pb-14 md:pt-20">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="font-baslik text-3xl font-extrabold tracking-tight text-[#1b2a5b] md:text-5xl">
+        FocusClub 360 LGS Rehberi
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── YAZI LİSTESİ ──────────────────────────────────────────────────────── -->
+  <section class="bg-[#f5f8ff] px-6 py-12 md:px-10 md:py-16">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {yazilar.map((y) => (
+          <article class="reveal flex flex-col rounded-[8px] border border-[#e7ecf2] bg-white p-6 shadow-[0_10px_30px_rgba(60,80,180,.06)] transition hover:shadow-[0_14px_36px_rgba(60,80,180,.12)]">
+            <span class={`inline-block w-fit rounded-md px-2.5 py-1 text-[11px] font-semibold ${kategoriRenk[y.kategori] ?? 'bg-[#6E7CFF]/10 text-[#8B9BFF]'}`}>
+              {y.kategori}
+            </span>
+            <h2 class="mt-4 font-baslik text-base font-bold leading-snug text-[#1b2a5b]">{y.baslik}</h2>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-[#5b6488]">{y.ozet}</p>
+            <a
+              href={`/rehber/${y.slug}`}
+              class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#3b6ef0] transition hover:opacity-70"
+            >
+              Devamını Oku
+              <Icon name="arrow" size={14} />
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KAPANIŞ CTA ───────────────────────────────────────────────────────── -->
+  <RehberCTA />
+
+</BlogLayout>
