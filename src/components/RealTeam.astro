@@ -3,6 +3,7 @@ import Icon from './Icon.astro';
 import { Image } from 'astro:assets';
 import tubitak from '../assets/tubitak-beyaz logo.png';
 import ytuTeknopark from '../assets/yet-teknopark-beyaz-logo.png';
+import { ROUTES } from '../config';
 
 const kartlar = [
   { baslik: 'Gerçek Branş Öğretmeni', aciklama: 'Uzman branş öğretmeni canlı etütlerde yanınızda.',  ikon: 'users',  renk: 'bg-turkuaz' },
@@ -40,6 +41,14 @@ const kartlar = [
         <div class="flex h-[140px] w-[180px] items-center justify-center rounded-[8px] border border-kenar bg-[#1b2a5b] p-5 shadow-kucuk">
           <Image src={ytuTeknopark} alt="YTÜ Teknopark" height={100} class="h-full w-full object-contain" />
         </div>
+      </div>
+
+      <!-- Buton -->
+      <div class="mt-8 flex justify-center">
+        <a href={ROUTES.kulupteNelerVar} class="inline-flex items-center gap-2 rounded-[8px] bg-[#1b2a5b] px-6 py-3 font-baslik text-sm font-semibold text-beyaz shadow-kucuk transition hover:opacity-90">
+          Kulüpte Neler Var?
+          <span class="-rotate-90 inline-block"><Icon name="chevron" size={14} /></span>
+        </a>
       </div>
 
     </div>

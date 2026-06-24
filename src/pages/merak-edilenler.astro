@@ -1,0 +1,326 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { UYELIK_URL, ROUTES } from '../config';
+
+const gruplar = [
+  {
+    baslik: 'Üyelik ve Ücretsiz Deneyim',
+    sorular: [
+      {
+        soru: '2 haftalık ücretsiz deneyim nasıl çalışır?',
+        cevap: 'Üye olduktan sonra iki hafta boyunca canlı etütlere, online içeriklere ve koçluk görüşmelerine ücretsiz erişirsiniz. Bu süreçte herhangi bir ücret alınmaz, dilediğiniz zaman ayrılabilirsiniz.',
+      },
+      {
+        soru: 'Ücretsiz deneyim için kredi kartı gerekiyor mu?',
+        cevap: 'Hayır. Kredi kartı yalnızca üyeliğe geçmeye karar verirseniz gerekir.',
+      },
+      {
+        soru: 'Üyelik ücreti ne kadar, taksit var mı?',
+        cevap: 'Tek üyelik 54.900 TL\'dir ve 2027 LGS hazırlık sürecini kapsar. Tüm kredi kartlarına peşin fiyatına 9 taksit yapılabilir, taksitte fiyat artmaz.',
+      },
+      {
+        soru: 'Üyeliğe neler dahil?',
+        cevap: 'Canlı etüt ve soru çözümü, gerçek başarı koçluğu, yapay zekâ takibi ve analizler, online ders içerikleri ve veli raporlaması üyeliğe dahildir.',
+      },
+      {
+        soru: 'Üyelik iptali nasıl olur?',
+        cevap: 'Deneme süresince hiçbir yükümlülük olmadan ayrılabilirsiniz. Ücretli üyelik iptali ve iade koşulları için <a href="/bize-ulasin" class="text-[#7c5cfc] underline underline-offset-2 hover:opacity-80">Bize Ulaşın</a> sayfasından bizimle iletişime geçebilirsiniz.',
+        html: true,
+      },
+    ],
+  },
+  {
+    baslik: 'Eğitim ve Etüt',
+    sorular: [
+      {
+        soru: 'Canlı etütler nasıl işliyor?',
+        cevap: 'Çocuğunuz gerçek branş öğretmenleri gözetiminde, düzenli ve planlı bir etüt akışında çalışır. Etütler kayıttan video değil, interaktif ve canlıdır.',
+      },
+      {
+        soru: 'Canlı etütlere katılamazsam ne olur?',
+        cevap: 'Katılamadığı durumlarda koçu bilgilendirilir ve çocuğunuz online ders içeriklerinden çalışmaya devam edebilir. Süreç takipsiz kalmaz.',
+      },
+      {
+        soru: 'Hangi sınıf ve derslere yöneliksiniz?',
+        cevap: 'Yalnızca 8. sınıf ve LGS sürecine odaklanıyoruz. Tüm LGS derslerini kapsarız.',
+      },
+    ],
+  },
+  {
+    baslik: 'Koçluk ve Yapay Zekâ',
+    sorular: [
+      {
+        soru: 'Koçluk görüşmeleri nasıl gerçekleşir?',
+        cevap: 'Gerçek rehber öğretmenlerle birebir ve canlı yapılır. Koç, çocuğunuzun hedeflerini belirler, motivasyonunu takip eder ve onu yönlendirir.',
+      },
+      {
+        soru: 'Yapay zekâ tam olarak ne yapıyor?',
+        cevap: 'Yapay zekâ çocuğunuzun eksiklerini tespit eder, neye nasıl çalışacağını yönlendirir, gelişimini sürekli ölçer ve gerilemeleri erken yakalar. Kararı ve birebir ilgiyi her zaman gerçek öğretmen ve koç verir; yapay zekâ onların gözü kulağı olur.',
+      },
+    ],
+  },
+  {
+    baslik: 'Veli ve Güven',
+    sorular: [
+      {
+        soru: 'Veli raporlarını kimler görebilir?',
+        cevap: 'Raporlar veliye özeldir. Katılım, çalışma süresi ve haftalık gelişim özetini düzenli olarak sizinle paylaşırız.',
+      },
+      {
+        soru: 'Sisteminize neden güvenebilirim?',
+        cevap: 'Çocuğunuz 120\'den fazla gerçek branş öğretmeniyle çalışır. Teknoloji altyapımız Yıldız Teknik Üniversitesi Teknokent\'te, TÜBİTAK desteğiyle geliştirilmiştir.',
+      },
+    ],
+  },
+];
+
+const ozellikler = [
+  { baslik: 'Canlı Etüt ve Soru Çözümü',     aciklama: 'Branş öğretmenleriyle gerçek zamanlı etüt.',        ikon: 'users',  renk: 'bg-turkuaz'  },
+  { baslik: 'Gerçek Başarı Koçluğu',          aciklama: 'Kişiye özel hedef takibi ve motivasyon desteği.',   ikon: 'target', renk: 'bg-mor'      },
+  { baslik: 'Yapay Zekâ Takibi ve Analizler', aciklama: 'Her adım akıllı sistemle izlenir ve raporlanır.',  ikon: 'cpu',    renk: 'bg-lacivert' },
+  { baslik: 'Online Ders İçerikleri',          aciklama: 'Tüm branşlarda video anlatım ve çözümlü sorular.', ikon: 'video',  renk: 'bg-mavi'     },
+  { baslik: 'Veli Raporlama ve Bildirimler',   aciklama: 'Haftalık şeffaf ilerleme raporu veliye iletilir.', ikon: 'bell',   renk: 'bg-mercan'   },
+];
+---
+
+<Layout
+  title="Merak Edilenler | FocusClub 360"
+  description="FocusClub 360 hakkında en sık sorulan soruların yanıtlarını burada bulabilirsiniz."
+>
+
+<div class="theme-v13">
+
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-50 border-b border-[#2A2F52]" style="background-color: rgba(16,18,38,0.95); backdrop-filter: blur(12px);">
+    <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
+
+      <!-- Logo -->
+      <a href="/" class="font-baslik text-xl font-extrabold tracking-tight text-[#FFFFFF]">
+        FocusClub <span class="text-[#7c5cfc]">360</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden items-center gap-6 text-sm font-medium md:flex">
+        {[
+          { etiket: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
+          { etiket: 'Velilere',          href: ROUTES.velilere        },
+          { etiket: 'Nasıl Üye Olunur',  href: ROUTES.nasilUyeOlunur  },
+          { etiket: 'Rehber',            href: ROUTES.rehber           },
+          { etiket: 'Merak Edilenler',   href: ROUTES.merakEdilenler   },
+        ].map((m) => (
+          <a
+            href={m.href}
+            class={`transition-colors hover:text-[#FFFFFF] ${m.href === ROUTES.merakEdilenler ? 'text-[#FFFFFF] font-semibold' : 'text-[#8B96CC]'}`}
+          >{m.etiket}</a>
+        ))}
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden items-center gap-3 md:flex">
+        <a href="/giris" class="text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">Giriş Yap</a>
+        <a
+          href={UYELIK_URL}
+          class="rounded-[8px] px-4 py-2 text-sm font-semibold transition hover:opacity-90"
+          style="background-color: #FFFFFF; color: #2D3AAE;"
+        >Ücretsiz Başla</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="hamburger" class="grid h-10 w-10 place-items-center rounded-[8px] text-[#8B96CC] transition hover:text-[#FFFFFF] md:hidden" aria-label="Menü">
+        <Icon name="menu" size={22} />
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-[#2A2F52] px-6 pb-4 pt-3 md:hidden">
+      <nav class="flex flex-col gap-3 text-sm font-medium">
+        {[
+          { etiket: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
+          { etiket: 'Velilere',          href: ROUTES.velilere        },
+          { etiket: 'Nasıl Üye Olunur',  href: ROUTES.nasilUyeOlunur  },
+          { etiket: 'Rehber',            href: ROUTES.rehber           },
+          { etiket: 'Merak Edilenler',   href: ROUTES.merakEdilenler   },
+        ].map((m) => (
+          <a href={m.href} class="py-1 text-[#8B96CC] transition hover:text-[#FFFFFF]">{m.etiket}</a>
+        ))}
+        <div class="mt-2 flex gap-3">
+          <a href="/giris" class="text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">Giriş Yap</a>
+          <a href={UYELIK_URL} class="rounded-[8px] px-4 py-2 text-sm font-semibold" style="background-color: #FFFFFF; color: #2D3AAE;">Ücretsiz Başla</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="px-6 pb-10 pt-16 md:px-10 md:pb-14 md:pt-24">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="reveal max-w-xl">
+        <span class="inline-flex items-center rounded-md bg-gradient-to-r from-[#7c5cfc]/20 to-[#3b6ef0]/20 px-3 py-1 text-xs font-semibold text-[#8B9BFF]">
+          SSS
+        </span>
+        <h1 class="mt-4 font-baslik text-3xl font-extrabold leading-tight tracking-tight text-[#FFFFFF] md:text-4xl lg:text-5xl">
+          Merak edilen<br />
+          <span class="bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] bg-clip-text text-transparent">sorular</span>
+        </h1>
+        <p class="mt-5 text-base leading-relaxed text-[#8B96CC] md:text-lg">
+          FocusClub 360 hakkında en sık sorulan soruların yanıtlarını burada bulabilirsiniz.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRUPLU SSS -->
+  <section class="px-6 pb-6 pt-0 md:px-10 md:pb-8">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="reveal rounded-[8px] border border-[#2A2F52] bg-[#13162E] px-6 py-10 md:px-10 md:py-12">
+
+        {gruplar.map((grup, gi) => (
+          <div class={gi > 0 ? 'mt-10 border-t border-[#2A2F52] pt-10' : ''}>
+            <h2 class="mb-6 font-baslik text-xs font-bold uppercase tracking-widest text-[#5B6E9E]">
+              {grup.baslik}
+            </h2>
+            <div class="divide-y divide-[#2A2F52]">
+              {grup.sorular.map((s, si) => {
+                const isFirst = gi === 0 && si === 0;
+                return (
+                  <div class="faq-item py-5">
+                    <button
+                      class="faq-btn flex w-full items-center justify-between gap-4 text-left"
+                      aria-expanded={isFirst ? 'true' : 'false'}
+                    >
+                      <span class="font-baslik text-sm font-semibold text-[#FFFFFF] md:text-base">{s.soru}</span>
+                      <span class="faq-icon grid h-7 w-7 shrink-0 place-items-center rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] text-[#8B96CC] transition-transform duration-300">
+                        <Icon name="plus" size={15} />
+                      </span>
+                    </button>
+                    <div
+                      class="faq-body overflow-hidden"
+                      style={isFirst ? '' : 'max-height: 0;'}
+                    >
+                      {s.html
+                        ? <p class="pb-1 pt-3 text-sm leading-relaxed text-[#8B96CC]" set:html={s.cevap} />
+                        : <p class="pb-1 pt-3 text-sm leading-relaxed text-[#8B96CC]">{s.cevap}</p>
+                      }
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FİYAT -->
+  <section class="px-6 pb-6 pt-0 md:px-10 md:pb-8">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="reveal rounded-[8px] border border-[#2A2F52] bg-[#13162E] px-6 py-10 md:px-10 md:py-12">
+
+        <div class="mb-8 text-center">
+          <h2 class="font-baslik text-2xl font-bold text-[#FFFFFF] md:text-3xl">Tek Üyelik, Her Şey Dahil</h2>
+          <p class="mt-2 text-sm text-[#8B96CC]">İhtiyacınız olan her şey bir arada.</p>
+        </div>
+
+        <div class="rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] shadow-yumusak">
+          <div class="grid gap-0 md:grid-cols-[1fr_1px_2fr]">
+
+            <!-- Sol: fiyat -->
+            <div class="p-8 md:p-10">
+              <span class="inline-flex items-center rounded-md bg-gradient-to-r from-[#7c5cfc]/20 to-[#3b6ef0]/20 px-3 py-1 text-xs font-semibold text-[#8B9BFF]">
+                2027 LGS Hazırlık
+              </span>
+              <p class="mt-6 font-baslik text-4xl font-extrabold text-[#FFFFFF] sm:text-5xl">
+                54.900 <span class="text-2xl font-bold sm:text-3xl">TL</span>
+              </p>
+              <p class="mt-2 text-sm text-[#8B96CC]">Tüm kartlara 9 taksit</p>
+              <p class="mt-8 flex items-start gap-2 text-sm font-medium text-[#8B96CC]">
+                <Icon name="gift" size={15} class="mt-0.5 shrink-0 text-[#7c5cfc]" />
+                Ücretsiz deneyim için kredi kartı eklemeniz gerekmez
+              </p>
+              <a
+                href={UYELIK_URL}
+                class="mt-4 inline-flex w-full items-center justify-center rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(80,90,240,.30)] transition hover:brightness-105"
+              >
+                Ücretsiz Üye Ol
+              </a>
+            </div>
+
+            <!-- Dikey ayraç -->
+            <div class="hidden bg-[#2A2F52] md:block"></div>
+
+            <!-- Sağ: özellikler -->
+            <div class="border-t border-[#2A2F52] p-8 md:border-t-0 md:p-10">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[#5B6E9E]">Dahil Olanlar</p>
+              <ul class="mt-6 grid gap-5 sm:grid-cols-2">
+                {ozellikler.map((o) => (
+                  <li class="flex items-start gap-4">
+                    <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-[8px] text-white ${o.renk}`}>
+                      <Icon name={o.ikon} size={20} />
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-[#FFFFFF]">{o.baslik}</p>
+                      <p class="mt-0.5 text-xs leading-relaxed text-[#8B96CC]">{o.aciklama}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</Layout>
+
+<style>
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary { list-style: none; }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-btn')!;
+    const body = item.querySelector<HTMLElement>('.faq-body')!;
+    const icon = item.querySelector<HTMLElement>('.faq-icon')!;
+
+    if (btn.getAttribute('aria-expanded') === 'true') {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      icon.style.transform = 'rotate(45deg)';
+    } else {
+      body.style.maxHeight = '0';
+    }
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll<HTMLElement>('.faq-item').forEach((other) => {
+        const ob = other.querySelector<HTMLButtonElement>('.faq-btn')!;
+        const obody = other.querySelector<HTMLElement>('.faq-body')!;
+        const oicon = other.querySelector<HTMLElement>('.faq-icon')!;
+        ob.setAttribute('aria-expanded', 'false');
+        obody.style.maxHeight = '0';
+        oicon.style.transform = '';
+      });
+
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>
