@@ -7,7 +7,7 @@ import heroGorsel from '../assets/hero-masaustu.jpg';
 const ozellikler = [
   { baslik: 'Canlı Etüt',             alt: 'Branş Öğretmenleri Gözetiminde',        ikon: 'users',  renk: 'bg-turkuaz' },
   { baslik: 'Canlı Soru Çözüm',       alt: 'Öğretmenler Eşliğinde Çözüm',          ikon: 'flask',  renk: 'bg-mercan'  },
-  { baslik: 'Gerçek Koçluk',          alt: 'Rehber Öğretmenler Eşliğinde Bireysel', ikon: 'target', renk: 'bg-mor'     },
+  { baslik: 'Gerçek Koçluk',          alt: 'Öğretmenlerin Eşliğinde Bireysel',     ikon: 'target', renk: 'bg-mor'     },
   { baslik: 'Dijital Ders İçerikleri', alt: "LGS'deki Tüm Dersler",                 ikon: 'video',  renk: 'bg-mavi'    },
 ];
 ---
@@ -74,7 +74,7 @@ const ozellikler = [
                 <Icon name={o.ikon} size={14} />
               </span>
               <div class="min-w-0">
-                <p class="font-baslik text-[11px] font-bold leading-snug text-[#1b2a5b]">{o.baslik}</p>
+                <p class="font-baslik text-xs font-bold leading-snug text-[#1b2a5b]">{o.baslik}</p>
                 <p class="text-[10px] leading-tight text-[#6b76a0]" style="overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;">{o.alt}</p>
               </div>
             </div>
