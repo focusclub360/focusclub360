@@ -1,0 +1,460 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
+
+const menu = [
+  { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
+  { ad: 'Nasıl Çalışır',     href: ROUTES.nasilCalisir    },
+  { ad: 'Velilere',          href: ROUTES.velilere         },
+  { ad: 'Nasıl Üye Olunur',  href: ROUTES.nasilUyeOlunur  },
+  { ad: 'Rehber',            href: ROUTES.rehber           },
+];
+
+const sorunlar = [
+  "Odasına giriyor ama gerçekten çalışıyor mu, bilemiyorsanız.",
+  "Her akşam 'ders çalış' demekten yorulduysanız.",
+  "Telefon ve ekran dikkatini sürekli dağıtıyorsa.",
+  "Neye, ne kadar çalışacağı bir türlü planlanamıyorsa.",
+  "Çalışıp çalışmadığını takip etmek hep sizin omzunuzdaysa.",
+  "Motivasyonu düşük, düzeni bir türlü oturmuyorsa.",
+];
+
+const karsilastirma = [
+  { yuk: "Her akşam 'çalış' hatırlatması",        cozum: "Öğretmen gözetiminde düzenli etüt kulübü"      },
+  { yuk: "'Çalıştı mı' kaygısı",                  cozum: "Katılım ve gelişim her hafta raporlanır"        },
+  { yuk: "Neye çalışacağını siz planlıyorsunuz",   cozum: "Yapay zekâ eksiği bulur, koç yönlendirir"      },
+  { yuk: "Tek başına ekran karşısında",            cozum: "Gerçek öğretmen ve koçla birlikte"              },
+  { yuk: "Takip tamamen sizde",                    cozum: "Takibi biz yapıyoruz, siz bilgilendiriliyorsunuz" },
+];
+
+const raporKutulari = [
+  { baslik: "Katılım Raporu",          ikon: "list",  aciklama: "Etüt ve etkinliklere katılım takibi"         },
+  { baslik: "Çalışma Süresi Raporu",   ikon: "clock", aciklama: "Haftalık ders başındaki süre özeti"           },
+  { baslik: "Haftalık Gelişim Özeti",  ikon: "bell",  aciklama: "Koç ve öğretmen değerlendirmesiyle derlenir" },
+];
+
+const guvenKartlari = [
+  {
+    baslik:   "Gerçek Öğretmenler",
+    aciklama: "Çocuğunuz alanında uzman, gerçek branş öğretmenleriyle çalışır.",
+    ikon:     "users",
+    renk:     "bg-mor",
+  },
+  {
+    baslik:   "Yıldız Teknik Üniversitesi Teknokent",
+    aciklama: "Sistem, üniversite teknokentinde geliştirilmiştir.",
+    ikon:     "award",
+    renk:     "bg-mavi",
+  },
+  {
+    baslik:   "TÜBİTAK Desteğiyle Geliştirildi",
+    aciklama: "Teknoloji altyapısı TÜBİTAK desteğiyle hayata geçirilmiştir.",
+    ikon:     "shield",
+    renk:     "bg-turkuaz",
+  },
+];
+---
+
+<Layout>
+  <div class="theme-v13 bg-[#131629] md:bg-[#131629] md:p-4">
+    <div class="mx-auto max-w-[1400px] bg-white md:rounded-[8px] md:shadow-[0_30px_80px_rgba(110,124,255,.18)]">
+
+      <!-- Sticky header -->
+      <div class="sticky top-0 z-50">
+        <div class="flex items-center justify-center gap-2 bg-gradient-to-r from-[#2D3AAE] to-[#5060E0] px-4 py-2 text-center text-sm font-medium text-beyaz md:rounded-t-[8px]">
+          <Icon name="gift" size={16} />
+          Ücretsiz İki Hafta Deneyim Fırsatı
+        </div>
+
+        <header class="flex items-center justify-between gap-4 px-6 py-4 backdrop-blur-sm md:px-10" style="background-color: rgba(27,33,64,0.97);">
+          <a href="/" class="flex items-center gap-2" aria-label="FocusClub 360">
+            <span class="grid h-9 w-9 place-items-center rounded-kart bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-beyaz">
+              <Icon name="sparkles" size={20} />
+            </span>
+            <span class="font-baslik text-xl font-extrabold tracking-tight text-[#FFFFFF]">FocusClub
+              <span class="text-[#6E7CFF]">360</span>
+            </span>
+          </a>
+
+          <nav class="hidden items-center gap-7 lg:flex">
+            {menu.map((m) => (
+              <a
+                href={m.href}
+                class={`text-sm transition ${m.href === ROUTES.velilere ? 'font-semibold text-[#FFFFFF]' : 'font-medium text-[#8B96CC] hover:text-[#FFFFFF]'}`}
+              >
+                {m.ad}
+              </a>
+            ))}
+          </nav>
+
+          <div class="flex items-center gap-2 sm:gap-3">
+            <a href={GIRIS_URL} class="hidden text-sm font-semibold text-[#FFFFFF] hover:opacity-70 sm:block">Giriş</a>
+            <a
+              href={UYELIK_URL}
+              class="hidden rounded-buton bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(110,124,255,.40)] transition hover:brightness-110 sm:inline-block"
+            >2 Hafta Ücretsiz</a>
+            <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#FFFFFF] transition hover:bg-bulut focus:outline-none active:bg-[#1E2848] lg:hidden" style="-webkit-tap-highlight-color: transparent; background-color: #1B2140; -webkit-appearance: none; appearance: none;">
+              <Icon name="menu" size={20} />
+            </button>
+          </div>
+        </header>
+
+        <nav id="mob-nav" class="hidden border-b border-kenar px-6 pb-5 pt-2 lg:hidden" style="background-color: #1B2140;">
+          <div class="flex flex-col">
+            {menu.map((m) => (
+              <a href={m.href} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">{m.ad}</a>
+            ))}
+          </div>
+          <a
+            href={UYELIK_URL}
+            class="mt-3 flex items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] py-3 text-sm font-semibold text-beyaz"
+          >
+            2 Hafta Ücretsiz Dene
+            <Icon name="arrow" size={16} />
+          </a>
+        </nav>
+      </div>
+
+      <!-- ── 1. HERO ───────────────────────────────────────────────────────────── -->
+      <section class="bg-white px-6 pb-16 pt-14 md:px-10 md:pb-24 md:pt-20">
+        <div class="mx-auto max-w-[1400px]">
+          <div class="flex flex-col gap-12 md:flex-row md:items-center md:gap-14 lg:gap-24">
+
+            <!-- Sol: metin -->
+            <div class="flex-1">
+              <span class="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold text-[#3b6ef0]">
+                <Icon name="star" size={12} class="text-[#7c5cfc]" />
+                VELİLERE
+              </span>
+
+              <h1 class="mt-5 font-baslik text-3xl font-extrabold tracking-tight text-[#1b2a5b] md:text-4xl lg:text-[2.6rem]" style="line-height: 1.18;">
+                Ders Çalıştırmaya Değil,<br class="hidden md:block" /> Gelişimini İzlemeye Odaklanın
+              </h1>
+
+              <p class="mt-5 max-w-lg text-base leading-relaxed text-[#5b6488] md:text-lg">
+                Günlük çalışma düzeni, öğretmen gözetimi ve akademik takip tek sistemde.
+              </p>
+
+              <div class="mt-10 flex flex-wrap items-center gap-3">
+                <a
+                  href={UYELIK_URL}
+                  class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-2.5 pl-6 pr-2 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105"
+                >
+                  2 Hafta Ücretsiz Dene
+                  <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-[#3b6ef0]">
+                    <Icon name="arrow" size={15} />
+                  </span>
+                </a>
+                <a
+                  href={ROUTES.nasilCalisir}
+                  class="inline-flex items-center rounded-buton border border-kenar px-5 py-2.5 text-sm font-semibold text-[#1b2a5b] transition hover:bg-bulut hover:text-[#FFFFFF]"
+                >
+                  Nasıl Çalışır
+                </a>
+              </div>
+            </div>
+
+            <!-- Sağ: görsel placeholder (4:5) -->
+            <div class="hidden shrink-0 overflow-hidden rounded-[16px] border border-kenar md:block md:w-[260px] lg:w-[320px]">
+              <div class="flex aspect-[4/5] w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#1E2848] to-[#2A3060]">
+                <span class="grid h-16 w-16 place-items-center rounded-full bg-[#6E7CFF]/20 text-[#6E7CFF]">
+                  <Icon name="eye" size={32} />
+                </span>
+                <p class="text-center text-xs text-[#5b6488]">Görsel yakında<br/>ekleniyor</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 2. SORUN BÖLÜMÜ ───────────────────────────────────────────────────── -->
+      <section class="bg-[#f5f8ff] px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Tanıdık Geldi mi?</h2>
+            <p class="mt-3 text-base text-[#5b6488]">Pek çok veli her gün bu durumlarla baş başa kalıyor.</p>
+          </div>
+
+          <div class="reveal mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {sorunlar.map((sorun) => (
+              <div class="flex items-start gap-4 rounded-[8px] border border-kenar bg-white p-5 shadow-[0_4px_16px_rgba(60,80,180,.05)]">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-mercan text-white">
+                  <Icon name="x" size={14} />
+                </span>
+                <p class="text-sm leading-relaxed text-[#5b6488]">{sorun}</p>
+              </div>
+            ))}
+          </div>
+
+          <p class="reveal mt-8 text-center text-base font-medium text-[#1b2a5b]">
+            FocusClub 360 tam da bu yükü üzerinizden almak için var.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ── 3. KARŞILAŞTIRMA ──────────────────────────────────────────────────── -->
+      <section class="bg-white px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">O Yük Artık Sizde Değil</h2>
+            <p class="mt-3 text-base text-[#5b6488]">Eskiden size ait olan her sorumluluk artık sistemin içinde.</p>
+          </div>
+
+          <!-- Masaüstü: iki sütunlu tablo -->
+          <div class="reveal mt-12 hidden overflow-hidden rounded-[8px] border border-kenar shadow-[0_8px_30px_rgba(60,80,180,.07)] md:block">
+
+            <!-- Başlık satırı -->
+            <div class="grid grid-cols-2">
+              <div class="flex items-center gap-2 border-b border-r border-kenar bg-[#FFF5F3] px-6 py-4">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-mercan text-white">
+                  <Icon name="x" size={13} />
+                </span>
+                <span class="font-baslik text-sm font-bold text-[#1b2a5b]">Sizin Yükünüz</span>
+              </div>
+              <div class="flex items-center gap-2 border-b border-kenar bg-[#F0F4FF] px-6 py-4">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-mor text-white">
+                  <Icon name="check" size={13} />
+                </span>
+                <span class="font-baslik text-sm font-bold text-[#1b2a5b]">Bizim Çözümümüz</span>
+              </div>
+            </div>
+
+            <!-- Satırlar -->
+            {karsilastirma.map((k, i) => (
+              <div class={`grid grid-cols-2 ${i < karsilastirma.length - 1 ? 'border-b border-kenar' : ''}`}>
+                <div class="flex items-center gap-3 border-r border-kenar px-6 py-4">
+                  <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-mercan"></span>
+                  <span class="text-sm text-[#5b6488]">{k.yuk}</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-4">
+                  <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-mor"></span>
+                  <span class="text-sm font-medium text-[#1b2a5b]">{k.cozum}</span>
+                </div>
+              </div>
+            ))}
+
+          </div>
+
+          <!-- Mobil: satır çiftleri -->
+          <div class="reveal mt-8 flex flex-col gap-3 md:hidden">
+            {karsilastirma.map((k) => (
+              <div class="overflow-hidden rounded-[8px] border border-kenar">
+                <div class="flex items-start gap-3 bg-[#FFF5F3] px-4 py-3">
+                  <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mercan text-white">
+                    <Icon name="x" size={10} />
+                  </span>
+                  <p class="text-xs text-[#5b6488]">{k.yuk}</p>
+                </div>
+                <div class="flex items-start gap-3 bg-white px-4 py-3">
+                  <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mor text-white">
+                    <Icon name="check" size={10} />
+                  </span>
+                  <p class="text-xs font-medium text-[#1b2a5b]">{k.cozum}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── 4. ŞEFFAF RAPORLAMA ───────────────────────────────────────────────── -->
+      <section class="bg-[#f5f8ff] px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+          <div class="reveal rounded-[8px] bg-lacivert px-6 py-12 md:px-10 md:py-14">
+
+            <div class="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
+
+              <!-- Sol: metin -->
+              <div class="flex-1">
+                <h2 class="font-baslik text-2xl font-bold leading-snug text-beyaz md:text-3xl">
+                  Nerede Olursanız Olun, İçiniz Rahat
+                </h2>
+                <p class="mt-3 text-base leading-relaxed text-[#8B96CC]">
+                  Çocuğunuzun ders başında olduğunu her zaman bilirsiniz.
+                </p>
+                <p class="mt-8 text-sm leading-relaxed text-[#8B96CC]">
+                  Siz işinizde, evinizde olun; her hafta net bir raporla çocuğunuzun nerede olduğunu görün.
+                </p>
+              </div>
+
+              <!-- Sağ: üç kutu -->
+              <div class="flex flex-col gap-3 md:w-[300px] md:shrink-0 lg:w-[340px]">
+                {raporKutulari.map((r) => (
+                  <div class="flex items-center gap-4 rounded-[8px] border border-kenar bg-beyaz px-5 py-4">
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-[8px] bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-white">
+                      <Icon name={r.ikon} size={18} />
+                    </span>
+                    <div>
+                      <p class="font-baslik text-sm font-semibold text-beyaz">{r.baslik}</p>
+                      <p class="mt-0.5 text-xs leading-relaxed text-[#8B96CC]">{r.aciklama}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 5. GÜVEN KATMANI ───────────────────────────────────────────────────── -->
+      <section class="bg-white px-6 py-14 md:px-10 md:py-20">
+        <div class="mx-auto max-w-[1400px]">
+
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Neden İçiniz Rahat Olsun?</h2>
+            <p class="mt-3 text-base text-[#5b6488]">Sağlam bir altyapı, gerçek insanlar ve kanıtlanmış bir çerçeve.</p>
+          </div>
+
+          <div class="reveal mt-12 grid gap-6 sm:grid-cols-3">
+            {guvenKartlari.map((k) => (
+              <article class="flex flex-col rounded-[8px] border border-[#e7ecf2] bg-white p-7 shadow-[0_10px_30px_rgba(60,80,180,.06)]">
+                <span class={`grid h-12 w-12 place-items-center rounded-[8px] text-white ${k.renk}`}>
+                  <Icon name={k.ikon} size={22} />
+                </span>
+                <h3 class="mt-5 font-baslik text-base font-bold text-[#1b2a5b]">{k.baslik}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#5b6488]">{k.aciklama}</p>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── 6. VELİ SÖZÜ + CTA BANDI ─────────────────────────────────────────── -->
+      <section class="bg-[#f5f8ff] px-6 pb-14 pt-0 md:px-10 md:pb-20">
+        <div class="mx-auto max-w-[1400px]">
+          <div class="reveal overflow-hidden rounded-[8px] bg-gradient-to-br from-[#2D3AAE] via-[#3D4EC8] to-[#5060E0] px-6 py-14 text-center md:px-14 md:py-20">
+
+            <p class="mx-auto max-w-3xl font-baslik text-xl font-bold leading-snug text-white md:text-2xl lg:text-3xl">
+              Biz size eğitim teknolojisi değil; düzen, disiplin, takip ve iç huzur sunuyoruz. Çünkü başarı tesadüf değil, alışkanlıktır.
+            </p>
+            <p class="mx-auto mt-5 max-w-lg text-base leading-relaxed text-white/75">
+              Çocuğunuzun düzenli çalışma alışkanlığı kazanmasına yardımcı oluyoruz.
+            </p>
+
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={UYELIK_URL}
+                class="inline-flex items-center gap-2 rounded-buton py-2.5 pl-6 pr-2 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
+                style="background-color: #FFFFFF; color: #2D3AAE;"
+              >
+                2 Hafta Ücretsiz Dene
+                <span class="grid h-8 w-8 place-items-center rounded-full text-white" style="background-color: #3b6ef0;">
+                  <Icon name="arrow" size={15} />
+                </span>
+              </a>
+              <a
+                href={ROUTES.nasilUyeOlunur}
+                class="inline-flex items-center rounded-buton border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Nasıl Üye Olunur
+              </a>
+            </div>
+
+            <p class="mt-5 text-xs text-white/60">
+              2 haftalık ücretsiz deneyim için kredi kartı gerekmez.
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  /* === THEME V13: Deep Purple + Navy === */
+  .theme-v13 .bg-white      { background-color: #1B2140; }
+  .theme-v13 .bg-white\/95  { background-color: rgba(27, 33, 64, 0.97); }
+  .theme-v13 .bg-beyaz      { background-color: #1B2140; }
+  .theme-v13 .bg-beyaz\/90  { background-color: rgba(27, 33, 64, 0.90); }
+
+  .theme-v13 .text-lacivert       { color: #8B96CC; }
+  .theme-v13 .placeholder\:text-gri\/70::placeholder { color: rgba(100, 110, 170, 0.70); }
+
+  .theme-v13 .from-\[\#7c5cfc\] {
+    --tw-gradient-from: #6E7CFF var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(110 124 255 / 0));
+  }
+  .theme-v13 .from-\[\#7c5cfc\]\/12 {
+    --tw-gradient-from: rgb(110 124 255 / 0.12) var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(110 124 255 / 0));
+  }
+  .theme-v13 .to-\[\#3b6ef0\] {
+    --tw-gradient-to: #2D3AAE var(--tw-gradient-to-position);
+  }
+  .theme-v13 .to-\[\#3b6ef0\]\/12 {
+    --tw-gradient-to: rgb(45 58 174 / 0.12) var(--tw-gradient-to-position);
+  }
+
+  .theme-v13 .bg-\[\#ede8ff\]  { background-color: #1B2140; }
+  .theme-v13 .bg-\[\#dfe5f5\]  { background-color: #1E2545; }
+  .theme-v13 .bg-\[\#e8eaf4\]  { background-color: #1C2240; }
+  .theme-v13 .bg-\[\#f5f8ff\]  { background-color: #181E38; }
+  .theme-v13 .bg-\[\#FFF5F3\]  { background-color: #1E1E2E; }
+  .theme-v13 .bg-\[\#F0F4FF\]  { background-color: #1A2040; }
+
+  .theme-v13 .text-\[\#1b2a5b\]              { color: #FFFFFF; }
+  .theme-v13 .text-\[\#5b6488\]              { color: #8B96CC; }
+  .theme-v13 .text-\[\#6b76a0\]              { color: #6B78AA; }
+  .theme-v13 .text-\[\#3b6ef0\]              { color: #6E7CFF; }
+  .theme-v13 .text-\[\#7c5cfc\]              { color: #6E7CFF; }
+  .theme-v13 .hover\:text-\[\#1b2a5b\]:hover { color: #FFFFFF; }
+
+  .theme-v13 .shadow-\[0_8px_20px_rgba\(80\,90\,240\,\.35\)\]     { box-shadow: 0 8px 20px rgba(110,124,255,.40); }
+  .theme-v13 .shadow-\[0_8px_20px_rgba\(80\,90\,240\,\.30\)\]     { box-shadow: 0 8px 20px rgba(110,124,255,.35); }
+  .theme-v13 .shadow-\[0_12px_30px_rgba\(40\,40\,120\,\.35\)\]    { box-shadow: 0 12px 30px rgba(110,124,255,.28); }
+  .theme-v13 .shadow-\[0_8px_20px_rgba\(20\,40\,120\,\.35\)\]     { box-shadow: 0 8px 20px rgba(110,124,255,.25); }
+  .theme-v13 .shadow-\[0_4px_16px_rgba\(60\,80\,180\,\.05\)\]     { box-shadow: 0 4px 16px rgba(110,124,255,.06); }
+  .theme-v13 .shadow-\[0_8px_30px_rgba\(60\,80\,180\,\.07\)\]     { box-shadow: 0 8px 30px rgba(110,124,255,.08); }
+  .theme-v13 .shadow-\[0_10px_30px_rgba\(60\,80\,180\,\.06\)\]    { box-shadow: 0 10px 30px rgba(110,124,255,.08); }
+
+  .theme-v13 .bg-mor       { background-color: #6E7CFF; }
+  .theme-v13 .bg-turkuaz   { background-color: #22D3EE; }
+  .theme-v13 .bg-lacivert  { background-color: #131629; }
+  .theme-v13 .bg-bulut     { background-color: #1E2848; }
+  .theme-v13 .border-kenar { border-color: #2A3060; }
+  .theme-v13 .text-mor     { color: #6E7CFF; }
+  .theme-v13 .text-turkuaz { color: #22D3EE; }
+
+  .theme-v13 .border-\[\#e7ecf2\] { border-color: #2A3060; }
+  .theme-v13 .shadow-\[0_10px_30px_rgba\(60\,80\,180\,\.06\)\] { box-shadow: 0 10px 30px rgba(110,124,255,.08); }
+</style>
+
+<script>
+  const tog = document.getElementById('mob-tog');
+  const nav = document.getElementById('mob-nav');
+  tog?.addEventListener('click', () => { nav?.classList.toggle('hidden'); });
+  document.querySelectorAll('.mob-link').forEach((l) => {
+    l.addEventListener('click', () => nav?.classList.add('hidden'));
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { (e.target as HTMLElement).classList.add('gorunur'); } }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.gorunur {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
