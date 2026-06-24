@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# local editor/agent config
+.claude/
+
 # dependencies
 node_modules/
 
