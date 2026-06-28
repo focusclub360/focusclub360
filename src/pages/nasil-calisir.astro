@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import { Image } from 'astro:assets';
+import heroGorsel from '../assets/hero-masaustu-1.jpg';
 import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
 
 const menu = [
@@ -143,58 +145,70 @@ const veliKartlari = [
         </nav>
       </div>
 
-      <!-- ── 1. HERO ───────────────────────────────────────────────────────── -->
-      <section class="bg-white px-6 pb-16 pt-14 md:px-10 md:pb-24 md:pt-20">
-        <div class="mx-auto max-w-[1400px]">
-          <div class="flex flex-col gap-12 md:flex-row md:items-center md:gap-14 lg:gap-24">
+      <!-- ── 1. HERO (banner) ──────────────────────────────────────────────── -->
+      <div class="flex min-h-[calc(100svh-8rem)] flex-col md:min-h-[calc(100vh-9rem)]">
+        <div class="flex min-h-0 flex-1 flex-col px-6 pb-4 md:px-10 md:pb-6">
 
-            <!-- Sol: metin -->
-            <div class="flex-1">
-              <span class="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/12 to-[#3b6ef0]/12 px-3 py-1 text-xs font-semibold text-[#3b6ef0]">
-                <Icon name="star" size={12} class="text-[#7c5cfc]" />
-                NASIL ÇALIŞIR
-              </span>
+          <!-- Badge -->
+          <div class="pb-2 pt-3 md:pb-3 md:pt-4">
+            <span class="flex w-full items-center gap-1 rounded-md bg-[#ede8ff] px-2.5 py-1 text-[11px] font-semibold text-[#3b6ef0] md:inline-flex md:w-auto md:gap-1.5 md:bg-gradient-to-r md:from-[#7c5cfc]/12 md:to-[#3b6ef0]/12 md:px-3 md:py-1 md:text-sm">
+              <Icon name="star" size={12} class="text-[#7c5cfc] md:size-[14px]" />
+              Nasıl Çalışır?
+            </span>
+          </div>
 
-              <h1 class="mt-5 font-baslik text-3xl font-extrabold tracking-tight text-[#1b2a5b] md:text-4xl lg:text-[2.6rem]" style="line-height: 1.18;">
-                Kayıttan LGS'ye Kadar Tek Bir Akıllı Sistem
-              </h1>
+          <!-- Banner -->
+          <div class="relative min-h-0 flex-1 overflow-hidden rounded-[8px]">
+            <Image
+              src={heroGorsel}
+              alt="FocusClub 360 nasıl çalışır"
+              widths={[768, 1280, 1600]}
+              sizes="100vw"
+              class="absolute inset-0 h-full w-full object-cover object-center"
+              loading="eager"
+            />
+            <div class="absolute inset-0 md:hidden" style="background-color: rgba(19,22,41,0.75);"></div>
+            <div class="absolute inset-0 hidden md:block" style="background: linear-gradient(to right, rgba(19,22,41,0.83) 0%, rgba(19,22,41,0.38) 45%, rgba(19,22,41,0.09) 100%);"></div>
 
-              <p class="mt-6 max-w-lg text-base leading-relaxed text-[#5b6488] md:text-lg">
-                Çocuğunuz üye olduğu andan sınava kadar; gerçek öğretmenler ve koçlarla çalışır, her adımı yapay zekâ takip eder. Süreç baştan sona planlıdır, siz de her aşamada bilgilendirilirsiniz.
-              </p>
+            <!-- İçerik -->
+            <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-5 py-4 md:px-10 md:py-10">
 
-              <div class="mt-10 flex flex-wrap items-center gap-3">
-                <a
-                  href={UYELIK_URL}
-                  class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-2.5 pl-6 pr-2 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105"
-                >
-                  2 Hafta Ücretsiz Dene
-                  <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-[#3b6ef0]">
-                    <Icon name="arrow" size={15} />
-                  </span>
-                </a>
-                <a
-                  href={ROUTES.nasilUyeOlunur}
-                  class="inline-flex items-center rounded-buton border border-kenar px-5 py-2.5 text-sm font-semibold text-[#1b2a5b] transition hover:bg-bulut hover:text-[#FFFFFF]"
-                >
-                  Nasıl Üye Olunur
-                </a>
+              <div class="max-w-[62%] md:max-w-lg">
+                <h1 class="font-baslik text-2xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
+                  Kayıttan LGS'ye Kadar Tek Bir Akıllı Sistem
+                </h1>
+                <p class="mt-2 text-sm text-white/80 md:mt-4 md:text-base">
+                  Çocuğunuz üye olduğu andan sınava kadar; gerçek öğretmenler ve koçlarla çalışır, her adımı yapay zekâ takip eder. Süreç baştan sona planlıdır, siz de her aşamada bilgilendirilirsiniz.
+                </p>
               </div>
-            </div>
 
-            <!-- Sağ: görsel placeholder (4:5) -->
-            <div class="hidden shrink-0 overflow-hidden rounded-[16px] border border-kenar md:block md:w-[260px] lg:w-[320px]">
-              <div class="flex aspect-[4/5] w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#1E2848] to-[#2A3060]">
-                <span class="grid h-16 w-16 place-items-center rounded-full bg-[#6E7CFF]/20 text-[#6E7CFF]">
-                  <Icon name="rocket" size={32} />
-                </span>
-                <p class="text-center text-xs text-[#5b6488]">Görsel yakında<br/>ekleniyor</p>
+              <div>
+                <div class="flex flex-wrap gap-2 md:gap-3">
+                  <a
+                    href={UYELIK_URL}
+                    class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-1.5 pl-4 pr-1.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 md:gap-3 md:py-2.5 md:pl-6 md:pr-2.5 md:text-base"
+                  >
+                    2 Hafta Ücretsiz Dene
+                    <span class="grid h-7 w-7 place-items-center rounded-full bg-white text-[#3b6ef0] md:h-9 md:w-9">
+                      <Icon name="arrow" size={15} />
+                    </span>
+                  </a>
+                  <a
+                    href={ROUTES.nasilUyeOlunur}
+                    class="inline-flex items-center gap-2 rounded-buton border border-white/40 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-white/10 md:px-6 md:py-2.5 md:text-base"
+                  >
+                    Nasıl Üye Olunur
+                  </a>
+                </div>
+                <p class="mt-1 text-[10px] font-medium text-white/90 md:text-sm">
+                  2 Haftalık Ücretsiz Deneyim fırsatını kaçırmayın.
+                </p>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- ── 2. ALTI ADIMLIK SÜREÇ ──────────────────────────────────────────── -->
       <section class="bg-[#f5f8ff] px-6 py-14 md:px-10 md:py-20">
