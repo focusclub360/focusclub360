@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://focusclub360.com/sitemap-index.xml

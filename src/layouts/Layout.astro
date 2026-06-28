@@ -5,12 +5,20 @@ import CookieConsent from '../components/CookieConsent.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'FocusClub 360 — Türkiye’nin ilk ve tek Dijital Etüd Kulübü',
   description = 'Canlı etüt, canlı soru çözüm ve birebir koçluk ile çocuğunuzun hedeflerine ulaşması için her adımda yanındayız. 2 hafta ücretsiz, tam erişim.',
+  image = '/FocusClub360_logoF_navy.png',
+  noindex = false,
 } = Astro.props;
+
+// Kanonik ve mutlak görsel URL'leri (Astro.site = astro.config.mjs'deki site)
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://focusclub360.com').href;
+const ogImage = new URL(image, Astro.site ?? 'https://focusclub360.com').href;
 ---
 
 <!doctype html>
@@ -21,6 +29,29 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Kanonik + indeksleme -->
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta name="theme-color" content="#1B2140" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FocusClub 360" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/FocusClub360_logoF_navy.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
