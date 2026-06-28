@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title?: string;
@@ -30,6 +31,8 @@ const {
   </head>
   <body>
     <slot />
+
+    <CookieConsent />
 
     <script>
       // Bölümler görünür olunca yumuşak fade-up

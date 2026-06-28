@@ -1,0 +1,229 @@
+---
+// Çerez onayı + ayar paneli + kalıcı çerez ayar butonu.
+// Tercihler localStorage'da 'fc360_cookie_consent' anahtarında saklanır.
+---
+
+<!-- Kalıcı çerez ayar butonu (sol alt) -->
+<button
+  id="cc-fab"
+  type="button"
+  aria-label="Çerez ayarları"
+  class="cc-fab"
+  hidden
+>
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5Z" />
+    <path d="M8.5 8.5h.01M16 9.5h.01M9 13h.01M13.5 14.5h.01M15.5 16.5h.01" />
+  </svg>
+</button>
+
+<!-- Onay şeridi -->
+<div id="cc-banner" class="cc-banner" role="dialog" aria-live="polite" aria-label="Çerez bildirimi" hidden>
+  <div class="cc-banner-inner">
+    <div class="cc-banner-text">
+      <p class="cc-title">Çerez Tercihleriniz</p>
+      <p class="cc-desc">
+        Size daha iyi bir deneyim sunmak için çerezler kullanıyoruz. Zorunlu çerezler sitenin çalışması için gereklidir; diğerlerini dilediğiniz gibi yönetebilirsiniz.
+        <a href="/gizlilik" class="cc-link">Gizlilik Politikası</a>
+      </p>
+    </div>
+    <div class="cc-banner-actions">
+      <button type="button" id="cc-reject" class="cc-btn cc-btn-ghost">Tümünü Reddet</button>
+      <button type="button" id="cc-settings" class="cc-btn cc-btn-ghost">Ayarlar</button>
+      <button type="button" id="cc-accept" class="cc-btn cc-btn-primary">Tümünü Kabul Et</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ayar paneli -->
+<div id="cc-modal" class="cc-modal" role="dialog" aria-modal="true" aria-labelledby="cc-modal-title" hidden>
+  <div class="cc-modal-overlay" data-cc-close></div>
+  <div class="cc-modal-card">
+    <div class="cc-modal-head">
+      <h2 id="cc-modal-title" class="cc-modal-title">Çerez Ayarları</h2>
+      <button type="button" class="cc-close" aria-label="Kapat" data-cc-close>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <p class="cc-modal-desc">Hangi çerez türlerine izin verdiğinizi buradan yönetebilirsiniz. Tercihleriniz tarayıcınızda saklanır.</p>
+
+    <div class="cc-cat">
+      <div class="cc-cat-text">
+        <p class="cc-cat-title">Zorunlu Çerezler</p>
+        <p class="cc-cat-desc">Sitenin temel işlevleri için gereklidir, kapatılamaz.</p>
+      </div>
+      <span class="cc-pill">Her zaman aktif</span>
+    </div>
+
+    <label class="cc-cat">
+      <div class="cc-cat-text">
+        <p class="cc-cat-title">Analitik Çerezler</p>
+        <p class="cc-cat-desc">Siteyi nasıl kullandığınızı anlamamıza yardımcı olur.</p>
+      </div>
+      <span class="cc-switch">
+        <input type="checkbox" id="cc-analytics" />
+        <span class="cc-slider"></span>
+      </span>
+    </label>
+
+    <label class="cc-cat">
+      <div class="cc-cat-text">
+        <p class="cc-cat-title">Pazarlama Çerezleri</p>
+        <p class="cc-cat-desc">Size daha uygun içerik ve tanıtım göstermek için kullanılır.</p>
+      </div>
+      <span class="cc-switch">
+        <input type="checkbox" id="cc-marketing" />
+        <span class="cc-slider"></span>
+      </span>
+    </label>
+
+    <div class="cc-modal-actions">
+      <button type="button" id="cc-reject-all" class="cc-btn cc-btn-ghost">Tümünü Reddet</button>
+      <button type="button" id="cc-save" class="cc-btn cc-btn-primary">Seçimi Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cc-fab {
+    position: fixed; left: 18px; bottom: 18px; z-index: 60;
+    display: grid; place-items: center;
+    height: 46px; width: 46px; border-radius: 9999px;
+    background-color: #1B2140; color: #b9c2ee;
+    border: 1px solid #2A2F52;
+    box-shadow: 0 8px 22px rgba(20,24,55,.35);
+    cursor: pointer; transition: transform .2s, color .2s, background-color .2s;
+  }
+  .cc-fab:hover { transform: translateY(-2px); color: #fff; background-color: #232a52; }
+
+  .cc-banner {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+    padding: 14px 16px;
+  }
+  .cc-banner-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 14px;
+    background-color: #161a33; border: 1px solid #2A2F52;
+    border-radius: 14px; padding: 18px 20px;
+    box-shadow: 0 18px 50px rgba(10,12,30,.45);
+  }
+  @media (min-width: 880px) {
+    .cc-banner-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+  }
+  .cc-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #fff; margin: 0 0 4px; }
+  .cc-desc { font-size: 13px; line-height: 1.6; color: #8B96CC; margin: 0; max-width: 640px; }
+  .cc-link { color: #8B9BFF; text-decoration: underline; text-underline-offset: 2px; }
+  .cc-link:hover { color: #fff; }
+
+  .cc-banner-actions { display: flex; flex-wrap: wrap; gap: 10px; flex-shrink: 0; }
+
+  .cc-btn {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    padding: 10px 16px; border-radius: 9px; transition: filter .2s, background-color .2s, color .2s;
+    white-space: nowrap;
+  }
+  .cc-btn-primary { background-image: linear-gradient(to right, #7c5cfc, #3b6ef0); color: #fff; box-shadow: 0 8px 20px rgba(80,90,240,.30); }
+  .cc-btn-primary:hover { filter: brightness(1.06); }
+  .cc-btn-ghost { background-color: transparent; color: #c7cdf0; border: 1px solid #343b66; }
+  .cc-btn-ghost:hover { background-color: #20254a; color: #fff; }
+
+  .cc-modal { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; }
+  .cc-modal-overlay { position: absolute; inset: 0; background-color: rgba(8,10,24,.66); backdrop-filter: blur(2px); }
+  .cc-modal-card {
+    position: relative; width: 100%; max-width: 480px;
+    background-color: #161a33; border: 1px solid #2A2F52; border-radius: 16px;
+    padding: 22px; box-shadow: 0 24px 60px rgba(8,10,24,.6);
+    max-height: 90vh; overflow-y: auto;
+  }
+  .cc-modal-head { display: flex; align-items: center; justify-content: space-between; }
+  .cc-modal-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin: 0; }
+  .cc-close { display: grid; place-items: center; height: 34px; width: 34px; border-radius: 8px; background: transparent; border: 0; color: #8B96CC; cursor: pointer; }
+  .cc-close:hover { color: #fff; background-color: #20254a; }
+  .cc-modal-desc { font-size: 13px; line-height: 1.6; color: #8B96CC; margin: 8px 0 18px; }
+
+  .cc-cat {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 0; border-top: 1px solid #262c4f;
+  }
+  .cc-cat-title { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; color: #fff; margin: 0 0 3px; }
+  .cc-cat-desc { font-size: 12px; line-height: 1.5; color: #8B96CC; margin: 0; }
+  .cc-pill { flex-shrink: 0; font-size: 11px; font-weight: 600; color: #8B9BFF; background-color: rgba(110,124,255,.14); padding: 5px 10px; border-radius: 7px; }
+
+  .cc-switch { position: relative; flex-shrink: 0; width: 44px; height: 26px; }
+  .cc-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .cc-slider {
+    position: absolute; inset: 0; cursor: pointer; border-radius: 9999px;
+    background-color: #343b66; transition: background-color .2s;
+  }
+  .cc-slider::before {
+    content: ''; position: absolute; height: 20px; width: 20px; left: 3px; top: 3px;
+    background-color: #fff; border-radius: 9999px; transition: transform .2s;
+  }
+  .cc-switch input:checked + .cc-slider { background-image: linear-gradient(to right, #7c5cfc, #3b6ef0); }
+  .cc-switch input:checked + .cc-slider::before { transform: translateX(18px); }
+
+  .cc-modal-actions { display: flex; gap: 10px; margin-top: 22px; }
+  .cc-modal-actions .cc-btn { flex: 1; text-align: center; }
+
+  [hidden] { display: none !important; }
+</style>
+
+<script>
+  const KEY = 'fc360_cookie_consent';
+
+  const fab = document.getElementById('cc-fab') as HTMLButtonElement | null;
+  const banner = document.getElementById('cc-banner');
+  const modal = document.getElementById('cc-modal');
+  const analyticsInput = document.getElementById('cc-analytics') as HTMLInputElement | null;
+  const marketingInput = document.getElementById('cc-marketing') as HTMLInputElement | null;
+
+  type Consent = { necessary: true; analytics: boolean; marketing: boolean; ts: number };
+
+  function read(): Consent | null {
+    try {
+      const raw = localStorage.getItem(KEY);
+      return raw ? (JSON.parse(raw) as Consent) : null;
+    } catch { return null; }
+  }
+
+  function save(analytics: boolean, marketing: boolean) {
+    const data: Consent = { necessary: true, analytics, marketing, ts: Date.now() };
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch {}
+    window.dispatchEvent(new CustomEvent('fc360:consent', { detail: data }));
+  }
+
+  function showBanner() { banner?.removeAttribute('hidden'); }
+  function hideBanner() { banner?.setAttribute('hidden', ''); }
+  function showFab() { fab?.removeAttribute('hidden'); }
+
+  function openModal() {
+    const c = read();
+    if (analyticsInput) analyticsInput.checked = c ? c.analytics : false;
+    if (marketingInput) marketingInput.checked = c ? c.marketing : false;
+    modal?.removeAttribute('hidden');
+  }
+  function closeModal() { modal?.setAttribute('hidden', ''); }
+
+  // İlk yüklemede karar verilmemişse şeridi göster, her durumda fab görünür.
+  if (!read()) showBanner();
+  showFab();
+
+  document.getElementById('cc-accept')?.addEventListener('click', () => { save(true, true); hideBanner(); });
+  document.getElementById('cc-reject')?.addEventListener('click', () => { save(false, false); hideBanner(); });
+  document.getElementById('cc-settings')?.addEventListener('click', () => { openModal(); });
+
+  document.getElementById('cc-reject-all')?.addEventListener('click', () => { save(false, false); closeModal(); hideBanner(); });
+  document.getElementById('cc-save')?.addEventListener('click', () => {
+    save(!!analyticsInput?.checked, !!marketingInput?.checked);
+    closeModal(); hideBanner();
+  });
+
+  fab?.addEventListener('click', () => { openModal(); });
+
+  modal?.querySelectorAll('[data-cc-close]').forEach((el) => {
+    el.addEventListener('click', () => closeModal());
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
