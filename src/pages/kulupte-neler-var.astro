@@ -28,9 +28,9 @@ const kartlar: Kart[] = [
     renk: 'bg-turkuaz',
     ikon: 'users',
     baslik: 'Canlı Etüt',
-    aciklama: 'Haftanın belirli akşamları, gerçek branş öğretmeni gözetiminde canlı online etüt. O an birlikte çalışma ile interaktif bir etüt.',
+    aciklama: 'Haftanın 4 akşamı, gerçek branş öğretmenleri ile canlı online etüt: ders çalışma, soru çözümü ve deneme çözümü bir arada.',
     maddeler: [
-      'Branş bazlı etütler (Matematik, Fen, Türkçe ve diğer LGS dersleri).',
+      'Branş bazlı etütler',
       'Öğrenme etüdü, pekiştirme, canlı soru çözüm akışıyla ilerleyen düzen.',
       'Öğretmenle anlık etkileşim ve aynı anda çalışan bir grup.',
     ],
@@ -60,14 +60,13 @@ const kartlar: Kart[] = [
   {
     renk: 'bg-amber',
     ikon: 'cpu',
-    baslik: 'Yapay Zekâ Takibi ve Veli Raporlaması',
-    aciklama: 'Kayıttan LGS sınavına kadar tüm süreci takip eden akıllı katman. Yapay zekâ sadece rapor üretmez; eksiği bulur, neye nasıl çalışılacağını yönlendirir, riski erken yakalar ve gerçek öğretmenlerden oluşan ekibe taşır.',
+    baslik: 'Yapay Zekâ Takibi',
+    aciklama: 'Kayıttan LGS sınavına kadar tüm süreci takip eden akıllı katman. Yapay zekâ sadece rapor üretmez; eksiği bulur, neye nasıl çalışılacağını yönlendirir, riski erken yakalar ve gerçek öğretmenlere taşır.',
     maddeler: [
       'Eksik tespiti ve kişiye özel çalışma yönlendirmesi.',
       'Tam öğrenme ve akıllı tekrar ile sürekli gelişim ölçümü.',
-      'Veliye düzenli, anlaşılır bilgilendirme: haftalık rapor, aylık değerlendirme.',
+      'Gerileme ve risklerin erken yakalanması.',
     ],
-    extraLink: { metin: 'Veliler için detaylı bilgi', href: ROUTES.velilere },
   },
   {
     renk: 'bg-mavi',
@@ -79,6 +78,18 @@ const kartlar: Kart[] = [
       'Dijital ders dökümanları ve çalışma kaynakları.',
       'Deneme sınavları ve test çözümleri.',
     ],
+  },
+  {
+    renk: 'bg-mint',
+    ikon: 'bell',
+    baslik: 'Veli Raporlama',
+    aciklama: 'Çocuğunuzun etüt içi aktivitesi, ders durumu ve kişisel gelişimi düzenli olarak sizinle paylaşılır. Sürecin neresinde olduğunu net biçimde görürsünüz.',
+    maddeler: [
+      'Veliye düzenli, anlaşılır bilgilendirme: haftalık rapor, aylık değerlendirme.',
+      'Katılım, çalışma süresi ve gelişim özetleri.',
+      'Bildirim ve raporların doğrudan veliye iletilmesi.',
+    ],
+    extraLink: { metin: 'Veliler için detaylı bilgi', href: ROUTES.velilere },
   },
 ];
 
@@ -208,7 +219,7 @@ const adimlar = [
                   </a>
                 </div>
                 <p class="mt-1 text-[10px] font-medium text-white/90 md:text-sm">
-                  2 Haftalık Ücretsiz Deneyim süresince kredi kartınızı kayıt ettirmenize gerek yoktur.
+                  2 Haftalık Ücretsiz Deneyim fırsatını kaçırmayın.
                 </p>
               </div>
 
@@ -350,7 +361,7 @@ const adimlar = [
         <div class="mx-auto max-w-[1400px]">
           <div class="reveal rounded-[8px] bg-lacivert px-6 py-12 md:px-10 md:py-14">
             <p class="mx-auto max-w-2xl text-center font-baslik text-xl font-bold leading-relaxed text-beyaz md:text-2xl">
-              Sadece bir uygulama değil; çocuğunuzun yanında gerçek bir ekip ve onları baştan sona takip eden akıllı bir sistem.
+              Sadece bir uygulama değil; çocuğunuzun yanında gerçek branş ve rehber öğretmenleri ve onları baştan sona takip eden akıllı bir sistem.
             </p>
             <div class="mt-10 grid gap-5 md:grid-cols-2 md:gap-6">
               <div class="rounded-[8px] bg-beyaz/5 p-6">
@@ -361,7 +372,7 @@ const adimlar = [
                   <h3 class="font-baslik text-base font-semibold text-beyaz">Gerçek Branş Öğretmenleri ve Rehber Öğretmenler</h3>
                 </div>
                 <ul class="mt-4 space-y-3">
-                  {['Branş öğretmeni canlı etütte yanında.', 'Rehber öğretmen birebir koçluk yapar.', 'Karar veren, yönlendiren, ilgilenen öğretmenlerdir.'].map((m) => (
+                  {['Branş öğretmenleri canlı etütte yanında.', 'Rehber öğretmenler bireysel koçluk yapar.', 'Karar veren, yönlendiren, ilgilenen öğretmenlerdir.'].map((m) => (
                     <li class="flex items-start gap-2">
                       <Icon name="check" size={14} class="mt-0.5 shrink-0 text-turkuaz" />
                       <span class="text-sm text-beyaz/80">{m}</span>
@@ -396,7 +407,7 @@ const adimlar = [
           <div class="reveal rounded-[8px] bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] px-6 py-12 text-center md:px-10 md:py-16">
             <h2 class="font-baslik text-3xl font-bold text-beyaz md:text-4xl">Hepsini İki Hafta Boyunca Ücretsiz Deneyin</h2>
             <p class="mx-auto mt-4 max-w-lg text-base text-beyaz/80">
-              2 haftalık deneyim boyunca canlı etütlere, koçluğa ve dijital içeriklere erişebilirsiniz. Ücretsiz deneyim için kredi kartı gerekmez, süre bitince devam edip etmemek sizin elinizde.
+              2 haftalık deneyim boyunca canlı etütlere, koçluğa ve dijital içeriklere erişebilirsiniz. Süre bitince devam edip etmemek sizin elinizde.
             </p>
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
