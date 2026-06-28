@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 
 const adres = 'Yıldız Teknik Üniversitesi Davutpaşa Kampüsü Teknopark, B1 Blok, No: 309, Esenler / İstanbul';
 const eposta = 'info@focusclub360.com';
@@ -15,21 +16,7 @@ const haritaUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURI
   <div class="theme-v13 bg-[#131629] md:bg-[#131629] md:p-4">
     <div class="mx-auto max-w-[1400px] bg-white md:rounded-[8px] md:shadow-[0_30px_80px_rgba(110,124,255,.18)]">
 
-      <!-- Sticky header -->
-      <header class="sticky top-0 z-50 flex items-center justify-between gap-4 border-b border-[#2A2F52] px-6 py-4 backdrop-blur-sm md:px-10" style="background-color: rgba(27,33,64,0.97);">
-        <a href="/" class="flex items-center gap-2" aria-label="FocusClub 360">
-          <span class="grid h-9 w-9 place-items-center rounded-kart bg-gradient-to-br from-[#6E7CFF] to-[#2D3AAE] text-beyaz">
-            <Icon name="sparkles" size={20} />
-          </span>
-          <span class="font-baslik text-xl font-extrabold tracking-tight text-[#FFFFFF]">FocusClub
-            <span class="text-[#6E7CFF]">360</span>
-          </span>
-        </a>
-        <a href="/" class="inline-flex items-center gap-1.5 text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">
-          <span class="rotate-90 inline-block"><Icon name="chevron" size={15} /></span>
-          Anasayfa
-        </a>
-      </header>
+      <SiteHeader />
 
       <!-- İçerik -->
       <section class="bg-white px-6 py-14 md:px-10 md:py-20">
