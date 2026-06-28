@@ -14,6 +14,7 @@ export const ROUTES = {
   nasilUyeOlunur: '/nasil-uye-olunur',
   rehber: '/rehber',
   merakEdilenler: '/merak-edilenler',
+  bizeUlasin: '/bize-ulasin',
 };
 
 // Anasayfa içi (one-page) bölüm çapaları. Baştaki "/" alt sayfalardan da çalışmasını sağlar.

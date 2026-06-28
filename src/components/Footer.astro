@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { UYELIK_URL, GIRIS_URL, ROUTES, ANCHORS } from '../config';
+import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
 
 const sutunlar = [
   {
@@ -24,16 +24,15 @@ const sutunlar = [
     baslik: 'Destek',
     linkler: [
       { ad: 'Merak Edilenler', href: ROUTES.merakEdilenler },
-      { ad: 'Bize Ulaşın',    href: ANCHORS.iletisim  },
+      { ad: 'Bize Ulaşın',    href: ROUTES.bizeUlasin },
       { ad: 'Rehber',         href: ROUTES.rehber     },
     ],
   },
   {
     baslik: 'İletişim',
     linkler: [
-      { ad: '0850 308 36 360',       href: 'tel:08503083636'              },
       { ad: 'info@focusclub360.com', href: 'mailto:info@focusclub360.com' },
-      { ad: 'YTÜ Teknokent İstanbul', href: '#'                           },
+      { ad: 'YTÜ Teknokent, İstanbul', href: ROUTES.bizeUlasin            },
     ],
   },
 ];
