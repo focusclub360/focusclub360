@@ -91,6 +91,21 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                   <input class={inputClass} id="veliSoyad" name="Veli Soyadı" type="text" required autocomplete="family-name" />
                 </div>
                 <div>
+                  <label class={labelClass} for="yakinlik">Veli Yakınlık Derecesi <span class="text-mercan">*</span></label>
+                  <select class={inputClass} id="yakinlik" name="Veli Yakınlık Derecesi" required>
+                    <option value="" disabled selected>Seçiniz</option>
+                    <option value="Anne">Anne</option>
+                    <option value="Baba">Baba</option>
+                    <option value="Abla">Abla</option>
+                    <option value="Ağabey">Ağabey</option>
+                    <option value="Diğer">Diğer</option>
+                  </select>
+                </div>
+                <div id="yakinlik-diger-wrap" class="hidden">
+                  <label class={labelClass} for="yakinlikDiger">Yakınlık Derecesi (Diğer) <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="yakinlikDiger" name="Veli Yakınlık (Diğer)" type="text" placeholder="Örn. Hala, Dede, Vasi" />
+                </div>
+                <div>
                   <label class={labelClass} for="veliTel">Veli Telefon No <span class="text-mercan">*</span></label>
                   <input class={inputClass} id="veliTel" name="Veli Telefon" type="tel" inputmode="tel" placeholder="05XX XXX XX XX" required autocomplete="tel" />
                 </div>
@@ -287,6 +302,19 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
     a.addEventListener('click', (ev) => ev.stopPropagation());
   });
 
+  // Veli Yakınlık Derecesi: "Diğer" seçilince yazılabilir kutu
+  const yakinlikSel = document.getElementById('yakinlik') as HTMLSelectElement | null;
+  const yakinlikDigerWrap = document.getElementById('yakinlik-diger-wrap') as HTMLElement | null;
+  const yakinlikDiger = document.getElementById('yakinlikDiger') as HTMLInputElement | null;
+  yakinlikSel?.addEventListener('change', () => {
+    const diger = yakinlikSel.value === 'Diğer';
+    yakinlikDigerWrap?.classList.toggle('hidden', !diger);
+    if (yakinlikDiger) {
+      yakinlikDiger.required = diger;
+      if (!diger) yakinlikDiger.value = '';
+    }
+  });
+
   // Form gönderimi
   const form = document.getElementById('uye-form') as HTMLFormElement | null;
   const hata = document.getElementById('form-hata') as HTMLElement | null;
@@ -314,6 +342,12 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
     const fd = new FormData(form);
     const payload: Record<string, string> = {};
     fd.forEach((v, k) => { payload[k] = String(v); });
+
+    // "Diğer" yakınlıkta serbest metni asıl değere taşı
+    if (payload['Veli Yakınlık Derecesi'] === 'Diğer') {
+      payload['Veli Yakınlık Derecesi'] = (payload['Veli Yakınlık (Diğer)'] || '').trim();
+    }
+    delete payload['Veli Yakınlık (Diğer)'];
 
     if (btn) { btn.disabled = true; btn.textContent = 'Gönderiliyor...'; }
 
