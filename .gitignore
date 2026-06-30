@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # yerel build paketi
 focusclub-dist.zip
+
+# vercel adapter ciktisi
+.vercel/

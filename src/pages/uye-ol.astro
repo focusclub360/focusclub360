@@ -7,10 +7,6 @@ import ilIlce from '../data/il-ilce.json';
 
 const iller = Object.keys(ilIlce);
 
-// Form gönderimi henüz arka uca bağlı değil.
-// Web3Forms kullanılacaksa buraya access_key gelecek; boşsa form "demo" başarı ekranı gösterir.
-const WEB3FORMS_KEY = '';
-
 const inputClass =
   'w-full rounded-[8px] border border-[#2A2F52] bg-[#10142B] px-4 py-3 text-sm text-white placeholder:text-[#5b6488] transition focus:border-[#6E7CFF] focus:outline-none focus:ring-2 focus:ring-[#6E7CFF]/25';
 const labelClass = 'mb-1.5 block text-sm font-medium text-white';
@@ -237,7 +233,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 
 <!-- İl/İlçe verisi (istemci tarafı) -->
 <script type="application/json" id="il-ilce-data" is:inline set:html={JSON.stringify(ilIlce)}></script>
-<script type="application/json" id="form-config" is:inline set:html={JSON.stringify({ accessKey: WEB3FORMS_KEY })}></script>
 
 <style is:global>
   .theme-v13 .bg-white { background-color: #1B2140; }
@@ -271,7 +266,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 <script>
   // İl/İlçe kademeli liste
   const data = JSON.parse(document.getElementById('il-ilce-data')?.textContent || '{}');
-  const cfg = JSON.parse(document.getElementById('form-config')?.textContent || '{}');
   const sehirSel = document.getElementById('sehir') as HTMLSelectElement | null;
   const ilceSel = document.getElementById('ilce') as HTMLSelectElement | null;
 
@@ -324,26 +318,20 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
     if (btn) { btn.disabled = true; btn.textContent = 'Gönderiliyor...'; }
 
     try {
-      if (cfg.accessKey) {
-        // Web3Forms'a gönder
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ access_key: cfg.accessKey, subject: 'Yeni FocusClub 360 Üyelik Başvurusu', ...payload }),
-        });
-        const out = await res.json();
-        if (!out.success) throw new Error(out.message || 'Gönderim başarısız');
-      } else {
-        // Arka uç henüz bağlı değil — demo başarı
-        console.log('Üyelik başvurusu (demo):', payload);
-        await new Promise((r) => setTimeout(r, 600));
-      }
+      const res = await fetch('/api/uye-ol', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const out = await res.json();
+      if (!res.ok || !out.success) throw new Error(out.message || 'Gönderim başarısız');
+
       form.classList.add('hidden');
       basari?.classList.remove('hidden');
       basari?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
       if (btn) { btn.disabled = false; btn.textContent = 'Üyeliği Tamamla'; }
-      hataGoster('Başvuru gönderilemedi. Lütfen tekrar deneyin veya info@focusclub360.com ile iletişime geçin.');
+      hataGoster((err as Error)?.message || 'Başvuru gönderilemedi. Lütfen tekrar deneyin veya info@focusclub360.com ile iletişime geçin.');
     }
   });
 </script>
