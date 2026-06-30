@@ -31,7 +31,7 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
               Üyelik Başvurusu
             </span>
             <h1 class="mt-4 font-baslik text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl">
-              Üye Ol
+              Üye Olun
             </h1>
             <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#8B96CC]">
               Formu eksiksiz doldurun; size özel <strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim kodunuzu</strong> e-posta ile gönderelim.
@@ -215,11 +215,11 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                 id="gonder-btn"
                 class="inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 disabled:opacity-60 sm:w-auto sm:px-10"
               >
-                Üyeliği Tamamla
+                Ücretsiz Üyeliği Başlatın
                 <Icon name="arrow" size={16} />
               </button>
               <p class="mt-3 text-xs font-medium text-[#6B78AA]">
-                2 Haftalık Ücretsiz Deneyim için kredi kartı gerekmez.
+                2 Haftalık Ücretsiz Deneyim için kredi kartınızı kaydetmeniz gerekmez.
               </p>
             </div>
           </form>
@@ -364,7 +364,7 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
       basari?.classList.remove('hidden');
       basari?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
-      if (btn) { btn.disabled = false; btn.textContent = 'Üyeliği Tamamla'; }
+      if (btn) { btn.disabled = false; btn.textContent = 'Ücretsiz Üyeliği Başlatın'; }
       hataGoster((err as Error)?.message || 'Başvuru gönderilemedi. Lütfen tekrar deneyin veya info@focusclub360.com ile iletişime geçin.');
     }
   });
