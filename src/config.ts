@@ -3,8 +3,8 @@
 // Üyelik CTA'ları şimdilik Nasıl Üye Olunur sayfasına yönlendirir.
 export const UYELIK_URL = '/nasil-uye-olunur';
 export const GIRIS_URL = '/giris';
-// Gerçek dış üyelik/kayıt linki. TODO: dış kayıt adresi gelince güncelle.
-export const KAYIT_URL = '#';
+// Üye olma formu sayfası.
+export const KAYIT_URL = '/uye-ol';
 
 // Alt sayfa rotaları (anasayfa tek sayfa akış; bu sayfalar ayrı olarak yapılacak).
 export const ROUTES = {

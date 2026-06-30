@@ -1,0 +1,349 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import ilIlce from '../data/il-ilce.json';
+
+const iller = Object.keys(ilIlce);
+
+// Form gönderimi henüz arka uca bağlı değil.
+// Web3Forms kullanılacaksa buraya access_key gelecek; boşsa form "demo" başarı ekranı gösterir.
+const WEB3FORMS_KEY = '';
+
+const inputClass =
+  'w-full rounded-[8px] border border-[#2A2F52] bg-[#10142B] px-4 py-3 text-sm text-white placeholder:text-[#5b6488] transition focus:border-[#6E7CFF] focus:outline-none focus:ring-2 focus:ring-[#6E7CFF]/25';
+const labelClass = 'mb-1.5 block text-sm font-medium text-white';
+---
+
+<Layout
+  title="Üye Ol | FocusClub 360"
+  description="FocusClub 360'a üye olun. 2 Haftalık Ücretsiz Deneyim kodunuzu alın; deneyiminiz dönem başında, ilk açılacak etüt grubuyla başlar."
+>
+  <div class="theme-v13 bg-[#131629] md:bg-[#131629] md:p-4">
+    <div class="mx-auto max-w-[1400px] bg-white md:rounded-[8px] md:shadow-[0_30px_80px_rgba(110,124,255,.18)]">
+
+      <SiteHeader aktif="/nasil-uye-olunur" />
+
+      <section class="bg-white px-6 py-12 md:px-10 md:py-16">
+        <div class="mx-auto max-w-[760px]">
+
+          <!-- Başlık -->
+          <div class="reveal text-center">
+            <span class="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/20 to-[#3b6ef0]/20 px-3 py-1 text-xs font-semibold text-[#8B9BFF]">
+              <Icon name="star" size={12} />
+              Üyelik Başvurusu
+            </span>
+            <h1 class="mt-4 font-baslik text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl">
+              Üye Ol
+            </h1>
+            <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#8B96CC]">
+              Formu eksiksiz doldurun; size özel <strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim kodunuzu</strong> e-posta ile gönderelim.
+            </p>
+          </div>
+
+          <!-- Bilgilendirme kutusu -->
+          <div class="reveal mt-8 rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] p-5 md:p-6">
+            <div class="flex items-start gap-3">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] bg-mor text-white">
+                <Icon name="gift" size={18} />
+              </span>
+              <div>
+                <h2 class="font-baslik text-base font-bold text-white">Deneyiminiz nasıl başlar?</h2>
+                <ul class="mt-3 space-y-2 text-sm leading-relaxed text-[#8B96CC]">
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span>Üyeliğiniz tamamlanınca size özel bir <strong class="font-semibold text-white">deneyim kodu</strong> oluşturulur ve e-postanıza gönderilir.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span>Deneyiminiz <strong class="font-semibold text-white">dönem başında</strong> başlar. Ne zaman üye olursanız olun, 2 haftalık süreniz <strong class="font-semibold text-white">ilk açılacak etüt grubu</strong> ile başlar.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span>2 haftalık deneyim sonunda <strong class="font-semibold text-white">dilerseniz ücretli üyeliğe</strong> geçersiniz; karar tamamen sizindir.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span>2 Haftalık Ücretsiz Deneyim için <strong class="font-semibold text-white">kredi kartı gerekmez.</strong></span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span>Sürecin sağlıklı işlemesi için <strong class="font-semibold text-white">tüm alanların eksiksiz</strong> doldurulması zorunludur.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORM -->
+          <form id="uye-form" class="reveal mt-8 space-y-8" novalidate>
+
+            <!-- Bal küpü (spam) -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <!-- Veli Bilgileri -->
+            <fieldset class="rounded-[8px] border border-[#2A2F52] bg-[#161A33] p-5 md:p-6">
+              <legend class="px-2 font-baslik text-sm font-bold uppercase tracking-wide text-[#8B9BFF]">Veli Bilgileri</legend>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label class={labelClass} for="veliAd">Veli Adı <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="veliAd" name="Veli Adı" type="text" required autocomplete="given-name" />
+                </div>
+                <div>
+                  <label class={labelClass} for="veliSoyad">Veli Soyadı <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="veliSoyad" name="Veli Soyadı" type="text" required autocomplete="family-name" />
+                </div>
+                <div>
+                  <label class={labelClass} for="veliTel">Veli Telefon No <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="veliTel" name="Veli Telefon" type="tel" inputmode="tel" placeholder="05XX XXX XX XX" required autocomplete="tel" />
+                </div>
+                <div>
+                  <label class={labelClass} for="veliMail">Veli E-posta <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="veliMail" name="Veli E-posta" type="email" placeholder="ornek@eposta.com" required autocomplete="email" />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Öğrenci Bilgileri -->
+            <fieldset class="rounded-[8px] border border-[#2A2F52] bg-[#161A33] p-5 md:p-6">
+              <legend class="px-2 font-baslik text-sm font-bold uppercase tracking-wide text-[#8B9BFF]">Öğrenci Bilgileri</legend>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label class={labelClass} for="ogrAd">Öğrenci Adı <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="ogrAd" name="Öğrenci Adı" type="text" required />
+                </div>
+                <div>
+                  <label class={labelClass} for="ogrSoyad">Öğrenci Soyadı <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="ogrSoyad" name="Öğrenci Soyadı" type="text" required />
+                </div>
+                <div>
+                  <label class={labelClass} for="sinif">Sınıf <span class="text-mercan">*</span></label>
+                  <select class={inputClass} id="sinif" name="Sınıf" required>
+                    <option value="" disabled selected>Seçiniz</option>
+                    <option value="5. Sınıf">5. Sınıf</option>
+                    <option value="6. Sınıf">6. Sınıf</option>
+                    <option value="7. Sınıf">7. Sınıf</option>
+                    <option value="8. Sınıf">8. Sınıf</option>
+                  </select>
+                </div>
+                <div>
+                  <label class={labelClass} for="okul">Okul Adı <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="okul" name="Okul Adı" type="text" required />
+                </div>
+                <div>
+                  <label class={labelClass} for="ogrTel">Öğrenci Telefon No <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="ogrTel" name="Öğrenci Telefon" type="tel" inputmode="tel" placeholder="05XX XXX XX XX" required />
+                </div>
+                <div>
+                  <label class={labelClass} for="ogrMail">Öğrenci E-posta <span class="text-mercan">*</span></label>
+                  <input class={inputClass} id="ogrMail" name="Öğrenci E-posta" type="email" placeholder="ornek@eposta.com" required />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Adres Bilgileri -->
+            <fieldset class="rounded-[8px] border border-[#2A2F52] bg-[#161A33] p-5 md:p-6">
+              <legend class="px-2 font-baslik text-sm font-bold uppercase tracking-wide text-[#8B9BFF]">Adres Bilgileri</legend>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label class={labelClass} for="sehir">Şehir <span class="text-mercan">*</span></label>
+                  <select class={inputClass} id="sehir" name="Şehir" required>
+                    <option value="" disabled selected>İl seçiniz</option>
+                    {iller.map((il) => <option value={il}>{il}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label class={labelClass} for="ilce">İlçe <span class="text-mercan">*</span></label>
+                  <select class={inputClass} id="ilce" name="İlçe" required disabled>
+                    <option value="" disabled selected>Önce il seçiniz</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label class={labelClass} for="adres">Açık Adres <span class="text-mercan">*</span></label>
+                  <textarea class={`${inputClass} min-h-[90px] resize-y`} id="adres" name="Adres" rows="3" required></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Instagram -->
+            <fieldset class="rounded-[8px] border border-[#2A2F52] bg-[#161A33] p-5 md:p-6">
+              <legend class="px-2 font-baslik text-sm font-bold uppercase tracking-wide text-[#8B9BFF]">Instagram</legend>
+              <div>
+                <label class={labelClass} for="instagram">Instagram Kullanıcı Adınız <span class="text-mercan">*</span></label>
+                <input class={inputClass} id="instagram" name="Instagram Kullanıcı Adı" type="text" placeholder="@kullaniciadi" required />
+                <p class="mt-2 text-xs leading-relaxed text-[#8B96CC]">
+                  Üyelik için <a href="https://instagram.com/focusclub360" target="_blank" rel="noopener" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">@focusclub360</a> Instagram hesabımızı takip etmeniz <strong class="font-semibold text-white">zorunludur.</strong>
+                </p>
+              </div>
+            </fieldset>
+
+            <!-- Onaylar -->
+            <div class="space-y-3">
+              <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
+                <input type="checkbox" id="onayKvkk" name="KVKK Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
+                <span><a href="/kvkk" target="_blank" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">KVKK Aydınlatma Metni</a>'ni okudum ve kişisel verilerimin işlenmesini onaylıyorum. <span class="text-mercan">*</span></span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
+                <input type="checkbox" id="onayUyelik" name="Üyelik Koşulları Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
+                <span><a href="/gizlilik" target="_blank" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">Gizlilik Politikası</a> ve üyelik koşullarını okudum, kabul ediyorum. <span class="text-mercan">*</span></span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
+                <input type="checkbox" id="onayInsta" name="Instagram Takip Onayı" value="Takip edildi" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
+                <span><a href="https://instagram.com/focusclub360" target="_blank" rel="noopener" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">@focusclub360</a> Instagram hesabını takip ettim (üyelik için zorunludur). <span class="text-mercan">*</span></span>
+              </label>
+            </div>
+
+            <!-- Hata mesajı -->
+            <p id="form-hata" class="hidden rounded-[8px] border border-mercan/40 bg-mercan/10 px-4 py-3 text-sm font-medium text-mercan"></p>
+
+            <!-- Gönder -->
+            <div>
+              <button
+                type="submit"
+                id="gonder-btn"
+                class="inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 disabled:opacity-60 sm:w-auto sm:px-10"
+              >
+                Üyeliği Tamamla
+                <Icon name="arrow" size={16} />
+              </button>
+              <p class="mt-3 text-xs font-medium text-[#6B78AA]">
+                2 Haftalık Ücretsiz Deneyim için kredi kartı gerekmez.
+              </p>
+            </div>
+          </form>
+
+          <!-- Başarı ekranı -->
+          <div id="basari" class="reveal hidden rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] p-8 text-center md:p-10">
+            <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-turkuaz/15 text-turkuaz">
+              <Icon name="check" size={28} />
+            </span>
+            <h2 class="mt-5 font-baslik text-2xl font-bold text-white">Başvurunuz Alındı!</h2>
+            <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#8B96CC]">
+              Deneyim kodunuz e-posta adresinize gönderilecek. Deneyiminiz, ilk açılacak etüt grubuyla birlikte dönem başında başlayacaktır.
+            </p>
+            <a href="/" class="mt-6 inline-flex items-center gap-2 rounded-[8px] border border-[#2A2F52] px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/5">
+              Ana Sayfaya Dön
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  </div>
+</Layout>
+
+<!-- İl/İlçe verisi (istemci tarafı) -->
+<script type="application/json" id="il-ilce-data" is:inline set:html={JSON.stringify(ilIlce)}></script>
+<script type="application/json" id="form-config" is:inline set:html={JSON.stringify({ accessKey: WEB3FORMS_KEY })}></script>
+
+<style is:global>
+  .theme-v13 .bg-white { background-color: #1B2140; }
+
+  /* Form kontrolleri - garantili koyu tema + okunur kontrast */
+  #uye-form input[type="text"],
+  #uye-form input[type="email"],
+  #uye-form input[type="tel"],
+  #uye-form select,
+  #uye-form textarea {
+    background-color: #10142B;
+    color: #ffffff;
+    border-color: #2A3060;
+    color-scheme: dark;
+  }
+  #uye-form input::placeholder,
+  #uye-form textarea::placeholder {
+    color: #6B78AA;
+  }
+  #uye-form select:focus,
+  #uye-form input:focus,
+  #uye-form textarea:focus {
+    border-color: #6E7CFF;
+  }
+  #uye-form option {
+    background-color: #10142B;
+    color: #ffffff;
+  }
+</style>
+
+<script>
+  // İl/İlçe kademeli liste
+  const data = JSON.parse(document.getElementById('il-ilce-data')?.textContent || '{}');
+  const cfg = JSON.parse(document.getElementById('form-config')?.textContent || '{}');
+  const sehirSel = document.getElementById('sehir') as HTMLSelectElement | null;
+  const ilceSel = document.getElementById('ilce') as HTMLSelectElement | null;
+
+  sehirSel?.addEventListener('change', () => {
+    if (!ilceSel) return;
+    const ilceler = data[sehirSel.value] || [];
+    ilceSel.innerHTML = '<option value="" disabled selected>İlçe seçiniz</option>';
+    ilceler.forEach((ilce: string) => {
+      const opt = document.createElement('option');
+      opt.value = ilce;
+      opt.textContent = ilce;
+      ilceSel.appendChild(opt);
+    });
+    ilceSel.disabled = ilceler.length === 0;
+  });
+
+  // Onay etiketlerindeki linkler tıklanınca checkbox'ı tetiklemesin
+  document.querySelectorAll('#uye-form label a').forEach((a) => {
+    a.addEventListener('click', (ev) => ev.stopPropagation());
+  });
+
+  // Form gönderimi
+  const form = document.getElementById('uye-form') as HTMLFormElement | null;
+  const hata = document.getElementById('form-hata') as HTMLElement | null;
+  const btn = document.getElementById('gonder-btn') as HTMLButtonElement | null;
+  const basari = document.getElementById('basari') as HTMLElement | null;
+
+  function hataGoster(mesaj: string) {
+    if (!hata) return;
+    hata.textContent = mesaj;
+    hata.classList.remove('hidden');
+    hata.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hata?.classList.add('hidden');
+
+    if (!form.checkValidity()) {
+      const ilk = form.querySelector(':invalid') as HTMLElement | null;
+      ilk?.focus();
+      hataGoster('Lütfen tüm zorunlu alanları eksiksiz ve doğru doldurun.');
+      return;
+    }
+
+    const fd = new FormData(form);
+    const payload: Record<string, string> = {};
+    fd.forEach((v, k) => { payload[k] = String(v); });
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Gönderiliyor...'; }
+
+    try {
+      if (cfg.accessKey) {
+        // Web3Forms'a gönder
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ access_key: cfg.accessKey, subject: 'Yeni FocusClub 360 Üyelik Başvurusu', ...payload }),
+        });
+        const out = await res.json();
+        if (!out.success) throw new Error(out.message || 'Gönderim başarısız');
+      } else {
+        // Arka uç henüz bağlı değil — demo başarı
+        console.log('Üyelik başvurusu (demo):', payload);
+        await new Promise((r) => setTimeout(r, 600));
+      }
+      form.classList.add('hidden');
+      basari?.classList.remove('hidden');
+      basari?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Üyeliği Tamamla'; }
+      hataGoster('Başvuru gönderilemedi. Lütfen tekrar deneyin veya info@focusclub360.com ile iletişime geçin.');
+    }
+  });
+</script>
