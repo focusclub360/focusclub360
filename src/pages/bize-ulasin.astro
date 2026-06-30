@@ -6,6 +6,8 @@ import SiteHeader from '../components/SiteHeader.astro';
 
 const adres = 'Yıldız Teknik Üniversitesi Davutpaşa Kampüsü Teknopark, B1 Blok, No: 309, Esenler / İstanbul';
 const eposta = 'info@focusclub360.com';
+const telefon = '0532 170 24 98';
+const telefonHref = 'tel:+905321702498';
 const haritaUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Yıldız Teknik Üniversitesi Davutpaşa Teknopark B1 Blok Esenler İstanbul');
 ---
 
@@ -45,6 +47,19 @@ const haritaUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURI
               <p class="mt-2 text-sm leading-relaxed text-[#8B96CC]">{adres}</p>
               <a href={haritaUrl} target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#8B9BFF] transition hover:text-[#FFFFFF]">
                 Haritada Aç
+                <Icon name="arrow" size={14} />
+              </a>
+            </div>
+
+            <!-- Telefon -->
+            <div class="rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] p-6">
+              <span class="grid h-12 w-12 place-items-center rounded-[8px] bg-turkuaz text-white">
+                <Icon name="phone" size={22} />
+              </span>
+              <h2 class="mt-4 font-baslik text-base font-bold text-[#FFFFFF]">Telefon</h2>
+              <p class="mt-2 text-sm leading-relaxed text-[#8B96CC]">Hafta içi mesai saatlerinde bize ulaşabilirsiniz.</p>
+              <a href={telefonHref} class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#8B9BFF] transition hover:text-[#FFFFFF]">
+                {telefon}
                 <Icon name="arrow" size={14} />
               </a>
             </div>

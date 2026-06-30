@@ -33,6 +33,10 @@ const SHEETS_WEBHOOK_URL = process.env.SHEETS_WEBHOOK_URL;
 const FROM_EMAIL = process.env.FROM_EMAIL || 'FocusClub 360 <info@focusclub360.com>';
 const INFO_EMAIL = process.env.INFO_EMAIL || 'info@focusclub360.com';
 const INSTAGRAM_URL = 'https://instagram.com/focusclub360';
+// Mail logosu mutlak bir URL olmalı. Alan adı henüz canlı değilse LOGO_URL env'i ile
+// yayında olan bir adrese (ör. vercel.app) ayarlanabilir.
+const SITE_URL = (process.env.SITE_URL || 'https://focusclub360.com').replace(/\/$/, '');
+const LOGO_URL = process.env.LOGO_URL || `${SITE_URL}/FocusClub360_logoF_navy.png`;
 
 // Tahmin edilemez, okunabilir üyelik kodu: FC360-XXXXXX
 function kodUret(): string {
@@ -108,8 +112,14 @@ async function tabloyaKaydet(kayit: Record<string, string>): Promise<void> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(kayit),
+    redirect: 'follow',
   });
-  if (!res.ok) throw new Error(`Sheets webhook hata: ${res.status}`);
+  const govde = await res.text().catch(() => '');
+  console.log('[Sheets yanıt]', res.status, 'son-url:', res.url, 'govde:', govde.slice(0, 200));
+  // Apps Script erişimi "Anyone" değilse Google giriş sayfasına yönlenir (HTML döner) → satır eklenmez.
+  if (!res.ok || /<html|accounts\.google\.com|Sign in/i.test(govde)) {
+    throw new Error(`Sheets webhook beklenmeyen yanıt (${res.status}). Apps Script erişimi "Anyone" mı, URL /exec ile mi bitiyor?`);
+  }
 }
 
 // ============================ Resend mailleri ============================
@@ -155,8 +165,8 @@ function mailKabuk(govde: string): string {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0E1124;padding:28px 14px;">
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#161A33;border-radius:12px;overflow:hidden;">
-        <tr><td style="background:linear-gradient(90deg,#2D3AAE,#6E7CFF);padding:22px 28px;">
-          <span style="font-size:22px;font-weight:bold;color:#ffffff;letter-spacing:.3px;">FocusClub <span style="color:#C7CEEF;">360</span></span>
+        <tr><td style="background-color:#3D4AC8;background:linear-gradient(90deg,#2D3AAE,#6E7CFF);padding:20px 28px;">
+          <img src="${LOGO_URL}" alt="FocusClub 360" height="32" style="height:32px;width:auto;display:block;border:0;outline:none;text-decoration:none;" />
         </td></tr>
         <tr><td style="padding:28px;color:#C7CEEF;font-size:15px;line-height:1.6;">
           ${govde}
