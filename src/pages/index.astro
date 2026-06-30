@@ -14,7 +14,7 @@ import Pricing from '../components/Pricing.astro';
 import Logos from '../components/Logos.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
-import { UYELIK_URL, GIRIS_URL, ROUTES } from '../config';
+import { UYELIK_URL, KAYIT_URL, ROUTES } from '../config';
 
 const menu = [
   { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
@@ -45,7 +45,7 @@ const menu = [
           </nav>
 
           <div class="flex items-center gap-2 sm:gap-3">
-            <a href={GIRIS_URL} class="hidden text-sm font-semibold text-[#FFFFFF] hover:opacity-70 sm:block">Giriş</a>
+            <a href={KAYIT_URL} class="hidden text-sm font-semibold text-[#FFFFFF] hover:opacity-70 sm:block">Üye Olun</a>
             <a
               href={UYELIK_URL}
               class="hidden rounded-buton bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(110,124,255,.40)] transition hover:brightness-110 sm:inline-block"
@@ -61,7 +61,7 @@ const menu = [
             {menu.map((m) => (
               <a href={m.href} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">{m.ad}</a>
             ))}
-            <a href={GIRIS_URL} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">Giriş</a>
+            <a href={KAYIT_URL} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">Üye Olun</a>
           </div>
           <a
             href={UYELIK_URL}
