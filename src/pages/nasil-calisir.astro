@@ -15,43 +15,14 @@ const menu = [
 ];
 
 const adimlar = [
-  {
-    no: '01',
-    baslik: 'Üye Ol',
-    aciklama: 'Hızlı üyelikle hesabını oluştur, 2 haftalık ücretsiz deneyim hemen başlar.',
-    renk: 'bg-mor',
-  },
-  {
-    no: '02',
-    baslik: 'Programa Katıl',
-    aciklama: 'Etüt kulübündeki yerini al, haftalık etüt düzenine dahil ol.',
-    renk: 'bg-mavi',
-  },
-  {
-    no: '03',
-    baslik: 'Dijital Ders İçeriklerine Ulaş',
-    aciklama: 'Tüm branşlarda video anlatım, çözümlü soru ve dökümanlara eriş.',
-    renk: 'bg-turkuaz',
-  },
-  {
-    no: '04',
-    baslik: 'Canlı Etüde Başla',
-    aciklama: 'Branş öğretmeniyle canlı etüt ve canlı soru çözüm seanslarına katıl.',
-    renk: 'bg-mercan',
-  },
-  {
-    no: '05',
-    baslik: 'Koçluk Programına Katıl',
-    aciklama: 'Gerçek rehber öğretmenden bireysel, kişiye özel destek al.',
-    renk: 'bg-mor',
-    link: ROUTES.kulupteNelerVar,
-  },
-  {
-    no: '06',
-    baslik: 'Şeffaf Raporlama ve İlerleyiş',
-    aciklama: 'Her adım yapay zekâ ile takip edilir, veliye düzenli bildirilir.',
-    renk: 'bg-lacivert',
-  },
+  { no: '01', baslik: 'Üye Ol',                                             renk: 'bg-turkuaz' },
+  { no: '02', baslik: 'Programa Katıl',                                     renk: 'bg-amber'   },
+  { no: '03', baslik: 'Akıllı Öğretim Ekosistemine Erişim Kazan',           renk: 'bg-mor'     },
+  { no: '04', baslik: 'Canlı Etüt ve Soru-Cevap Derslerini Başlat',        renk: 'bg-mavi'    },
+  { no: '05', baslik: 'Eğitim Koçunla Tanış ve Destek Almaya Başla',       renk: 'bg-mercan'  },
+  { no: '06', baslik: 'Gelişimini Anlık Olarak İzle',                      renk: 'bg-turkuaz' },
+  { no: '07', baslik: 'Konu Kazanımlarını ve Program Başarını Takip Et',   renk: 'bg-amber'   },
+  { no: '08', baslik: 'Kariyer ve Okul tercihlerin için danışmanlık al.',  renk: 'bg-mor'     },
 ];
 
 const haftaAkisi = [
@@ -172,7 +143,7 @@ const veliKartlari = [
 
               <div class="max-w-[62%] md:max-w-lg">
                 <h1 class="font-baslik text-2xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.8rem]" style="line-height: 1.2;">
-                  Kayıttan LGS'ye Kadar Tek Bir Akıllı Sistem
+                  5. Sınıftan LGS'ye Kadar Tek Bir Akıllı Sistem
                 </h1>
                 <p class="mt-2 text-sm text-white/80 md:mt-4 md:text-base">
                   Çocuğunuz üye olduğu andan sınava kadar; gerçek öğretmenler ve koçlarla çalışır, her adımı yapay zekâ takip eder. Süreç baştan sona planlıdır, siz de her aşamada bilgilendirilirsiniz.
@@ -212,75 +183,24 @@ const veliKartlari = [
         <div class="mx-auto max-w-[1400px]">
 
           <div class="reveal mx-auto max-w-2xl text-center">
-            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Üyelikten Sınava, Adım Adım Süreç</h2>
+            <h2 class="font-baslik text-3xl font-bold text-[#1b2a5b] md:text-4xl">Üyelikten Hedefine Kadar, Adım Adım Süreç</h2>
             <p class="mt-3 text-base text-[#5b6488]">Her aşama planlı, her aşama takip altında.</p>
           </div>
 
-          <!-- Masaüstü: 2 satır × 3 akış kartı -->
-          <div class="reveal mt-14 hidden md:flex md:flex-col md:gap-4">
-
-            <!-- Satır 1: Adım 01–03 -->
-            <div class="flex items-stretch gap-0">
-              {adimlar.slice(0, 3).map((a, i) => (
-                <div class="flex flex-1 items-stretch">
-                  <div class="flex flex-1 flex-col rounded-[8px] border border-kenar bg-white p-6 shadow-[0_4px_16px_rgba(60,80,180,.06)]">
-                    <span class={`grid h-11 w-11 place-items-center rounded-full text-base font-extrabold text-white shadow-[0_4px_12px_rgba(110,124,255,.25)] ${a.renk}`}>
-                      {a.no}
-                    </span>
-                    <h3 class="mt-4 font-baslik text-base font-bold text-[#1b2a5b]">{a.baslik}</h3>
-                    <p class="mt-2 flex-1 text-sm leading-relaxed text-[#5b6488]">{a.aciklama}</p>
+          <!-- Adımlar: anasayfadaki canlı etüt sistemiyle aynı (koyu kart, 2 sütun) -->
+          <div class="reveal mt-10 rounded-[8px] bg-lacivert px-6 py-10 md:px-10 md:py-12">
+            <div class="grid gap-px sm:grid-cols-2">
+              {adimlar.map((a, i) => (
+                <div class={`flex items-center gap-3 p-4 sm:gap-4 sm:p-6 ${i < 6 ? 'sm:border-b sm:border-beyaz/10' : ''} ${i % 2 === 0 ? 'sm:border-r sm:border-beyaz/10' : ''}`}>
+                  <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-full font-baslik text-sm font-extrabold text-beyaz sm:h-12 sm:w-12 sm:text-base ${a.renk}`}>
+                    {a.no}
+                  </span>
+                  <div class="min-w-0">
+                    <p class="font-baslik text-base font-semibold text-beyaz">{a.baslik}</p>
                   </div>
-                  {i < 2 && (
-                    <div class="flex w-10 shrink-0 items-center justify-center text-[#5b6488]">
-                      <Icon name="arrow" size={18} />
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
-
-            <!-- Satır arası ok -->
-            <div class="flex justify-end pr-[calc(50%+20px)]">
-              <div class="flex h-7 w-10 items-center justify-center">
-                <Icon name="chevron" size={20} class="text-[#5b6488]" />
-              </div>
-            </div>
-
-            <!-- Satır 2: Adım 04–06 -->
-            <div class="flex items-stretch gap-0">
-              {adimlar.slice(3).map((a, i) => (
-                <div class="flex flex-1 items-stretch">
-                  <div class="flex flex-1 flex-col rounded-[8px] border border-kenar bg-white p-6 shadow-[0_4px_16px_rgba(60,80,180,.06)]">
-                    <span class={`grid h-11 w-11 place-items-center rounded-full text-base font-extrabold text-white shadow-[0_4px_12px_rgba(110,124,255,.25)] ${a.renk}`}>
-                      {a.no}
-                    </span>
-                    <h3 class="mt-4 font-baslik text-base font-bold text-[#1b2a5b]">{a.baslik}</h3>
-                    <p class="mt-2 flex-1 text-sm leading-relaxed text-[#5b6488]">{a.aciklama}</p>
-                  </div>
-                  {i < 2 && (
-                    <div class="flex w-10 shrink-0 items-center justify-center text-[#5b6488]">
-                      <Icon name="arrow" size={18} />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-          </div>
-
-          <!-- Mobil: dikey kart listesi -->
-          <div class="reveal mt-10 flex flex-col gap-3 md:hidden">
-            {adimlar.map((a) => (
-              <div class="flex items-start gap-4 rounded-[8px] border border-kenar bg-white p-5">
-                <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-extrabold text-white ${a.renk}`}>
-                  {a.no}
-                </span>
-                <div>
-                  <h3 class="font-baslik text-sm font-bold text-[#1b2a5b]">{a.baslik}</h3>
-                  <p class="mt-1 text-xs leading-relaxed text-[#5b6488]">{a.aciklama}</p>
-                </div>
-              </div>
-            ))}
           </div>
 
         </div>

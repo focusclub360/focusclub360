@@ -2,14 +2,24 @@
 import Icon from './Icon.astro';
 import { ROUTES } from '../config';
 
-const kartlar = [
-  { baslik: 'Canlı Etüt', aciklama: 'Branş öğretmenleriyle canlı etütler', ikon: 'users' },
-  { baslik: 'Canlı Soru Çözüm', aciklama: 'Branş öğretmenleriyle sorularınız anında çözülür.', ikon: 'flask' },
-  { baslik: 'Gerçek Koçluk', aciklama: 'Rehber öğretmenler eşliğinde kişisel gelişimin izlenmesi, ders takibi ve veli bilgilendirmesi yapılır.', ikon: 'target' },
-  { baslik: 'Yapay Zekâ Takibi', aciklama: 'Öğrencilerimizin etütlerdeki her hareketi ve yaptığı her işlem, geliştirilen yapay zeka sistemiyle takip edilir ve raporlanır.', ikon: 'cpu' },
-  { baslik: 'Dijital Ders İçerikleri', aciklama: '5.920 dakika videolu konu anlatımı, 10.134 videolu soru çözümü, sayısız genel ve kişisel deneme sınavları sunar.', ikon: 'video' },
+interface Kart {
+  baslik: string;
+  aciklama: string;
+  maddeler?: string[];
+  son?: string;
+  ikon: string;
+}
+
+const kartlar: Kart[] = [
+  { baslik: 'Canlı Etüt', aciklama: 'Branş öğretmenleri gözetiminde canlı:', maddeler: ['Konu Öğrenme Etüdü', 'Uygulama ve Tam Öğrenme Etüdü'], ikon: 'users' },
+  { baslik: 'Canlı Soru-Cevap Dersi', aciklama: 'Soru-cevap sınıfında uzman öğretmenlerle etütlerde sorun oluşturan sorularınız cevaplanır.', ikon: 'flask' },
+  { baslik: 'Gerçek Koçluk', aciklama: 'Rehber öğretmenler eşliğinde kişisel gelişimin takibi ve desteklenmesi, ders takibi ve veli bilgilendirmesi yapılır.', ikon: 'target' },
+  { baslik: 'Yapay Zekâ Takibi', aciklama: 'Öğrencilerimizin etütlerdeki her hareketi ve performansı, geliştirilen yapay zeka sistemiyle takip edilir ve raporlanır.', ikon: 'cpu' },
+  { baslik: 'Akıllı Öğretim Ekosistemi', aciklama: '5.920 dakika videolu konu anlatımı, 10.134 videolu soru çözümü, kişiye özgü deneme testleri sunar.', ikon: 'video' },
   { baslik: 'Deneme Kulübü', aciklama: 'Birinci ve ikinci dönem ayrı ayrı olmak üzere adreslerinize basılı deneme paketi gönderilecektir.', ikon: 'mail' },
   { baslik: 'Veli Raporlama', aciklama: 'Öğrencimiz ile ilgili her türlü kişisel gelişim, etüt içi aktivite ve ders durum raporlaması haftalık periyotlarla yapılır.', ikon: 'bell' },
+  { baslik: 'MEB Kaynakları Ödevlendirme ve Analizi', aciklama: 'MEB tarafından hazırlanmış soru örnekleri, ders içerikleri ve denemeler ödevlendirilir. Bu içeriklerin analizi yapılarak kullanımı desteklenir.', ikon: 'book' },
+  { baslik: 'Veli Rehberliği', aciklama: 'Akademisyen Dr. Öğr. Üyesi Oktay AYDIN danışmanlığında velilerimiz:', maddeler: ['Seminerler', 'Atölye çalışmaları'], son: 'ile çocuklarının kişisel ve akademik gelişim sürecini daha iyi yönetir.', ikon: 'users' },
 ];
 ---
 
@@ -29,7 +39,20 @@ const kartlar = [
               <Icon name={k.ikon} size={24} />
             </span>
             <h3 class="mt-4 font-baslik text-lg font-semibold leading-snug text-[#1b2a5b]">{k.baslik}</h3>
-            <p class="mt-2 flex-1 text-sm text-[#6b76a0]">{k.aciklama}</p>
+            <div class="mt-2 flex-1 text-sm text-[#6b76a0]">
+              <p>{k.aciklama}</p>
+              {k.maddeler && (
+                <ul class="mt-1.5 space-y-1">
+                  {k.maddeler.map((m) => (
+                    <li class="flex items-start gap-2">
+                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b6ef0]"></span>
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {k.son && <p class="mt-1.5">{k.son}</p>}
+            </div>
             <a
               href={ROUTES.kulupteNelerVar}
               class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#3b6ef0] transition group-hover:gap-2"

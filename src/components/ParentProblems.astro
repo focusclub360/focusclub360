@@ -2,12 +2,15 @@
 import Icon from './Icon.astro';
 
 const sorunlar = [
-  { metin: 'Telefon ve ekran bağımlılığı dikkat dağıtıyor ve çok zaman kaybettiriyorSA',  ikon: 'smartphone' },
-  { metin: 'Hangi derse ne kadar çalışacak bilinemiyor ve planlama yapılamıyorSA',         ikon: 'list'       },
-  { metin: 'Düzenli çalışma alışkanlığı yokSA',                                            ikon: 'clock'      },
-  { metin: 'Motivasyon eksikliği varSA',                                                   ikon: 'target'     },
-  { metin: 'Sürekli ders çalış hatırlatması yapılmak zorunda kalınıyorSA',                 ikon: 'bell'       },
-  { metin: 'Çalışıp çalışmadığı tam takip edilemiyorSA',                                  ikon: 'eye'        },
+  { metin: 'Kendi sorumluluğunu almıyorlarsa',                          ikon: 'list'       },
+  { metin: 'Dijital dünyada kaybolmuşlarsa',                            ikon: 'smartphone' },
+  { metin: 'Sizle bağları zayıflıyorsa',                               ikon: 'users'      },
+  { metin: 'Yeterince mutlu ve motive değillerse',                      ikon: 'target'     },
+  { metin: 'Kendinizi yetersiz hissediyorsanız',                        ikon: 'user'       },
+  { metin: 'Anlaşılmadığınızı düşünüyorsanız',                          ikon: 'eye'        },
+  { metin: 'Nasıl çalışacağınızı bilmiyor ve odaklanamıyorsanız',       ikon: 'clock'      },
+  { metin: 'Çalışırken yalnız olduğunuzu hissediyorsanız',              ikon: 'shield'     },
+  { metin: 'Gelecek kaygısı ve sınav stresi yaşıyorsanız',              ikon: 'bell'       },
 ];
 ---
 
@@ -15,9 +18,8 @@ const sorunlar = [
   <div class="mx-auto max-w-[1400px] px-6 md:px-10">
 
     <div class="reveal text-center">
-      <h2 class="font-baslik text-xl font-bold text-[#1b2a5b] md:text-3xl">
-        <span class="md:hidden">Sevgili Velilerimiz,<br />Ders Çalıştırma İle İlgili<br />Sorunlarınızı Çok İyi Biliyoruz.</span>
-        <span class="hidden md:inline">Sevgili Velilerimiz, Ders Çalıştırma İle İlgili Sorunlarınızı Çok İyi Biliyoruz.</span>
+      <h2 class="font-baslik text-2xl font-bold text-[#1b2a5b] md:text-3xl">
+        Sorunlarınızı Çok İyi Biliyoruz.
       </h2>
     </div>
 
@@ -33,7 +35,7 @@ const sorunlar = [
     </div>
 
     <div class="reveal mt-8 text-center">
-      <p class="font-baslik text-base font-semibold text-[#1b2a5b]">
+      <p class="font-baslik text-2xl font-semibold text-[#1b2a5b] md:text-3xl">
         FocusClub 360 tam da bu sorunları çözmek için var.
       </p>
     </div>

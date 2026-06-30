@@ -1,13 +1,13 @@
 ---
-import Icon from './Icon.astro';
-
 const adimlar = [
-  { no: '01', baslik: 'Üye Ol',                        aciklama: 'Hızlı üyelik ile hesabını oluştur.',                                         ikon: 'user',   renk: 'bg-turkuaz'  },
-  { no: '02', baslik: 'Programa Katıl',                 aciklama: 'Etüt kulübünde yerini al.',                                                   ikon: 'list',   renk: 'bg-amber'    },
-  { no: '03', baslik: 'Dijital Ders İçerikleri',        aciklama: 'Tüm branşlarda video ve içeriklere ulaş.',                                    ikon: 'video',  renk: 'bg-mor'      },
-  { no: '04', baslik: 'Canlı Etüde Başla',              aciklama: 'Branş öğretmenleriyle canlı etüt ve soru çözümlerine katıl.',                 ikon: 'users',  renk: 'bg-mavi'     },
-  { no: '05', baslik: 'Koçluk Programına Katıl',        aciklama: 'Gerçek rehber öğretmenlerden kişiye özel destek al.',                         ikon: 'target', renk: 'bg-mercan'   },
-  { no: '06', baslik: 'Şeffaf Raporlama ve İlerleyiş',  aciklama: 'Her anın yapay zekâ ile takip edilip düzenli bildirilsin.',                   ikon: 'cpu',    renk: 'bg-turkuaz'  },
+  { no: '01', baslik: 'Üye Ol',                                             ikon: 'user',   renk: 'bg-turkuaz'  },
+  { no: '02', baslik: 'Programa Katıl',                                     ikon: 'list',   renk: 'bg-amber'    },
+  { no: '03', baslik: 'Akıllı Öğretim Ekosistemine Erişim Kazan',           ikon: 'video',  renk: 'bg-mor'      },
+  { no: '04', baslik: 'Canlı Etüt ve Soru-Cevap Derslerini Başlat',        ikon: 'users',  renk: 'bg-mavi'     },
+  { no: '05', baslik: 'Eğitim Koçunla Tanış ve Destek Almaya Başla',       ikon: 'target', renk: 'bg-mercan'   },
+  { no: '06', baslik: 'Gelişimini Anlık Olarak İzle',                      ikon: 'eye',    renk: 'bg-turkuaz'  },
+  { no: '07', baslik: 'Konu Kazanımlarını ve Program Başarını Takip Et',   ikon: 'cpu',    renk: 'bg-amber'    },
+  { no: '08', baslik: 'Kariyer ve Okul tercihlerin için danışmanlık al.',  ikon: 'trophy', renk: 'bg-mor'      },
 ];
 ---
 
@@ -25,19 +25,14 @@ const adimlar = [
       <!-- Adımlar -->
       <div class="mt-10 grid gap-px sm:grid-cols-2">
         {adimlar.map((a, i) => (
-          <div class={`flex items-start gap-3 p-4 sm:gap-4 sm:p-6 ${i < 4 ? 'sm:border-b sm:border-beyaz/10' : ''} ${i % 2 === 0 ? 'sm:border-r sm:border-beyaz/10' : ''}`}>
+          <div class={`flex items-center gap-3 p-4 sm:gap-4 sm:p-6 ${i < 6 ? 'sm:border-b sm:border-beyaz/10' : ''} ${i % 2 === 0 ? 'sm:border-r sm:border-beyaz/10' : ''}`}>
             <!-- Numaralı daire -->
             <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-full font-baslik text-sm font-extrabold text-beyaz sm:h-12 sm:w-12 sm:text-base ${a.renk}`}>
               {a.no}
             </span>
-            <!-- İkon: sadece sm ve üzeri -->
-            <span class="mt-0.5 hidden h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-beyaz/10 text-beyaz/70 sm:grid">
-              <Icon name={a.ikon} size={22} />
-            </span>
             <!-- Metin -->
             <div class="min-w-0">
               <p class="font-baslik text-base font-semibold text-beyaz">{a.baslik}</p>
-              <p class="mt-1 text-sm leading-relaxed text-beyaz/60">{a.aciklama}</p>
             </div>
           </div>
         ))}
