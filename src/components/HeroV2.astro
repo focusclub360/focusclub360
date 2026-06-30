@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import { UYELIK_URL } from '../config';
+import { KAYIT_URL } from '../config';
 import heroGorsel from '../assets/hero-masaustu.jpg';
 ---
 
@@ -32,24 +32,20 @@ import heroGorsel from '../assets/hero-masaustu.jpg';
       <div class="hero-desktop-overlay absolute inset-0 hidden md:block"></div>
 
       <!-- İçerik katmanı -->
-      <div class="absolute inset-0 z-10 flex flex-col justify-center px-5 py-4 md:justify-evenly md:px-10 md:py-10">
+      <div class="absolute inset-0 z-10 flex flex-col justify-center px-5 py-4 md:px-10 md:py-10">
 
-        <!-- Üst: başlık + alt yazı -->
+        <!-- Başlık -->
         <div class="max-w-xl">
           <h1 class="font-baslik text-[1.7rem] font-extrabold leading-[1.44] tracking-tight text-white md:text-[2.8rem] md:leading-[1.2] lg:text-[3.5rem]">
             <span class="block whitespace-nowrap md:hidden md:whitespace-normal">Çocuklarınız<br />Bizimle Etütteyken<br />Siz Veli Olmanın<br />Keyfini Sürün</span>
             <span class="hidden md:inline">Çocuklarınız Bizimle Etütteyken Siz Veli Olmanın Keyfini Sürün!</span>
           </h1>
-          <p class="mt-6 text-left text-sm text-white/80 md:mt-4 md:text-base">
-            <span class="md:hidden">Canlı Etütler, Dijital Dersler,<br />Canlı Soru Çözüm Desteği,<br />Akademik Takip ve Gerçek Koç ile<br />Çocuğunuz Düzenli Çalışsın;<br />Siz Sadece Gelişimini İzleyin.</span>
-            <span class="hidden md:inline">Canlı Etütler, Dijital Dersler, Canlı Soru Çözüm Desteği, Akademik Takip ve Gerçek Koç ile Çocuğunuz Düzenli Çalışsın; Siz Sadece Gelişimini İzleyin.</span>
-          </p>
         </div>
 
-        <!-- Alt: CTA + not -->
-        <div class="mt-6 md:mt-0">
+        <!-- CTA + not -->
+        <div class="mt-8 md:mt-10">
           <a
-            href={UYELIK_URL}
+            href={KAYIT_URL}
             class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-1.5 pl-4 pr-1.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 md:gap-3 md:py-2.5 md:pl-6 md:pr-2.5 md:text-base"
           >
             Ücretsiz Deneyim
@@ -58,7 +54,7 @@ import heroGorsel from '../assets/hero-masaustu.jpg';
             </span>
           </a>
           <p class="mt-1 text-xs font-medium text-white/90 md:text-sm">
-            2 Haftalık Ücretsiz Deneyim boyunca kredi kartı kaydetmeniz gerekmez.
+            2 Haftalık Ücretsiz Deneyim için kredi kartınızı kaydetmeniz gerekmez.
           </p>
         </div>
 
