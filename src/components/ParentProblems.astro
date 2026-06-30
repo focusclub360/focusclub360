@@ -1,32 +1,61 @@
 ---
 import Icon from './Icon.astro';
 
-const sorunlar = [
+const veliSorunlari = [
   { metin: 'Telefon ve ekran bağımlılığı dikkat dağıtıyor ve çok zaman kaybettiriyorSA',  ikon: 'smartphone' },
   { metin: 'Hangi derse ne kadar çalışacak bilinemiyor ve planlama yapılamıyorSA',         ikon: 'list'       },
   { metin: 'Düzenli çalışma alışkanlığı yokSA',                                            ikon: 'clock'      },
-  { metin: 'Motivasyon eksikliği varSA',                                                   ikon: 'target'     },
+  { metin: 'Yeterince mutlu ve motive değillerSE',                                         ikon: 'target'     },
   { metin: 'Sürekli ders çalış hatırlatması yapılmak zorunda kalınıyorSA',                 ikon: 'bell'       },
   { metin: 'Çalışıp çalışmadığı tam takip edilemiyorSA',                                  ikon: 'eye'        },
+  { metin: 'Kendi sorumluluklarını almıyorlarSA',                                          ikon: 'user'       },
+  { metin: 'Sizinle bağları zayıflıyorSA',                                                ikon: 'users'      },
+];
+
+const ogrenciSorunlari = [
+  { bas: 'Kendinizi yetersiz ',                       son: 'hissediyorsanız',   ikon: 'user'   },
+  { bas: 'Anlaşılmadığınızı ',                        son: 'düşünüyorsanız',    ikon: 'eye'    },
+  { bas: 'Nasıl çalışacağınızı bilmiyor ve ',         son: 'odaklanamıyorsanız', ikon: 'clock'  },
+  { bas: 'Çalışırken yalnız olduğunuzu ',             son: 'hissediyorsanız',   ikon: 'shield' },
+  { bas: 'Gelecek kaygısı ve sınav stresi ',          son: 'yaşıyorsanız',      ikon: 'bell'   },
 ];
 ---
 
 <section class="bg-[#f5f8ff] pb-4 pt-14 md:pb-6 md:pt-20">
   <div class="mx-auto max-w-[1400px] px-6 md:px-10">
 
+    <!-- Veliler -->
     <div class="reveal text-center">
       <h2 class="font-baslik text-2xl font-bold text-[#1b2a5b] md:text-3xl">
-        Sorunlarınızı Çok İyi Biliyoruz.
+        Sevgili Veliler, Sorunlarınızı Çok İyi Biliyoruz.
       </h2>
     </div>
 
     <div class="reveal mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-      {sorunlar.map((s) => (
+      {veliSorunlari.map((s) => (
         <div class="flex flex-col items-center rounded-[8px] border border-kenar bg-beyaz p-5 text-center shadow-kucuk">
           <span class="grid h-12 w-12 place-items-center rounded-[8px] bg-mercan/10 text-mercan">
             <Icon name={s.ikon} size={22} />
           </span>
           <p class="mt-3 text-sm font-medium text-[#1b2a5b]">{s.metin}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Öğrenciler -->
+    <div class="reveal mt-14 text-center md:mt-16">
+      <h2 class="font-baslik text-2xl font-bold text-[#1b2a5b] md:text-3xl">
+        Sevgili Öğrenciler,
+      </h2>
+    </div>
+
+    <div class="reveal mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+      {ogrenciSorunlari.map((s) => (
+        <div class="flex flex-col items-center rounded-[8px] border border-kenar bg-beyaz p-5 text-center shadow-kucuk">
+          <span class="grid h-12 w-12 place-items-center rounded-[8px] bg-mercan/10 text-mercan">
+            <Icon name={s.ikon} size={22} />
+          </span>
+          <p class="mt-3 text-sm font-medium text-[#1b2a5b]">{s.bas}<strong class="font-bold">{s.son}</strong></p>
         </div>
       ))}
     </div>
