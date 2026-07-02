@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { UYELIK_URL } from '../config';
+import { UYELIK_URL, SATIN_AL_URL } from '../config';
 
 const ozellikler = [
   { baslik: 'Canlı Etüt',                          aciklama: 'Branş öğretmenleri gözetiminde canlı konu ve uygulama etütleri.', ikon: 'users',  renk: 'bg-turkuaz'   },
@@ -43,6 +43,12 @@ const ozellikler = [
               class="mt-8 inline-flex w-full items-center justify-center rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(80,90,240,.30)] transition hover:brightness-105"
             >
               Ücretsiz Deneyim
+            </a>
+            <a
+              href={SATIN_AL_URL}
+              class="mt-3 inline-flex w-full items-center justify-center rounded-[8px] border border-[#7c5cfc] px-6 py-3 text-sm font-semibold text-[#7c5cfc] transition hover:bg-[#7c5cfc]/10"
+            >
+              Satın Al
             </a>
             <p class="mt-3 text-center text-xs font-medium text-[#5b6488]">
               2 Haftalık Ücretsiz Deneyim için kredi kartı gerekmez.

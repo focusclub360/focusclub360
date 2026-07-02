@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 import heroGorsel from '../assets/velilere-hero.jpg';
-import { UYELIK_URL, KAYIT_URL, ROUTES } from '../config';
+import { UYELIK_URL, KAYIT_URL, SATIN_AL_URL, ROUTES } from '../config';
 
 const menu = [
   { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
@@ -93,6 +93,7 @@ const guvenKartlari = [
               href={UYELIK_URL}
               class="hidden rounded-buton bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(110,124,255,.40)] transition hover:brightness-110 sm:inline-block"
             >2 Hafta Ücretsiz</a>
+            <a href={SATIN_AL_URL} class="hidden text-sm font-semibold text-turkuaz hover:opacity-70 sm:block">Satın Al</a>
             <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#FFFFFF] transition hover:bg-bulut focus:outline-none active:bg-[#1E2848] lg:hidden" style="-webkit-tap-highlight-color: transparent; background-color: #1B2140; -webkit-appearance: none; appearance: none;">
               <Icon name="menu" size={20} />
             </button>
@@ -112,6 +113,7 @@ const guvenKartlari = [
               <a href={m.href} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">{m.ad}</a>
             ))}
             <a href={KAYIT_URL} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">Üye Olun</a>
+            <a href={SATIN_AL_URL} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-turkuaz transition hover:bg-bulut">Satın Al</a>
           </div>
           <a
             href={UYELIK_URL}

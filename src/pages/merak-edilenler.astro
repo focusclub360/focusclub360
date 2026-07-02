@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import { UYELIK_URL, ROUTES } from '../config';
+import { UYELIK_URL, SATIN_AL_URL, ROUTES } from '../config';
 
 const gruplar = [
   {
@@ -116,6 +116,7 @@ const ozellikler = [
       <!-- Desktop CTA -->
       <div class="hidden items-center gap-3 md:flex">
         <a href="/uye-ol" class="text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">Üye Olun</a>
+          <a href={SATIN_AL_URL} class="text-sm font-medium text-turkuaz transition hover:opacity-70">Satın Al</a>
         <a
           href={UYELIK_URL}
           class="rounded-[8px] px-4 py-2 text-sm font-semibold transition hover:opacity-90"
@@ -150,6 +151,7 @@ const ozellikler = [
         ))}
         <div class="mt-2 flex gap-3">
           <a href="/uye-ol" class="text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">Üye Olun</a>
+          <a href={SATIN_AL_URL} class="text-sm font-medium text-turkuaz transition hover:opacity-70">Satın Al</a>
           <a href={UYELIK_URL} class="rounded-[8px] px-4 py-2 text-sm font-semibold" style="background-color: #FFFFFF; color: #2D3AAE;">Ücretsiz Başla</a>
         </div>
       </nav>
