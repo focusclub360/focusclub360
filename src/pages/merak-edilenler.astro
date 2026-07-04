@@ -274,4 +274,19 @@ const faqSemasi = {
       }
     });
   });
+
+  // Acik olan ogenin yuksekligini font/gorsel yuklenince ve ekran donunce
+  // yeniden hesapla (sabit maxHeight, fontlar gec yuklenince metni kesebiliyor).
+  function faqAcikYenile() {
+    document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
+      const btn = item.querySelector<HTMLButtonElement>('.faq-btn')!;
+      const body = item.querySelector<HTMLElement>('.faq-body')!;
+      if (btn.getAttribute('aria-expanded') === 'true') {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  }
+  window.addEventListener('load', faqAcikYenile);
+  window.addEventListener('resize', faqAcikYenile);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(faqAcikYenile);
 </script>
