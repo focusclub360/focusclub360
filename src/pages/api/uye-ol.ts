@@ -36,7 +36,7 @@ const INSTAGRAM_URL = 'https://instagram.com/focusclub360';
 // Mail logosu mutlak bir URL olmalı. Alan adı henüz canlı değilse LOGO_URL env'i ile
 // yayında olan bir adrese (ör. vercel.app) ayarlanabilir.
 const SITE_URL = (process.env.SITE_URL || 'https://focusclub360.com').replace(/\/$/, '');
-const LOGO_URL = process.env.LOGO_URL || `${SITE_URL}/FocusClub360_logo_transparan.png`;
+const LOGO_URL = process.env.LOGO_URL || `${SITE_URL}/FocusClub360_logo_turuncu.png`;
 
 // Tahmin edilemez, okunabilir üyelik kodu: FC360-XXXXXX
 function kodUret(): string {
