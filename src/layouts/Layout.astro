@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
@@ -144,6 +145,7 @@ const ekSemalar = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <slot />
 
     <CookieConsent />
+    <WhatsAppFloat />
     <Analytics />
     <SpeedInsights />
 
