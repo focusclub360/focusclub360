@@ -14,7 +14,6 @@
       </p>
     </div>
     <div class="cc-banner-actions">
-      <button type="button" id="cc-reject" class="cc-btn cc-btn-ghost">Tümünü Reddet</button>
       <button type="button" id="cc-settings" class="cc-btn cc-btn-ghost">Ayarlar</button>
       <button type="button" id="cc-accept" class="cc-btn cc-btn-primary">Tümünü Kabul Et</button>
     </div>
@@ -65,7 +64,6 @@
     </label>
 
     <div class="cc-modal-actions">
-      <button type="button" id="cc-reject-all" class="cc-btn cc-btn-ghost">Tümünü Reddet</button>
       <button type="button" id="cc-save" class="cc-btn cc-btn-primary">Seçimi Kaydet</button>
     </div>
   </div>
@@ -162,9 +160,23 @@
     } catch { return null; }
   }
 
+  // Google Consent Mode v2'ye tercihleri iletir (GTM/GA4 sonradan eklendiğinde uyar).
+  function applyConsent(analytics: boolean, marketing: boolean) {
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    const gtag = w.gtag || function () { w.dataLayer.push(arguments); };
+    gtag('consent', 'update', {
+      analytics_storage: analytics ? 'granted' : 'denied',
+      ad_storage: marketing ? 'granted' : 'denied',
+      ad_user_data: marketing ? 'granted' : 'denied',
+      ad_personalization: marketing ? 'granted' : 'denied',
+    });
+  }
+
   function save(analytics: boolean, marketing: boolean) {
     const data: Consent = { necessary: true, analytics, marketing, ts: Date.now() };
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch {}
+    applyConsent(analytics, marketing);
     window.dispatchEvent(new CustomEvent('fc360:consent', { detail: data }));
   }
 
@@ -179,15 +191,15 @@
   }
   function closeModal() { modal?.setAttribute('hidden', ''); }
 
-  // İlk yüklemede karar verilmemişse şeridi göster. Yüzen buton gösterilmez;
-  // ayarlara footer'daki "Çerez Ayarları" linkinden erişilir.
-  if (!read()) showBanner();
+  // İlk yüklemede karar verilmemişse şeridi göster; verilmişse kayıtlı tercihi
+  // Consent Mode'a yeniden uygula. Ayarlara footer'daki "Çerez Ayarları" linkinden erişilir.
+  const mevcut = read();
+  if (!mevcut) showBanner();
+  else applyConsent(mevcut.analytics, mevcut.marketing);
 
   document.getElementById('cc-accept')?.addEventListener('click', () => { save(true, true); hideBanner(); });
-  document.getElementById('cc-reject')?.addEventListener('click', () => { save(false, false); hideBanner(); });
   document.getElementById('cc-settings')?.addEventListener('click', () => { openModal(); });
 
-  document.getElementById('cc-reject-all')?.addEventListener('click', () => { save(false, false); closeModal(); hideBanner(); });
   document.getElementById('cc-save')?.addEventListener('click', () => {
     save(!!analyticsInput?.checked, !!marketingInput?.checked);
     closeModal(); hideBanner();
