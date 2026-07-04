@@ -79,9 +79,26 @@ const ozellikler = [
   { baslik: 'Online Ders İçerikleri',          aciklama: 'Tüm branşlarda video anlatım ve çözümlü sorular.', ikon: 'video',  renk: 'bg-mavi'     },
   { baslik: 'Veli Raporlama ve Bildirimler',   aciklama: 'Haftalık şeffaf ilerleme raporu veliye iletilir.', ikon: 'bell',   renk: 'bg-mercan'   },
 ];
+
+// FAQPage yapisal verisi (JSON-LD) - tum sorulardan uretilir, cevaplardaki HTML temizlenir
+const faqSemasi = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: gruplar.flatMap((g) =>
+    g.sorular.map((s) => ({
+      '@type': 'Question',
+      name: s.soru,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: s.cevap.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(),
+      },
+    }))
+  ),
+};
 ---
 
 <Layout
+  schema={faqSemasi}
   title="Merak Edilenler | FocusClub 360"
   description="FocusClub 360 hakkında en sık sorulan soruların yanıtlarını burada bulabilirsiniz."
 >

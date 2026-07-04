@@ -9,18 +9,60 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  schema?: object | object[];
 }
 
 const {
-  title = 'FocusClub 360 — Türkiye’nin ilk ve tek Dijital Etüd Kulübü',
-  description = 'Canlı etüt, canlı soru çözüm ve birebir koçluk ile çocuğunuzun hedeflerine ulaşması için her adımda yanındayız. 2 hafta ücretsiz, tam erişim.',
+  title = 'FocusClub 360 | Türkiye’nin İlk ve Tek Dijital Akademik Etüt Kulübü',
+  description = 'Canlı etüt, canlı soru-cevap dersleri ve gerçek koçlukla çocuğunuz düzenli çalışır, LGS’ye hazırlanır. 2 Haftalık Ücretsiz Deneyim, kredi kartı gerekmez.',
   image = '/FocusClub360_logo_turuncu.png',
   noindex = false,
+  schema,
 } = Astro.props;
 
 // Kanonik ve mutlak görsel URL'leri (Astro.site = astro.config.mjs'deki site)
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://focusclub360.com').href;
-const ogImage = new URL(image, Astro.site ?? 'https://focusclub360.com').href;
+const siteBase = Astro.site ?? new URL('https://focusclub360.com');
+const canonical = new URL(Astro.url.pathname, siteBase).href;
+const ogImage = new URL(image, siteBase).href;
+const siteUrl = siteBase.origin;
+
+// Site geneli yapisal veri (JSON-LD): kurum + web sitesi
+const organizasyonSemasi = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'EducationalOrganization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'FocusClub 360',
+      alternateName: 'Türkiye’nin İlk ve Tek Dijital Akademik Etüt Kulübü',
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/FocusClub360_logo_turuncu.png`,
+      image: `${siteUrl}/FocusClub360_logo_turuncu.png`,
+      email: 'info@focusclub360.com',
+      telephone: '+90 532 170 24 98',
+      description:
+        'Canlı etüt, canlı soru-cevap dersleri, gerçek koçluk ve yapay zekâ takibiyle 8. sınıf öğrencilerini LGS’ye hazırlayan dijital akademik etüt kulübü.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Yıldız Teknik Üniversitesi Teknokent',
+        addressLocality: 'İstanbul',
+        addressCountry: 'TR',
+      },
+      sameAs: ['https://instagram.com/focusclub360'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: 'FocusClub 360',
+      inLanguage: 'tr-TR',
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+  ],
+};
+
+// Sayfaya özel ek şema(lar)
+const ekSemalar = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
@@ -75,6 +117,12 @@ const ogImage = new URL(image, Astro.site ?? 'https://focusclub360.com').href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Yapisal veri (JSON-LD): kurum + web sitesi -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizasyonSemasi)} />
+    {ekSemalar.map((s) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/FocusClub360_logoF_navy__kare_beyaz_zemin.png" />
