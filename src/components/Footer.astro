@@ -52,38 +52,33 @@ const sosyal = [
 <footer class="rounded-b-[8px] bg-lacivert px-6 py-12 text-beyaz/60 md:px-10 md:py-14">
   <div class="mx-auto max-w-[1400px]">
 
-    <!-- Üst alan: sütunlar sol, sosyal ikonlar sağ -->
-    <div class="flex flex-col gap-10 lg:flex-row lg:justify-between">
+    <!-- Link sütunları: mobilde sol, masaüstünde ortalı -->
+    <div class="grid gap-10 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center lg:gap-x-20 lg:text-center">
+      {sutunlar.map((c) => (
+        <div>
+          <h3 class="font-baslik text-sm font-bold text-beyaz">{c.baslik}</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            {c.linkler.map((l) => (
+              <li>
+                <a href={l.href} class="transition-colors hover:text-beyaz">{l.ad}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
 
-      <!-- Link sütunları -->
-      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        {sutunlar.map((c) => (
-          <div>
-            <h3 class="font-baslik text-sm font-bold text-beyaz">{c.baslik}</h3>
-            <ul class="mt-4 space-y-3 text-sm">
-              {c.linkler.map((l) => (
-                <li>
-                  <a href={l.href} class="transition-colors hover:text-beyaz">{l.ad}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <!-- Sosyal ikonlar: ustte 4, altta 3 -->
-      <div class="grid w-max shrink-0 grid-cols-4 gap-3 lg:ml-auto">
-        {sosyal.map((s) => (
-          <a
-            href={s.href}
-            aria-label={s.ad}
-            class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-beyaz/10 text-beyaz/70 transition hover:bg-beyaz/20 hover:text-beyaz"
-          >
-            <Icon name={s.ikon} size={18} />
-          </a>
-        ))}
-      </div>
-
+    <!-- Sosyal ikonlar: mobilde 4+3 grid, masaüstünde çizgi üstünde ortalı tek sıra -->
+    <div class="mt-10 grid w-max grid-cols-4 gap-3 lg:mt-14 lg:flex lg:w-full lg:justify-center">
+      {sosyal.map((s) => (
+        <a
+          href={s.href}
+          aria-label={s.ad}
+          class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-beyaz/10 text-beyaz/70 transition hover:bg-beyaz/20 hover:text-beyaz"
+        >
+          <Icon name={s.ikon} size={18} />
+        </a>
+      ))}
     </div>
 
     <!-- Alt satır -->
