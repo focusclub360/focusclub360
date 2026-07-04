@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title?: string;
@@ -96,6 +97,7 @@ const ogImage = new URL(image, Astro.site ?? 'https://focusclub360.com').href;
 
     <CookieConsent />
     <Analytics />
+    <SpeedInsights />
 
     <script>
       // Bölümler görünür olunca yumuşak fade-up
