@@ -71,3 +71,8 @@
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; animation: none; }
 }
+
+/* Koyu tema (.theme-v13) icinde header kenar/hover renkleri koyuya cevrilir.
+   Mobil header ogeleri (hamburger butonu, marka satiri ayraci) aksi halde acik kalir. */
+.theme-v13 .border-kenar { border-color: #2A2F52; }
+.theme-v13 .hover\:bg-bulut:hover { background-color: #232A4D; }
