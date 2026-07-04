@@ -76,3 +76,7 @@
    Mobil header ogeleri (hamburger butonu, marka satiri ayraci) aksi halde acik kalir. */
 .theme-v13 .border-kenar { border-color: #2A2F52; }
 .theme-v13 .hover\:bg-bulut:hover { background-color: #232A4D; }
+
+/* Koyu temali sayfalarda body arka planini da koyulastir; aksi halde
+   footer altinda/overscroll alaninda acik (bg-bulut) serit gorunuyor. */
+body:has(.theme-v13) { background-color: #131629; }
