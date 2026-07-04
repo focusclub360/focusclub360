@@ -71,13 +71,13 @@ const sosyal = [
         ))}
       </div>
 
-      <!-- Sosyal ikonlar -->
-      <div class="flex shrink-0 items-start gap-3 lg:justify-end">
+      <!-- Sosyal ikonlar: ustte 4, altta 3 -->
+      <div class="grid w-max shrink-0 grid-cols-4 gap-3 lg:ml-auto">
         {sosyal.map((s) => (
           <a
             href={s.href}
             aria-label={s.ad}
-            class="grid h-10 w-10 place-items-center rounded-full bg-beyaz/10 text-beyaz/70 transition hover:bg-beyaz/20 hover:text-beyaz"
+            class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-beyaz/10 text-beyaz/70 transition hover:bg-beyaz/20 hover:text-beyaz"
           >
             <Icon name={s.ikon} size={18} />
           </a>
