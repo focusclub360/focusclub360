@@ -21,7 +21,7 @@ const ZORUNLU_ALANLAR = [
   'Mahalle',
 ];
 
-const ONAY_ALANLARI = ['KVKK Onayı', 'Üyelik Koşulları Onayı'];
+const ONAY_ALANLARI = ['KVKK Onayı', 'Üyelik Koşulları Onayı', 'Instagram Takip Onayı'];
 
 const EPOSTA_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -222,7 +222,7 @@ function infoMaili(k: Record<string, string>) {
     'Veli Adı', 'Veli Soyadı', 'Veli Yakınlık Derecesi', 'Veli Telefon', 'Veli E-posta',
     'Öğrenci Adı', 'Öğrenci Soyadı', 'Sınıf', 'Okul Adı', 'Öğrenci Telefon', 'Öğrenci E-posta',
     'Şehir', 'İlçe', 'Mahalle',
-    'KVKK Onayı', 'Üyelik Koşulları Onayı',
+    'KVKK Onayı', 'Üyelik Koşulları Onayı', 'Instagram Takip Onayı',
   ];
   const satirlar = alanlar
     .map(

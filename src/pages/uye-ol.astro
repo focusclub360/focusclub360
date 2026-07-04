@@ -41,8 +41,11 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
           <!-- Bilgilendirme kutusu -->
           <div class="reveal mt-8 rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] p-5 md:p-6">
             <h2 class="text-center font-baslik text-base font-bold text-white">Deneyiminiz nasıl başlar?</h2>
-            <p class="mt-2 text-center text-sm font-medium text-[#F1683C]">2 Haftalık Ücretsiz Deneyim için kredi kartı gerekmez.</p>
             <ul class="mt-4 space-y-2 text-left text-sm leading-relaxed text-[#8B96CC]">
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span><strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim</strong> için kredi kartı gerekmez.</span>
+                  </li>
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
                     <span>Üyeliğiniz tamamlanınca size özel bir <strong class="font-semibold text-white">deneyim kodu</strong> oluşturulur ve e-postanıza gönderilir.</span>
@@ -177,6 +180,10 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
               <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
                 <input type="checkbox" id="onayUyelik" name="Üyelik Koşulları Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
                 <span><a href="/gizlilik" target="_blank" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">Gizlilik Politikası</a> ve üyelik koşullarını okudum, kabul ediyorum. <span class="text-mercan">*</span></span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
+                <input type="checkbox" id="onayInstagram" name="Instagram Takip Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
+                <span>FocusClub 360 <a href="https://instagram.com/focusclub360" target="_blank" rel="noopener" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">Instagram sayfasını</a> takip ettim. <span class="text-mercan">*</span></span>
               </label>
             </div>
 
