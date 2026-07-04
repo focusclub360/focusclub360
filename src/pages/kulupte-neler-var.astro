@@ -109,6 +109,18 @@ const adimlar = [
   { no: 2, baslik: 'Pekiştirme ve Test', aciklama: 'Öğrenilen konu sorularla pekiştirilir.'         },
   { no: 3, baslik: 'Canlı Soru Çözüm',  aciklama: 'Eksik ve yanlışlar canlı olarak çözülür.'       },
 ];
+
+const dahilListe = [
+  { bas: 'Öğrenmeyi öğreten ',                              vurgu: 'Konu Çalışma Etütleri' },
+  { bas: 'Çalışma alışkanlığı kazandıran ',                 vurgu: 'Uygulama Etütleri' },
+  { bas: 'Odaklanma becerisini artıran ',                   vurgu: 'Sınav Günü Uygulaması' },
+  { bas: 'Dikkat eksikliğini azaltan ',                     vurgu: 'Kişiye Özgü Tam Öğrenme İçerikleri' },
+  { bas: 'Okul başarısını destekleyen ',                    vurgu: 'MEB İçerikleri Analizi Uygulaması' },
+  { bas: 'Öz-düzenleme becerisini ve motivasyonu artıran ', vurgu: 'Kişiye Özel Eğitim Koçluğu Hizmeti' },
+  { bas: 'Özgüveni pekiştiren ',                            vurgu: 'Uzman Öğretmen Desteği' },
+  { bas: 'Şeffaf ve anlık raporlama sağlayan ',             vurgu: 'İlerletici Geribildirim Sistemi' },
+  { bas: 'Velilerimize rehberlik eden ve ',                 vurgu: 'Yetkin Veli, Etkin Çözüm Modeli' },
+];
 ---
 
 <Layout
@@ -203,26 +215,15 @@ const adimlar = [
             <div class="absolute inset-0 hidden md:block" style="background: linear-gradient(to right, rgba(19,22,41,0.83) 0%, rgba(19,22,41,0.38) 45%, rgba(19,22,41,0.09) 100%);"></div>
 
             <!-- İçerik -->
-            <div class="absolute inset-0 z-10 flex flex-col justify-evenly px-5 py-3 md:px-10 md:py-10">
+            <div class="absolute inset-0 z-10 flex flex-col justify-center px-5 py-3 md:px-10 md:py-10">
 
               <div class="max-w-[90%] md:max-w-2xl">
-                <h1 class="font-baslik text-lg font-extrabold tracking-tight text-white md:text-3xl lg:text-[2.4rem]" style="line-height: 1.18;">
+                <h1 class="font-baslik text-2xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.4rem]" style="line-height: 1.2;">
                   Sizin ve Çocuğunuzun İhtiyacı Olan Tüm Sistem Bu Üyeliğin İçinde
                 </h1>
-                <ul class="mt-2 space-y-0.5 text-[11px] leading-tight text-white/85 md:mt-4 md:space-y-1.5 md:text-sm">
-                  <li>Öğrenmeyi öğreten <strong class="font-semibold text-white">Konu Çalışma Etütleri</strong></li>
-                  <li>Çalışma alışkanlığı kazandıran <strong class="font-semibold text-white">Uygulama Etütleri</strong></li>
-                  <li>Odaklanma becerisini artıran <strong class="font-semibold text-white">Sınav Günü Uygulaması</strong></li>
-                  <li>Dikkat eksikliğini azaltan <strong class="font-semibold text-white">Kişiye Özgü Tam Öğrenme İçerikleri</strong></li>
-                  <li>Okul başarısını destekleyen <strong class="font-semibold text-white">MEB İçerikleri Analizi Uygulaması</strong></li>
-                  <li>Öz-düzenleme becerisini ve motivasyonu artıran <strong class="font-semibold text-white">Kişiye Özel Eğitim Koçluğu Hizmeti</strong></li>
-                  <li>Özgüveni pekiştiren <strong class="font-semibold text-white">Uzman Öğretmen Desteği</strong></li>
-                  <li>Şeffaf ve anlık raporlama sağlayan <strong class="font-semibold text-white">İlerletici Geribildirim Sistemi</strong></li>
-                  <li>Velilerimize rehberlik eden ve <strong class="font-semibold text-white">Yetkin Veli, Etkin Çözüm Modeli</strong></li>
-                </ul>
               </div>
 
-              <div>
+              <div class="mt-8 md:mt-10">
                 <div class="flex flex-wrap gap-2 md:gap-3">
                   <a
                     href={UYELIK_URL}
@@ -293,6 +294,21 @@ const adimlar = [
                 </div>
               </article>
             ))}
+          </div>
+
+          <!-- Üyeliğe dahil olanlar (banner'dan taşındı) -->
+          <div class="reveal mt-4 rounded-[8px] border border-[#e7ecf2] bg-white p-6 shadow-[0_10px_30px_rgba(60,80,180,.06)] md:mt-5 md:p-8">
+            <p class="text-xs font-semibold uppercase tracking-widest text-[#5b6488]">Üyeliğe Dahil Olanlar</p>
+            <ul class="mt-5 grid gap-3.5 sm:grid-cols-2">
+              {dahilListe.map((d) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mor text-beyaz">
+                    <Icon name="check" size={11} />
+                  </span>
+                  <span class="text-sm leading-relaxed text-[#1b2a5b]">{d.bas}<strong class="font-semibold">{d.vurgu}</strong></span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -429,7 +445,7 @@ const adimlar = [
           <div class="reveal rounded-[8px] bg-gradient-to-br from-[#7c5cfc] to-[#3b6ef0] px-6 py-12 text-center md:px-10 md:py-16">
             <h2 class="font-baslik text-3xl font-bold text-beyaz md:text-4xl">Hepsini İki Hafta Boyunca Ücretsiz Deneyin</h2>
             <p class="mx-auto mt-4 max-w-lg text-base text-beyaz/80">
-              2 haftalık deneyim boyunca canlı etütlere, koçluğa ve dijital içeriklere erişebilirsiniz. Süre bitince devam edip etmemek sizin elinizde.
+              2 haftalık deneyim boyunca canlı etütlere ve koçluğa erişebilirsiniz. Süre bitince devam edip etmemek sizin elinizde.
             </p>
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
