@@ -13,6 +13,8 @@ const SITE = 'https://focusclub360.com';
 export default defineConfig({
   site: SITE,
   output: 'static',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  }),
   integrations: [tailwind(), sitemap()],
 });
