@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import { UYELIK_URL, SATIN_AL_URL, ROUTES } from '../config';
+import SiteHeader from '../components/SiteHeader.astro';
+import Footer from '../components/Footer.astro';
+import { UYELIK_URL } from '../config';
 
 const gruplar = [
   {
@@ -103,77 +105,10 @@ const faqSemasi = {
   description="FocusClub 360 hakkında en sık sorulan soruların yanıtlarını burada bulabilirsiniz."
 >
 
-<div class="theme-v13">
+<div class="theme-v13 bg-[#131629] md:bg-[#131629] md:p-4">
+  <div class="mx-auto max-w-[1400px] bg-[#1B2140] md:rounded-[8px] md:shadow-[0_30px_80px_rgba(110,124,255,.18)]">
 
-  <!-- STICKY HEADER -->
-  <header class="sticky top-0 z-50 border-b border-[#2A2F52]" style="background-color: rgba(16,18,38,0.95); backdrop-filter: blur(12px);">
-    <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
-
-      <!-- Logo -->
-      <a href="/" class="font-baslik text-xl font-extrabold tracking-tight text-[#FFFFFF]">
-        FocusClub <span class="text-[#7c5cfc]">360</span>
-      </a>
-
-      <!-- Desktop nav -->
-      <nav class="hidden items-center gap-6 text-sm font-medium md:flex">
-        {[
-          { etiket: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
-          { etiket: 'Velilere',          href: ROUTES.velilere        },
-          { etiket: 'Nasıl Üye Olunur',  href: ROUTES.nasilUyeOlunur  },
-          { etiket: 'Rehber',            href: ROUTES.rehber           },
-          { etiket: 'Merak Edilenler',   href: ROUTES.merakEdilenler   },
-        ].map((m) => (
-          <a
-            href={m.href}
-            class={`transition-colors hover:text-[#FFFFFF] ${m.href === ROUTES.merakEdilenler ? 'text-[#FFFFFF] font-semibold' : 'text-[#8B96CC]'}`}
-          >{m.etiket}</a>
-        ))}
-      </nav>
-
-      <!-- Desktop CTA -->
-      <div class="hidden items-center gap-3 md:flex">
-        <a href="/uye-ol" class="text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">Üye Olun</a>
-          <a href={SATIN_AL_URL} class="text-sm font-medium text-turkuaz transition hover:opacity-70">Satın Al</a>
-        <a
-          href={UYELIK_URL}
-          class="rounded-[8px] px-4 py-2 text-sm font-semibold transition hover:opacity-90"
-          style="background-color: #FFFFFF; color: #2D3AAE;"
-        >Ücretsiz Başla</a>
-      </div>
-
-      <!-- Mobile hamburger -->
-      <button id="hamburger" class="grid h-10 w-10 place-items-center rounded-[8px] text-[#8B96CC] transition hover:text-[#FFFFFF] md:hidden" aria-label="Menü">
-        <Icon name="menu" size={22} />
-      </button>
-    </div>
-
-    <!-- Marka satırı — header ile sabit (mobil) -->
-    <div class="border-t border-[#2A2F52] px-6 py-2 md:hidden">
-      <p class="text-[13px] font-semibold leading-tight text-[#F1683C]">
-        TÜRKİYE'NİN İLK VE TEK<br />DİJİTAL AKADEMİK ETÜT KULÜBÜ
-      </p>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden border-t border-[#2A2F52] px-6 pb-4 pt-3 md:hidden">
-      <nav class="flex flex-col gap-3 text-sm font-medium">
-        {[
-          { etiket: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
-          { etiket: 'Velilere',          href: ROUTES.velilere        },
-          { etiket: 'Nasıl Üye Olunur',  href: ROUTES.nasilUyeOlunur  },
-          { etiket: 'Rehber',            href: ROUTES.rehber           },
-          { etiket: 'Merak Edilenler',   href: ROUTES.merakEdilenler   },
-        ].map((m) => (
-          <a href={m.href} class="py-1 text-[#8B96CC] transition hover:text-[#FFFFFF]">{m.etiket}</a>
-        ))}
-        <div class="mt-2 flex gap-3">
-          <a href="/uye-ol" class="text-sm font-medium text-[#8B96CC] transition hover:text-[#FFFFFF]">Üye Olun</a>
-          <a href={SATIN_AL_URL} class="text-sm font-medium text-turkuaz transition hover:opacity-70">Satın Al</a>
-          <a href={UYELIK_URL} class="rounded-[8px] px-4 py-2 text-sm font-semibold" style="background-color: #FFFFFF; color: #2D3AAE;">Ücretsiz Başla</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+    <SiteHeader />
 
   <!-- HERO -->
   <section class="px-6 pb-10 pt-16 md:px-10 md:pb-14 md:pt-24">
@@ -295,6 +230,9 @@ const faqSemasi = {
     </div>
   </section>
 
+    <Footer />
+
+  </div>
 </div>
 
 </Layout>
@@ -305,12 +243,6 @@ const faqSemasi = {
 </style>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
-
   document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
     const btn = item.querySelector<HTMLButtonElement>('.faq-btn')!;
     const body = item.querySelector<HTMLElement>('.faq-body')!;
