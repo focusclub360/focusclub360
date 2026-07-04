@@ -48,21 +48,16 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                   </li>
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Deneyiminiz <strong class="font-semibold text-white">dönem başında</strong> başlar. Ne zaman üye olursanız olun, 2 haftalık süreniz <strong class="font-semibold text-white">ilk açılacak etüt grubu</strong> ile başlar.</span>
+                    <span>Ücretsiz üyeliğiniz <strong class="font-semibold text-white">3 Ağustos 2026</strong> tarihinde başlar ve <strong class="font-semibold text-white">15 Ağustos 2026</strong> tarihinde sonlandırılır.</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
                     <span>2 haftalık deneyim sonunda <strong class="font-semibold text-white">dilerseniz ücretli üyeliğe</strong> geçersiniz; karar tamamen sizindir.</span>
                   </li>
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>2 Haftalık Ücretsiz Deneyim için <strong class="font-semibold text-white">kredi kartı gerekmez.</strong></span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Sürecin sağlıklı işlemesi için <strong class="font-semibold text-white">tüm alanların eksiksiz</strong> doldurulması zorunludur.</span>
-                  </li>
                 </ul>
+                <p class="mt-4 border-t border-[#2A2F52] pt-4 text-left text-sm leading-relaxed text-[#8B96CC]">
+                  Sürecin sağlıklı işlemesi için <strong class="font-semibold text-white">tüm alanların eksiksiz</strong> doldurulması zorunludur.
+                </p>
           </div>
 
           <!-- FORM -->
@@ -163,22 +158,12 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                     <option value="" disabled selected>Önce il seçiniz</option>
                   </select>
                 </div>
-                <div class="sm:col-span-2">
-                  <label class={labelClass} for="adres">Açık Adres <span class="text-mercan">*</span></label>
-                  <textarea class={`${inputClass} min-h-[90px] resize-y`} id="adres" name="Adres" rows="3" required></textarea>
+                <div>
+                  <label class={labelClass} for="mahalle">Mahalle <span class="text-mercan">*</span></label>
+                  <select class={inputClass} id="mahalle" name="Mahalle" required disabled>
+                    <option value="" disabled selected>Önce ilçe seçiniz</option>
+                  </select>
                 </div>
-              </div>
-            </fieldset>
-
-            <!-- Instagram -->
-            <fieldset class="rounded-[8px] border border-[#2A2F52] bg-[#161A33] p-5 md:p-6">
-              <legend class="px-2 font-baslik text-sm font-bold uppercase tracking-wide text-[#8B9BFF]">Instagram</legend>
-              <div>
-                <label class={labelClass} for="instagram">Instagram Kullanıcı Adınız <span class="text-mercan">*</span></label>
-                <input class={inputClass} id="instagram" name="Instagram Kullanıcı Adı" type="text" placeholder="@kullaniciadi" required />
-                <p class="mt-2 text-xs leading-relaxed text-[#8B96CC]">
-                  Üyelik için <a href="https://instagram.com/focusclub360" target="_blank" rel="noopener" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">@focusclub360</a> Instagram hesabımızı takip etmeniz <strong class="font-semibold text-white">zorunludur.</strong>
-                </p>
               </div>
             </fieldset>
 
@@ -191,10 +176,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
               <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
                 <input type="checkbox" id="onayUyelik" name="Üyelik Koşulları Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
                 <span><a href="/gizlilik" target="_blank" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">Gizlilik Politikası</a> ve üyelik koşullarını okudum, kabul ediyorum. <span class="text-mercan">*</span></span>
-              </label>
-              <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
-                <input type="checkbox" id="onayInsta" name="Instagram Takip Onayı" value="Takip edildi" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
-                <span><a href="https://instagram.com/focusclub360" target="_blank" rel="noopener" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">@focusclub360</a> Instagram hesabını takip ettim (üyelik için zorunludur). <span class="text-mercan">*</span></span>
               </label>
             </div>
 
@@ -272,22 +253,40 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 </style>
 
 <script>
-  // İl/İlçe kademeli liste
+  // İl/İlçe/Mahalle kademeli liste
   const data = JSON.parse(document.getElementById('il-ilce-data')?.textContent || '{}');
   const sehirSel = document.getElementById('sehir') as HTMLSelectElement | null;
   const ilceSel = document.getElementById('ilce') as HTMLSelectElement | null;
+  const mahalleSel = document.getElementById('mahalle') as HTMLSelectElement | null;
 
-  sehirSel?.addEventListener('change', () => {
-    if (!ilceSel) return;
-    const ilceler = data[sehirSel.value] || [];
-    ilceSel.innerHTML = '<option value="" disabled selected>İlçe seçiniz</option>';
-    ilceler.forEach((ilce: string) => {
+  // Seçilen ilin mahalle verisi (ilçe -> mahalle[]), ihtiyaç anında yüklenir
+  let mahalleData: Record<string, string[]> = {};
+
+  function doldur(sel: HTMLSelectElement | null, liste: string[], bosMetin: string) {
+    if (!sel) return;
+    sel.innerHTML = `<option value="" disabled selected>${bosMetin}</option>`;
+    liste.forEach((v) => {
       const opt = document.createElement('option');
-      opt.value = ilce;
-      opt.textContent = ilce;
-      ilceSel.appendChild(opt);
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
     });
-    ilceSel.disabled = ilceler.length === 0;
+    sel.disabled = liste.length === 0;
+  }
+
+  sehirSel?.addEventListener('change', async () => {
+    doldur(ilceSel, data[sehirSel.value] || [], 'İlçe seçiniz');
+    // Mahalleyi sıfırla + seçilen ilin mahalle dosyasını yükle
+    mahalleData = {};
+    doldur(mahalleSel, [], 'Önce ilçe seçiniz');
+    try {
+      const res = await fetch(`/data/mahalle/${encodeURIComponent(sehirSel.value)}.json`);
+      if (res.ok) mahalleData = await res.json();
+    } catch { /* mahalle verisi yüklenemedi */ }
+  });
+
+  ilceSel?.addEventListener('change', () => {
+    doldur(mahalleSel, mahalleData[ilceSel.value] || [], 'Mahalle seçiniz');
   });
 
   // Onay etiketlerindeki linkler tıklanınca checkbox'ı tetiklemesin
