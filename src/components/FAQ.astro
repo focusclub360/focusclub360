@@ -74,13 +74,31 @@ const sorular = [
 </section>
 
 <script>
+  // Acilan govde animasyon bitince max-height:none olur; boylece font/gorsel
+  // sonradan yuklenip metin tasarsa bile govde kesilmez (iOS/Safari sorunu).
+  function govdeAc(body: HTMLElement) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    const bitir = (e: TransitionEvent) => {
+      if (e.propertyName !== 'max-height') return;
+      body.style.maxHeight = 'none';
+      body.removeEventListener('transitionend', bitir);
+    };
+    body.addEventListener('transitionend', bitir);
+  }
+
+  function govdeKapat(body: HTMLElement) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight; // reflow
+    body.style.maxHeight = '0';
+  }
+
   document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
     const btn = item.querySelector<HTMLButtonElement>('.faq-btn')!;
     const body = item.querySelector<HTMLElement>('.faq-body')!;
     const icon = item.querySelector<HTMLElement>('.faq-icon')!;
 
     if (btn.getAttribute('aria-expanded') === 'true') {
-      body.style.maxHeight = body.scrollHeight + 'px';
+      body.style.maxHeight = 'none'; // varsayilan acik: hic kisitlama koyma
       icon.style.transform = 'rotate(45deg)';
     } else {
       body.style.maxHeight = '0';
@@ -93,14 +111,16 @@ const sorular = [
         const ob = other.querySelector<HTMLButtonElement>('.faq-btn')!;
         const obody = other.querySelector<HTMLElement>('.faq-body')!;
         const oicon = other.querySelector<HTMLElement>('.faq-icon')!;
-        ob.setAttribute('aria-expanded', 'false');
-        obody.style.maxHeight = '0';
-        oicon.style.transform = '';
+        if (ob.getAttribute('aria-expanded') === 'true') {
+          ob.setAttribute('aria-expanded', 'false');
+          govdeKapat(obody);
+          oicon.style.transform = '';
+        }
       });
 
       if (!isOpen) {
         btn.setAttribute('aria-expanded', 'true');
-        body.style.maxHeight = body.scrollHeight + 'px';
+        govdeAc(body);
         icon.style.transform = 'rotate(45deg)';
       }
     });
