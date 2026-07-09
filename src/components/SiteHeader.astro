@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import TopBar from './TopBar.astro';
 import { UYELIK_URL, KAYIT_URL, SATIN_AL_URL, ROUTES } from '../config';
 
 interface Props {
@@ -17,10 +18,7 @@ const menu = [
 ---
 
 <div class="sticky top-0 z-50">
-  <div class="flex items-center justify-center gap-2 bg-gradient-to-r from-[#2D3AAE] to-[#5060E0] px-4 py-2 text-center text-sm font-medium text-beyaz md:rounded-t-[8px]">
-    <Icon name="gift" size={16} />
-    Ücretsiz İki Hafta Deneyim Fırsatı
-  </div>
+  <TopBar />
 
   <header class="flex items-center justify-between gap-4 px-6 py-3 backdrop-blur-sm md:py-4 md:px-10" style="background-color: rgba(27,33,64,0.97);">
     <a href="/" class="flex items-center" aria-label="FocusClub 360"><img src="/FocusClub360_logo_turuncu.png" alt="FocusClub 360" class="h-[54px] w-auto md:h-[72px]" /></a>

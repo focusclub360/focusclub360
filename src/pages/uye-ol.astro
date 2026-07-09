@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import YaziBosGecirmeyin from '../components/YaziBosGecirmeyin.astro';
 import ilIlce from '../data/il-ilce.json';
 
 const iller = Object.keys(ilIlce);
@@ -38,31 +39,47 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
             </p>
           </div>
 
+          <!-- Kontenjan + geri sayım şeridi -->
+          <div class="reveal mt-5 flex flex-col items-center gap-0.5 rounded-[8px] border border-[#F1683C]/40 bg-[#F1683C]/10 px-4 py-2.5 text-center text-[13px] font-semibold text-[#F1683C]">
+            <span>Ücretsiz etütler 3 Ağustos'ta başlıyor.</span>
+            <span>Ücretsiz deneyim kontenjanı sınırlıdır.</span>
+            <span id="ts-geri-sayim" class="tabular-nums">--g --sa --dk --sn</span>
+          </div>
+
           <!-- Bilgilendirme kutusu -->
           <div class="reveal mt-8 rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] p-5 md:p-6">
             <h2 class="text-center font-baslik text-base font-bold text-white">Deneyiminiz nasıl başlar?</h2>
             <ul class="mt-4 space-y-2 text-left text-sm leading-relaxed text-[#8B96CC]">
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span><strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim</strong> için kredi kartı gerekmez.</span>
+                    <span><strong class="font-semibold text-white">Kontenjan dolmadan ücretsiz kaydolun</strong>; erken kaydolanlar kontenjandaki yerini alır.</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Üyeliğiniz tamamlanınca size özel bir <strong class="font-semibold text-white">deneyim kodu</strong> oluşturulur ve e-postanıza gönderilir.</span>
+                    <span><strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim</strong> için kredi kartı gerekmez; kayıt sırasında hiçbir ücret alınmaz, hiçbir ödeme yükümlülüğünüz oluşmaz.</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Ücretsiz üyeliğiniz <strong class="font-semibold text-white">3 Ağustos 2026</strong> tarihinde başlar ve <strong class="font-semibold text-white">15 Ağustos 2026</strong> tarihinde sonlandırılır.</span>
+                    <span>Üyeliğiniz tamamlanınca size özel <strong class="font-semibold text-white">deneyim kodu</strong> oluşturulur ve e-postanıza gönderilir.</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>2 haftalık deneyim sonunda <strong class="font-semibold text-white">dilerseniz ücretli üyeliğe</strong> geçersiniz; karar tamamen sizindir.</span>
+                    <span>Ücretsiz üyeliğiniz <strong class="font-semibold text-white">3 Ağustos 2026'da</strong> ilk etütle başlar ve <strong class="font-semibold text-white">15 Ağustos 2026'da</strong> sonlandırılır.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
+                    <span>Deneyim sonunda <strong class="font-semibold text-white">dilerseniz ücretli üyeliğe</strong> geçersiniz; karar tamamen sizindir.</span>
                   </li>
                 </ul>
                 <p class="mt-4 border-t border-[#2A2F52] pt-4 text-left text-sm leading-relaxed text-[#8B96CC]">
                   Sürecin sağlıklı işlemesi için <strong class="font-semibold text-white">tüm alanların eksiksiz</strong> doldurulması zorunludur.
                 </p>
           </div>
+
+          <!-- Akademik danışman güven satırı -->
+          <p class="reveal mt-4 text-center text-sm leading-relaxed text-[#8B96CC]">
+            Veli rehberliği, Marmara Üniversitesi Öğretim Üyesi Akademisyen <strong class="font-semibold text-white">Dr. Öğr. Üyesi Oktay Aydın</strong> danışmanlığındadır.
+          </p>
 
           <!-- FORM -->
           <form id="uye-form" class="reveal mt-8 space-y-8" novalidate>
@@ -181,10 +198,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                 <input type="checkbox" id="onayUyelik" name="Üyelik Koşulları Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
                 <span><a href="/gizlilik" target="_blank" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">Gizlilik Politikası</a> ve üyelik koşullarını okudum, kabul ediyorum. <span class="text-mercan">*</span></span>
               </label>
-              <label class="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#C7CEEF]">
-                <input type="checkbox" id="onayInstagram" name="Instagram Takip Onayı" value="Onaylandı" class="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7CFF]" required />
-                <span>FocusClub 360 <a href="https://instagram.com/focusclub360" target="_blank" rel="noopener" class="font-semibold text-[#8B9BFF] underline underline-offset-2 hover:text-white">Instagram sayfasını</a> takip ettim. <span class="text-mercan">*</span></span>
-              </label>
             </div>
 
             <!-- Hata mesajı -->
@@ -222,6 +235,8 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 
         </div>
       </section>
+
+      <YaziBosGecirmeyin butonMetin="Kontenjan Dolmadan Ücretsiz Kaydolun ↑" butonHref="#uye-form" />
 
       <Footer />
     </div>

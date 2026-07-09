@@ -4,7 +4,10 @@ import { ROUTES } from '../config';
 
 interface Kart {
   baslik: string;
-  aciklama: string;
+  aciklama?: string;
+  oncesi?: string;
+  isim?: string;
+  sonrasi?: string;
   maddeler?: string[];
   son?: string;
   ikon: string;
@@ -19,7 +22,7 @@ const kartlar: Kart[] = [
   { baslik: 'Deneme Kulübü', aciklama: 'Birinci ve ikinci dönem ayrı ayrı olmak üzere adreslerinize basılı deneme paketi gönderilir.', ikon: 'mail' },
   { baslik: 'Veli Raporlama', aciklama: 'Öğrencimiz ile ilgili her türlü kişisel gelişim, etüt içi aktivite ve ders durum raporlaması haftalık periyotlarla yapılır.', ikon: 'bell' },
   { baslik: 'MEB Kaynakları Ödevlendirme ve Analizi', aciklama: 'MEB tarafından hazırlanmış soru örnekleri, ders içerikleri ve denemeler ödevlendirilir. Bu içeriklerin analizi yapılarak kullanımı desteklenir.', ikon: 'book' },
-  { baslik: 'Veli Rehberliği', aciklama: 'Akademisyen Dr. Öğr. Üyesi Oktay AYDIN danışmanlığında velilerimiz:', maddeler: ['Seminerler', 'Atölye çalışmaları'], son: 'ile çocuklarının kişisel ve akademik gelişim sürecini daha iyi yönetir.', ikon: 'users' },
+  { baslik: 'Veli Rehberliği', oncesi: 'Marmara Üniversitesi Öğretim Üyesi Akademisyen ', isim: 'Dr. Öğr. Üyesi Oktay Aydın', sonrasi: ' danışmanlığında velilerimiz:', maddeler: ['Seminerler', 'Atölye çalışmaları'], son: 'ile çocuklarının kişisel ve akademik gelişim sürecini daha iyi yönetir.', ikon: 'users' },
 ];
 ---
 
@@ -40,7 +43,11 @@ const kartlar: Kart[] = [
             </span>
             <h3 class="mt-4 font-baslik text-lg font-semibold leading-snug text-[#1b2a5b]">{k.baslik}</h3>
             <div class="mt-2 flex-1 text-sm text-[#6b76a0]">
-              <p>{k.aciklama}</p>
+              {k.isim ? (
+                <p>{k.oncesi}<button type="button" data-danisman-ac class="font-semibold text-[#F1683C] underline underline-offset-2 hover:opacity-80">{k.isim}</button>{k.sonrasi}</p>
+              ) : (
+                <p>{k.aciklama}</p>
+              )}
               {k.maddeler && (
                 <ul class="mt-1.5 space-y-1">
                   {k.maddeler.map((m) => (
@@ -66,4 +73,28 @@ const kartlar: Kart[] = [
 
     </div>
   </div>
+
+  <!-- Danışman popup -->
+  <div id="danisman-modal" class="fixed inset-0 z-[90] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-danisman-kapat></div>
+    <div class="relative w-full max-w-md rounded-[12px] border border-[#2A2F52] bg-[#1A1E3A] p-6 shadow-[0_24px_60px_rgba(8,10,24,.6)] md:p-8">
+      <button type="button" data-danisman-kapat aria-label="Kapat" class="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-[8px] text-[#8B96CC] transition hover:bg-white/10 hover:text-white">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h3 class="font-baslik text-xl font-bold text-white">Dr. Öğr. Üyesi Oktay Aydın</h3>
+      <p class="mt-1 text-sm font-semibold text-[#F1683C]">Marmara Üniversitesi Öğretim Üyesi · Akademisyen</p>
+      <p class="mt-4 text-sm leading-relaxed text-[#C7CEEF]">
+        FocusClub 360 veli rehberliği programının akademik danışmanıdır. Velilerimize yönelik seminerler ve atölye çalışmaları kendisinin danışmanlığında planlanır ve yürütülür.
+      </p>
+    </div>
+  </div>
 </section>
+
+<script>
+  const dmodal = document.getElementById('danisman-modal');
+  function dAc() { dmodal?.classList.remove('hidden'); dmodal?.classList.add('flex'); }
+  function dKapat() { dmodal?.classList.add('hidden'); dmodal?.classList.remove('flex'); }
+  document.querySelectorAll('[data-danisman-ac]').forEach((b) => b.addEventListener('click', dAc));
+  dmodal?.querySelectorAll('[data-danisman-kapat]').forEach((b) => b.addEventListener('click', dKapat));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') dKapat(); });
+</script>

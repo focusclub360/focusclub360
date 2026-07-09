@@ -1,0 +1,35 @@
+---
+// Ust bilgi seridi: kampanya metni (ust satir) + 3 Agustos 2026'ya canli
+// geri sayim ve kayit CTA'si (alt satir).
+import { KAYIT_URL } from '../config';
+---
+
+<div class="flex flex-col items-center gap-0.5 bg-gradient-to-r from-[#2D3AAE] to-[#5060E0] px-4 py-1.5 text-center text-[13px] font-medium leading-tight text-beyaz md:rounded-t-[8px] md:py-2 md:text-sm">
+  <div class="flex items-center justify-center">
+    <span>🎉 Ücretsiz Deneyim Kontenjanı <span class="underline underline-offset-2">Sınırlıdır</span></span>
+  </div>
+  <div class="flex flex-wrap items-center justify-center gap-x-2">
+    <span id="ts-geri-sayim" class="font-semibold tabular-nums">--g --sa --dk --sn</span>
+    <span class="opacity-50" aria-hidden="true">·</span>
+    <a href={KAYIT_URL} class="font-semibold underline underline-offset-2 hover:opacity-80">Hemen Ücretsiz Kaydol</a>
+  </div>
+</div>
+
+<script>
+  const hedef = new Date('2026-08-03T00:00:00+03:00').getTime();
+  const iki = (n: number) => String(n).padStart(2, '0');
+  function fcGeriSayim() {
+    const kalan = hedef - Date.now();
+    const els = document.querySelectorAll<HTMLElement>('#ts-geri-sayim');
+    els.forEach((el) => {
+      if (kalan <= 0) { el.textContent = 'Başladı!'; return; }
+      const g = Math.floor(kalan / 86400000);
+      const sa = Math.floor((kalan % 86400000) / 3600000);
+      const dk = Math.floor((kalan % 3600000) / 60000);
+      const sn = Math.floor((kalan % 60000) / 1000);
+      el.textContent = `${g}g ${iki(sa)}sa ${iki(dk)}dk ${iki(sn)}sn`;
+    });
+  }
+  fcGeriSayim();
+  setInterval(fcGeriSayim, 1000);
+</script>
