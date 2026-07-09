@@ -36,8 +36,9 @@ const INSTAGRAM_URL = 'https://instagram.com/focusclub360';
 // yayında olan bir adrese (ör. vercel.app) ayarlanabilir.
 const SITE_URL = (process.env.SITE_URL || 'https://focusclub360.com').replace(/\/$/, '');
 const LOGO_URL = process.env.LOGO_URL || `${SITE_URL}/FocusClub360_logo_turuncu.png`;
-// Acik zemin icin koyu metinli + turuncu 'o'lu logo (kullanicinin ekledigi).
-const MAIL_LOGO_URL = `${SITE_URL}/FocusClub360_logo.png`;
+// Beyaz zemini gomulu logo: Gmail koyu modu gorselleri ters cevirmedigi icin
+// hem acik hem koyu modda turuncu 'o'lu logo dogru gorunur.
+const MAIL_LOGO_URL = `${SITE_URL}/FocusClub360_logo_mail.png`;
 
 // Tahmin edilemez, okunabilir üyelik kodu: FC360-XXXXXX
 function kodUret(): string {
@@ -167,9 +168,9 @@ function mailKabuk(govde: string): string {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBF2EA;padding:28px 14px;">
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #F0E2D5;">
-        <!-- Logo: koyu metin + turuncu 'o', acik zeminde -->
-        <tr><td align="center" style="background:#ffffff;padding:28px 28px 20px;">
-          <img src="${MAIL_LOGO_URL}" alt="FocusClub 360" height="42" style="height:42px;width:auto;display:block;border:0;outline:none;text-decoration:none;" />
+        <!-- Logo: beyaz zemini gomulu (her iki modda dogru), turuncu 'o' -->
+        <tr><td align="center" style="background:#ffffff;padding:22px 28px 16px;">
+          <img src="${MAIL_LOGO_URL}" alt="FocusClub 360" height="56" style="height:56px;width:auto;display:block;border:0;outline:none;text-decoration:none;border-radius:8px;" />
         </td></tr>
         <!-- 3 Agustos bandi -->
         <tr><td align="center" style="background-color:#F1683C;background:linear-gradient(120deg,#F1683C,#FF9A5C);padding:13px 28px;">
