@@ -36,6 +36,8 @@ const INSTAGRAM_URL = 'https://instagram.com/focusclub360';
 // yayında olan bir adrese (ör. vercel.app) ayarlanabilir.
 const SITE_URL = (process.env.SITE_URL || 'https://focusclub360.com').replace(/\/$/, '');
 const LOGO_URL = process.env.LOGO_URL || `${SITE_URL}/FocusClub360_logo_turuncu.png`;
+// Acik zemin icin koyu metinli + turuncu 'o'lu logo (kullanicinin ekledigi).
+const MAIL_LOGO_URL = `${SITE_URL}/FocusClub360_logo.png`;
 
 // Tahmin edilemez, okunabilir üyelik kodu: FC360-XXXXXX
 function kodUret(): string {
@@ -159,20 +161,29 @@ function esc(s: string): string {
 }
 
 function mailKabuk(govde: string): string {
-  return `<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#0E1124;font-family:Arial,Helvetica,sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0E1124;padding:28px 14px;">
+  const ayrilLink = `mailto:${INFO_EMAIL}?subject=${encodeURIComponent('Üyelikten Ayrılma Talebi')}`;
+  return `<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark"></head>
+<body style="margin:0;padding:0;background:#FBF2EA;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBF2EA;padding:28px 14px;">
     <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#161A33;border-radius:12px;overflow:hidden;">
-        <tr><td style="background-color:#3D4AC8;background:linear-gradient(90deg,#2D3AAE,#6E7CFF);padding:20px 28px;">
-          <img src="${LOGO_URL}" alt="FocusClub 360" height="32" style="height:32px;width:auto;display:block;border:0;outline:none;text-decoration:none;" />
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #F0E2D5;">
+        <!-- Logo: koyu metin + turuncu 'o', acik zeminde -->
+        <tr><td align="center" style="background:#ffffff;padding:28px 28px 20px;">
+          <img src="${MAIL_LOGO_URL}" alt="FocusClub 360" height="42" style="height:42px;width:auto;display:block;border:0;outline:none;text-decoration:none;" />
         </td></tr>
-        <tr><td style="padding:28px;color:#C7CEEF;font-size:15px;line-height:1.6;">
+        <!-- 3 Agustos bandi -->
+        <tr><td align="center" style="background-color:#F1683C;background:linear-gradient(120deg,#F1683C,#FF9A5C);padding:13px 28px;">
+          <span style="color:#ffffff;font-size:15px;font-weight:bold;">🎉 3 Ağustos 2026 &middot; Ücretsiz etütler başlıyor</span>
+        </td></tr>
+        <!-- Govde -->
+        <tr><td style="padding:30px 28px;color:#5B6488;font-size:15px;line-height:1.65;">
           ${govde}
         </td></tr>
-        <tr><td style="padding:18px 28px;border-top:1px solid #2A3060;color:#7E89BF;font-size:12px;line-height:1.6;">
-          FocusClub 360 &middot; <a href="mailto:${INFO_EMAIL}" style="color:#8B9BFF;text-decoration:none;">${INFO_EMAIL}</a><br>
-          Türkiye'nin İlk ve Tek Dijital Akademik Etüt Kulübü
+        <!-- Footer -->
+        <tr><td style="padding:20px 28px;border-top:1px solid #F0E2D5;color:#8A93B5;font-size:12px;line-height:1.7;">
+          FocusClub 360 &middot; <a href="mailto:${INFO_EMAIL}" style="color:#F1683C;text-decoration:none;">${INFO_EMAIL}</a><br>
+          Türkiye'nin İlk ve Tek Dijital Akademik Etüt Kulübü<br>
+          <a href="${ayrilLink}" style="color:#8A93B5;text-decoration:underline;">Üyelikten ayrılmak için tıklayın</a>
         </td></tr>
       </table>
     </td></tr>
@@ -181,20 +192,20 @@ function mailKabuk(govde: string): string {
 }
 
 function kodKutusu(kod: string): string {
-  return `<div style="margin:22px 0;padding:18px;text-align:center;background:#0E1124;border:1px dashed #6E7CFF;border-radius:10px;">
-    <div style="font-size:12px;color:#8B9BFF;letter-spacing:1px;text-transform:uppercase;">Deneyim Kodunuz</div>
-    <div style="margin-top:6px;font-size:26px;font-weight:bold;color:#ffffff;letter-spacing:2px;">${esc(kod)}</div>
+  return `<div style="margin:24px 0;padding:20px;text-align:center;background:#FFF6EF;border:2px dashed #F1683C;border-radius:12px;">
+    <div style="font-size:12px;color:#F1683C;letter-spacing:1px;text-transform:uppercase;font-weight:bold;">Deneyim Kodunuz</div>
+    <div style="margin-top:8px;font-size:28px;font-weight:bold;color:#2A2F52;letter-spacing:3px;">${esc(kod)}</div>
   </div>`;
 }
 
 function veliMaili(k: Record<string, string>) {
   const govde = `
-    <p style="margin:0 0 14px;color:#ffffff;font-size:17px;font-weight:bold;">Sayın ${esc(k['Veli Adı'])} ${esc(k['Veli Soyadı'])},</p>
-    <p style="margin:0 0 8px;">FocusClub 360 ailesine hoş geldiniz. ${esc(k['Öğrenci Adı'])} için <strong style="color:#ffffff;">2 Haftalık Ücretsiz Deneyim</strong> başvurunuz alındı.</p>
+    <p style="margin:0 0 14px;color:#2A2F52;font-size:17px;font-weight:bold;">Sayın ${esc(k['Veli Adı'])} ${esc(k['Veli Soyadı'])},</p>
+    <p style="margin:0 0 8px;">FocusClub 360 ailesine hoş geldiniz. ${esc(k['Öğrenci Adı'])} için <strong style="color:#2A2F52;">2 Haftalık Ücretsiz Deneyim</strong> başvurunuz alındı.</p>
     ${kodKutusu(k.Kod)}
-    <p style="margin:0 0 8px;">Deneyiminiz, ilk açılacak etüt grubuyla birlikte <strong style="color:#ffffff;">dönem başında</strong> başlayacaktır; başlangıç tarihini size ayrıca ileteceğiz.</p>
+    <p style="margin:0 0 8px;">Ücretsiz deneyiminiz <strong style="color:#2A2F52;">3 Ağustos 2026'da</strong> başlayan ilk etüt grubuyla başlar; detaylı programı e-posta ile paylaşacağız.</p>
     <p style="margin:0 0 8px;">2 haftalık deneyim sonunda dilerseniz ücretli üyeliğe geçersiniz; karar tamamen sizindir. Deneyim için kredi kartı gerekmez.</p>
-    <p style="margin:14px 0 0;">Sorularınız için <a href="mailto:${INFO_EMAIL}" style="color:#8B9BFF;text-decoration:none;">${INFO_EMAIL}</a> adresinden bize ulaşabilirsiniz.</p>`;
+    <p style="margin:14px 0 0;">Sorularınız için <a href="mailto:${INFO_EMAIL}" style="color:#F1683C;text-decoration:none;">${INFO_EMAIL}</a> adresinden bize ulaşabilirsiniz.</p>`;
   return {
     to: k['Veli E-posta'],
     subject: 'FocusClub 360 | 2 Haftalık Ücretsiz Deneyim Kodunuz',
@@ -204,11 +215,11 @@ function veliMaili(k: Record<string, string>) {
 
 function ogrenciMaili(k: Record<string, string>) {
   const govde = `
-    <p style="margin:0 0 14px;color:#ffffff;font-size:17px;font-weight:bold;">Merhaba ${esc(k['Öğrenci Adı'])},</p>
+    <p style="margin:0 0 14px;color:#2A2F52;font-size:17px;font-weight:bold;">Merhaba ${esc(k['Öğrenci Adı'])},</p>
     <p style="margin:0 0 8px;">Aramıza hoş geldin! 2 haftalık ücretsiz deneyimin için kodun hazır:</p>
     ${kodKutusu(k.Kod)}
-    <p style="margin:0 0 8px;">Deneyimin, ilk açılacak etüt grubuyla başlayacak. Canlı etütler, soru-cevap dersleri ve koçunla birlikte başarıya çok yakınsın. 🎯</p>
-    <p style="margin:14px 0 0;">Bizi takip etmeyi unutma: <a href="${INSTAGRAM_URL}" style="color:#8B9BFF;text-decoration:none;">@focusclub360</a></p>`;
+    <p style="margin:0 0 8px;">Deneyimin <strong style="color:#2A2F52;">3 Ağustos 2026'da</strong> başlayan ilk etüt grubuyla başlayacak. Canlı etütler, soru-cevap dersleri ve koçunla birlikte başarıya çok yakınsın. 🎯</p>
+    <p style="margin:14px 0 0;">Bizi takip etmeyi unutma: <a href="${INSTAGRAM_URL}" style="color:#F1683C;text-decoration:none;">@focusclub360</a></p>`;
   return {
     to: k['Öğrenci E-posta'],
     subject: 'Deneyim Kodun Hazır! | FocusClub 360',
@@ -227,11 +238,11 @@ function infoMaili(k: Record<string, string>) {
   const satirlar = alanlar
     .map(
       (a) =>
-        `<tr><td style="padding:6px 10px;border-bottom:1px solid #2A3060;color:#8B9BFF;font-size:13px;white-space:nowrap;">${esc(a)}</td><td style="padding:6px 10px;border-bottom:1px solid #2A3060;color:#ffffff;font-size:13px;">${esc(k[a] || '-')}</td></tr>`
+        `<tr><td style="padding:7px 10px;border-bottom:1px solid #EEE2D6;color:#8A93B5;font-size:13px;white-space:nowrap;">${esc(a)}</td><td style="padding:7px 10px;border-bottom:1px solid #EEE2D6;color:#2A2F52;font-size:13px;font-weight:bold;">${esc(k[a] || '-')}</td></tr>`
     )
     .join('');
   const govde = `
-    <p style="margin:0 0 14px;color:#ffffff;font-size:16px;font-weight:bold;">Yeni Üyelik Başvurusu</p>
+    <p style="margin:0 0 14px;color:#2A2F52;font-size:16px;font-weight:bold;">Yeni Üyelik Başvurusu</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">${satirlar}</table>`;
   return {
     to: INFO_EMAIL,
