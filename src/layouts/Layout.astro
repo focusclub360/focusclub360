@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
@@ -75,21 +74,6 @@ const ekSemalar = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Consent Mode v2 varsayilani (GTM'den ONCE calismali) -->
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        functionality_storage: 'granted',
-        security_storage: 'granted',
-        wait_for_update: 500,
-      });
-    </script>
-
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -147,7 +131,6 @@ const ekSemalar = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
     <slot />
 
-    <CookieConsent />
     <WhatsAppFloat />
     <Analytics />
     <SpeedInsights />
