@@ -7,18 +7,11 @@ export const prerender = false;
 const ZORUNLU_ALANLAR = [
   'Veli Adı',
   'Veli Soyadı',
-  'Veli Yakınlık Derecesi',
   'Veli Telefon',
   'Veli E-posta',
   'Öğrenci Adı',
   'Öğrenci Soyadı',
   'Sınıf',
-  'Okul Adı',
-  'Öğrenci Telefon',
-  'Öğrenci E-posta',
-  'Şehir',
-  'İlçe',
-  'Mahalle',
 ];
 
 const ONAY_ALANLARI = ['KVKK Onayı', 'Üyelik Koşulları Onayı'];
@@ -31,7 +24,6 @@ const RESEND_API_BASE = process.env.RESEND_API_BASE || 'https://api.resend.com';
 const SHEETS_WEBHOOK_URL = process.env.SHEETS_WEBHOOK_URL;
 const FROM_EMAIL = process.env.FROM_EMAIL || 'FocusClub 360 <info@focusclub360.com>';
 const INFO_EMAIL = process.env.INFO_EMAIL || 'info@focusclub360.com';
-const INSTAGRAM_URL = 'https://instagram.com/focusclub360';
 // Mail logosu mutlak bir URL olmalı. Alan adı henüz canlı değilse LOGO_URL env'i ile
 // yayında olan bir adrese (ör. vercel.app) ayarlanabilir.
 const SITE_URL = (process.env.SITE_URL || 'https://focusclub360.com').replace(/\/$/, '');
@@ -131,7 +123,7 @@ async function mailleriGonder(kayit: Record<string, string>): Promise<void> {
     return;
   }
 
-  const mailler = [veliMaili(kayit), ogrenciMaili(kayit), infoMaili(kayit)].map((m) => ({
+  const mailler = [veliMaili(kayit), infoMaili(kayit)].map((m) => ({
     from: FROM_EMAIL,
     to: [m.to],
     subject: m.subject,
@@ -214,26 +206,11 @@ function veliMaili(k: Record<string, string>) {
   };
 }
 
-function ogrenciMaili(k: Record<string, string>) {
-  const govde = `
-    <p style="margin:0 0 14px;color:#2A2F52;font-size:17px;font-weight:bold;">Merhaba ${esc(k['Öğrenci Adı'])},</p>
-    <p style="margin:0 0 8px;">Aramıza hoş geldin! 2 haftalık ücretsiz deneyimin için kodun hazır:</p>
-    ${kodKutusu(k.Kod)}
-    <p style="margin:0 0 8px;">Deneyimin <strong style="color:#2A2F52;">3 Ağustos 2026'da</strong> başlayan ilk etüt grubuyla başlayacak. Canlı etütler, soru-cevap dersleri ve koçunla birlikte başarıya çok yakınsın. 🎯</p>
-    <p style="margin:14px 0 0;">Bizi takip etmeyi unutma: <a href="${INSTAGRAM_URL}" style="color:#F1683C;text-decoration:none;">@focusclub360</a></p>`;
-  return {
-    to: k['Öğrenci E-posta'],
-    subject: 'Deneyim Kodun Hazır! | FocusClub 360',
-    html: mailKabuk(govde),
-  };
-}
-
 function infoMaili(k: Record<string, string>) {
   const alanlar = [
     'Tarih', 'Kod',
-    'Veli Adı', 'Veli Soyadı', 'Veli Yakınlık Derecesi', 'Veli Telefon', 'Veli E-posta',
-    'Öğrenci Adı', 'Öğrenci Soyadı', 'Sınıf', 'Okul Adı', 'Öğrenci Telefon', 'Öğrenci E-posta',
-    'Şehir', 'İlçe', 'Mahalle',
+    'Veli Adı', 'Veli Soyadı', 'Veli Telefon', 'Veli E-posta',
+    'Öğrenci Adı', 'Öğrenci Soyadı', 'Sınıf',
     'KVKK Onayı', 'Üyelik Koşulları Onayı',
   ];
   const satirlar = alanlar

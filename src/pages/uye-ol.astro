@@ -4,9 +4,6 @@ import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import YaziBosGecirmeyin from '../components/YaziBosGecirmeyin.astro';
-import ilIlce from '../data/il-ilce.json';
-
-const iller = Object.keys(ilIlce);
 
 const inputClass =
   'w-full rounded-[8px] border border-[#2A2F52] bg-[#10142B] px-4 py-3 text-sm text-white placeholder:text-[#5b6488] transition focus:border-[#6E7CFF] focus:outline-none focus:ring-2 focus:ring-[#6E7CFF]/25';
@@ -34,50 +31,18 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
             <h1 class="mt-4 font-baslik text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl">
               Üye Olun
             </h1>
-            <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#8B96CC]">
-              Formu eksiksiz doldurun; size özel <strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim kodunuzu</strong> e-posta ile gönderelim.
-            </p>
           </div>
 
           <!-- Kontenjan + geri sayım şeridi -->
-          <div class="reveal mt-5 flex flex-col items-center gap-0.5 rounded-[8px] border border-[#F1683C]/40 bg-[#F1683C]/10 px-4 py-2.5 text-center text-[13px] font-semibold text-[#F1683C]">
-            <span>Ücretsiz etütler 3 Ağustos'ta başlıyor.</span>
-            <span>Ücretsiz deneyim kontenjanı sınırlıdır.</span>
-            <span id="ts-geri-sayim" class="tabular-nums">--g --sa --dk --sn</span>
-          </div>
-
-          <!-- Bilgilendirme kutusu -->
-          <div class="reveal mt-8 rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] p-5 md:p-6">
-            <h2 class="text-center font-baslik text-base font-bold text-white">Deneyiminiz nasıl başlar?</h2>
-            <ul class="mt-4 space-y-2 text-left text-sm leading-relaxed text-[#8B96CC]">
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span><strong class="font-semibold text-white">Kontenjan dolmadan ücretsiz kaydolun</strong>; erken kaydolanlar kontenjandaki yerini alır.</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span><strong class="font-semibold text-white">2 Haftalık Ücretsiz Deneyim</strong> için kredi kartı gerekmez; kayıt sırasında hiçbir ücret alınmaz, hiçbir ödeme yükümlülüğünüz oluşmaz.</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Üyeliğiniz tamamlanınca size özel <strong class="font-semibold text-white">deneyim kodu</strong> oluşturulur ve e-postanıza gönderilir.</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Ücretsiz üyeliğiniz <strong class="font-semibold text-white">3 Ağustos 2026'da</strong> ilk etütle başlar ve <strong class="font-semibold text-white">15 Ağustos 2026'da</strong> sonlandırılır.</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <Icon name="check" size={15} class="mt-0.5 shrink-0 text-turkuaz" />
-                    <span>Deneyim sonunda <strong class="font-semibold text-white">dilerseniz ücretli üyeliğe</strong> geçersiniz; karar tamamen sizindir.</span>
-                  </li>
-                </ul>
-                <p class="mt-4 border-t border-[#2A2F52] pt-4 text-left text-sm leading-relaxed text-[#8B96CC]">
-                  Sürecin sağlıklı işlemesi için <strong class="font-semibold text-white">tüm alanların eksiksiz</strong> doldurulması zorunludur.
-                </p>
+          <div class="reveal mt-6 flex flex-col items-center gap-3 rounded-[8px] border border-[#F1683C]/40 bg-[#F1683C]/10 px-5 py-6 text-center text-[#F1683C] md:px-8">
+            <p class="text-base font-semibold leading-relaxed md:text-lg">
+              Ücretsiz etütlerin kontenjanı sınırlıdır. Hemen aşağıdaki kısa formu doldurun, çocuğunuz <strong class="font-extrabold">3 Ağustos'taki ücretsiz canlı etütlerde</strong> yerini alsın!
+            </p>
+            <span id="ts-geri-sayim" class="text-2xl font-extrabold tabular-nums md:text-3xl">--g --sa --dk --sn</span>
           </div>
 
           <!-- Akademik danışman güven satırı -->
-          <p class="reveal mt-4 text-center text-sm leading-relaxed text-[#8B96CC]">
+          <p class="reveal mt-6 text-center text-base leading-relaxed text-[#8B96CC] md:text-lg">
             Veli rehberliği, Marmara Üniversitesi Öğretim Üyesi Akademisyen <strong class="font-semibold text-white">Dr. Öğr. Üyesi Oktay Aydın</strong> danışmanlığındadır.
           </p>
 
@@ -98,21 +63,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                 <div>
                   <label class={labelClass} for="veliSoyad">Veli Soyadı <span class="text-mercan">*</span></label>
                   <input class={inputClass} id="veliSoyad" name="Veli Soyadı" type="text" required autocomplete="family-name" />
-                </div>
-                <div>
-                  <label class={labelClass} for="yakinlik">Veli Yakınlık Derecesi <span class="text-mercan">*</span></label>
-                  <select class={inputClass} id="yakinlik" name="Veli Yakınlık Derecesi" required>
-                    <option value="" disabled selected>Seçiniz</option>
-                    <option value="Anne">Anne</option>
-                    <option value="Baba">Baba</option>
-                    <option value="Abla">Abla</option>
-                    <option value="Ağabey">Ağabey</option>
-                    <option value="Diğer">Diğer</option>
-                  </select>
-                </div>
-                <div id="yakinlik-diger-wrap" class="hidden">
-                  <label class={labelClass} for="yakinlikDiger">Yakınlık Derecesi (Diğer) <span class="text-mercan">*</span></label>
-                  <input class={inputClass} id="yakinlikDiger" name="Veli Yakınlık (Diğer)" type="text" placeholder="Örn. Hala, Dede, Vasi" />
                 </div>
                 <div>
                   <label class={labelClass} for="veliTel">Veli Telefon No <span class="text-mercan">*</span></label>
@@ -145,44 +95,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                     <option value="6. Sınıf">6. Sınıf</option>
                     <option value="7. Sınıf">7. Sınıf</option>
                     <option value="8. Sınıf">8. Sınıf</option>
-                  </select>
-                </div>
-                <div>
-                  <label class={labelClass} for="okul">Okul Adı <span class="text-mercan">*</span></label>
-                  <input class={inputClass} id="okul" name="Okul Adı" type="text" required />
-                </div>
-                <div>
-                  <label class={labelClass} for="ogrTel">Öğrenci Telefon No <span class="text-mercan">*</span></label>
-                  <input class={inputClass} id="ogrTel" name="Öğrenci Telefon" type="tel" inputmode="tel" placeholder="05XX XXX XX XX" required />
-                </div>
-                <div>
-                  <label class={labelClass} for="ogrMail">Öğrenci E-posta <span class="text-mercan">*</span></label>
-                  <input class={inputClass} id="ogrMail" name="Öğrenci E-posta" type="email" placeholder="ornek@eposta.com" required />
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- Adres Bilgileri -->
-            <fieldset class="rounded-[8px] border border-[#2A2F52] bg-[#161A33] p-5 md:p-6">
-              <legend class="px-2 font-baslik text-sm font-bold uppercase tracking-wide text-[#8B9BFF]">Adres Bilgileri</legend>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label class={labelClass} for="sehir">Şehir <span class="text-mercan">*</span></label>
-                  <select class={inputClass} id="sehir" name="Şehir" required>
-                    <option value="" disabled selected>İl seçiniz</option>
-                    {iller.map((il) => <option value={il}>{il}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label class={labelClass} for="ilce">İlçe <span class="text-mercan">*</span></label>
-                  <select class={inputClass} id="ilce" name="İlçe" required disabled>
-                    <option value="" disabled selected>Önce il seçiniz</option>
-                  </select>
-                </div>
-                <div>
-                  <label class={labelClass} for="mahalle">Mahalle <span class="text-mercan">*</span></label>
-                  <select class={inputClass} id="mahalle" name="Mahalle" required disabled>
-                    <option value="" disabled selected>Önce ilçe seçiniz</option>
                   </select>
                 </div>
               </div>
@@ -243,11 +155,11 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
   </div>
 </Layout>
 
-<!-- İl/İlçe verisi (istemci tarafı) -->
-<script type="application/json" id="il-ilce-data" is:inline set:html={JSON.stringify(ilIlce)}></script>
-
 <style is:global>
   .theme-v13 .bg-white { background-color: #1B2140; }
+
+  /* Bu sayfada lazy-load (reveal fade-in) kapali: form ve icerik ilk acilista hemen gorunsun */
+  .reveal { opacity: 1 !important; animation: none !important; }
 
   /* Form kontrolleri - garantili koyu tema + okunur kontrast */
   #uye-form input[type="text"],
@@ -276,58 +188,9 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 </style>
 
 <script>
-  // İl/İlçe/Mahalle kademeli liste
-  const data = JSON.parse(document.getElementById('il-ilce-data')?.textContent || '{}');
-  const sehirSel = document.getElementById('sehir') as HTMLSelectElement | null;
-  const ilceSel = document.getElementById('ilce') as HTMLSelectElement | null;
-  const mahalleSel = document.getElementById('mahalle') as HTMLSelectElement | null;
-
-  // Seçilen ilin mahalle verisi (ilçe -> mahalle[]), ihtiyaç anında yüklenir
-  let mahalleData: Record<string, string[]> = {};
-
-  function doldur(sel: HTMLSelectElement | null, liste: string[], bosMetin: string) {
-    if (!sel) return;
-    sel.innerHTML = `<option value="" disabled selected>${bosMetin}</option>`;
-    liste.forEach((v) => {
-      const opt = document.createElement('option');
-      opt.value = v;
-      opt.textContent = v;
-      sel.appendChild(opt);
-    });
-    sel.disabled = liste.length === 0;
-  }
-
-  sehirSel?.addEventListener('change', async () => {
-    doldur(ilceSel, data[sehirSel.value] || [], 'İlçe seçiniz');
-    // Mahalleyi sıfırla + seçilen ilin mahalle dosyasını yükle
-    mahalleData = {};
-    doldur(mahalleSel, [], 'Önce ilçe seçiniz');
-    try {
-      const res = await fetch(`/data/mahalle/${encodeURIComponent(sehirSel.value)}.json`);
-      if (res.ok) mahalleData = await res.json();
-    } catch { /* mahalle verisi yüklenemedi */ }
-  });
-
-  ilceSel?.addEventListener('change', () => {
-    doldur(mahalleSel, mahalleData[ilceSel.value] || [], 'Mahalle seçiniz');
-  });
-
   // Onay etiketlerindeki linkler tıklanınca checkbox'ı tetiklemesin
   document.querySelectorAll('#uye-form label a').forEach((a) => {
     a.addEventListener('click', (ev) => ev.stopPropagation());
-  });
-
-  // Veli Yakınlık Derecesi: "Diğer" seçilince yazılabilir kutu
-  const yakinlikSel = document.getElementById('yakinlik') as HTMLSelectElement | null;
-  const yakinlikDigerWrap = document.getElementById('yakinlik-diger-wrap') as HTMLElement | null;
-  const yakinlikDiger = document.getElementById('yakinlikDiger') as HTMLInputElement | null;
-  yakinlikSel?.addEventListener('change', () => {
-    const diger = yakinlikSel.value === 'Diğer';
-    yakinlikDigerWrap?.classList.toggle('hidden', !diger);
-    if (yakinlikDiger) {
-      yakinlikDiger.required = diger;
-      if (!diger) yakinlikDiger.value = '';
-    }
   });
 
   // Form gönderimi
@@ -357,12 +220,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
     const fd = new FormData(form);
     const payload: Record<string, string> = {};
     fd.forEach((v, k) => { payload[k] = String(v); });
-
-    // "Diğer" yakınlıkta serbest metni asıl değere taşı
-    if (payload['Veli Yakınlık Derecesi'] === 'Diğer') {
-      payload['Veli Yakınlık Derecesi'] = (payload['Veli Yakınlık (Diğer)'] || '').trim();
-    }
-    delete payload['Veli Yakınlık (Diğer)'];
 
     if (btn) { btn.disabled = true; btn.textContent = 'Gönderiliyor...'; }
 
