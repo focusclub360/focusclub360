@@ -69,11 +69,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
   }
 
-  // E-posta format kontrolü
-  for (const alan of ['Veli E-posta', 'Öğrenci E-posta']) {
-    if (!EPOSTA_RE.test(String(data[alan]).trim())) {
-      return jsonYanit({ success: false, message: `Geçerli bir ${alan} girin.` }, 400);
-    }
+  // E-posta format kontrolü (yalnızca Veli E-posta)
+  if (!EPOSTA_RE.test(String(data['Veli E-posta']).trim())) {
+    return jsonYanit({ success: false, message: 'Geçerli bir Veli E-posta girin.' }, 400);
   }
 
   // Onaylar
