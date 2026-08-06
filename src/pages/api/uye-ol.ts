@@ -164,7 +164,7 @@ function mailKabuk(govde: string): string {
         </td></tr>
         <!-- 3 Agustos bandi -->
         <tr><td align="center" style="background-color:#F1683C;background:linear-gradient(120deg,#F1683C,#FF9A5C);padding:13px 28px;">
-          <span style="color:#ffffff;font-size:15px;font-weight:bold;">🎉 3 Ağustos 2026 &middot; Ücretsiz etütler başlıyor</span>
+          <span style="color:#ffffff;font-size:15px;font-weight:bold;">🎉 Ücretsiz Deneyim Kontenjanı Sınırlıdır</span>
         </td></tr>
         <!-- Govde -->
         <tr><td style="padding:30px 28px;color:#5B6488;font-size:15px;line-height:1.65;">
@@ -194,7 +194,7 @@ function veliMaili(k: Record<string, string>) {
     <p style="margin:0 0 14px;color:#2A2F52;font-size:17px;font-weight:bold;">Sayın ${esc(k['Veli Adı'])} ${esc(k['Veli Soyadı'])},</p>
     <p style="margin:0 0 8px;">FocusClub 360 ailesine hoş geldiniz. ${esc(k['Öğrenci Adı'])} için <strong style="color:#2A2F52;">2 Haftalık Ücretsiz Deneyim</strong> başvurunuz alındı.</p>
     ${kodKutusu(k.Kod)}
-    <p style="margin:0 0 8px;">Ücretsiz deneyiminiz <strong style="color:#2A2F52;">3 Ağustos 2026'da</strong> başlayan ilk etüt grubuyla başlar; detaylı programı e-posta ile paylaşacağız.</p>
+    <p style="margin:0 0 8px;">Ücretsiz deneyiminiz, ilk açılacak etüt grubuyla başlar; başlangıç tarihini ve detaylı programı e-posta ile paylaşacağız.</p>
     <p style="margin:0 0 8px;">2 haftalık deneyim sonunda dilerseniz ücretli üyeliğe geçersiniz; karar tamamen sizindir. Deneyim için kredi kartı gerekmez.</p>
     <p style="margin:14px 0 0;">Sorularınız için <a href="mailto:${INFO_EMAIL}" style="color:#F1683C;text-decoration:none;">${INFO_EMAIL}</a> adresinden bize ulaşabilirsiniz.</p>`;
   return {
