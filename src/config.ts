@@ -1,12 +1,8 @@
 // Üyelik / kayıt akışı linkleri.
-// TODO: Gerçek üyelik & giriş sayfası linki gelince yalnızca bu ikisini güncelle.
-// Üyelik CTA'ları şimdilik Nasıl Üye Olunur sayfasına yönlendirir.
-export const UYELIK_URL = '/nasil-uye-olunur';
+// TODO: Gerçek üyelik & giriş sayfası linki gelince burayı güncelle.
 export const GIRIS_URL = '/giris';
-// Üye olma formu sayfası.
+// Ön kayıt formu sayfası.
 export const KAYIT_URL = '/uye-ol';
-// Satın alma linki (Derspektif Market).
-export const SATIN_AL_URL = 'https://market.derspektif.com/products/focusclub360-dijital-etut-kulubu-lgs-hazirlik-programi';
 
 // Alt sayfa rotaları (anasayfa tek sayfa akış; bu sayfalar ayrı olarak yapılacak).
 export const ROUTES = {

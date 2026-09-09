@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 // Bu rota statik değil; Vercel serverless fonksiyonu olarak çalışır.
 export const prerender = false;
 
-// Üyelik formundan beklenen zorunlu alanlar (form alan adlarıyla birebir).
+// Ön kayıt formundan beklenen zorunlu alanlar (form alan adlarıyla birebir).
 const ZORUNLU_ALANLAR = [
   'Veli Adı',
   'Veli Soyadı',
@@ -32,7 +32,8 @@ const LOGO_URL = process.env.LOGO_URL || `${SITE_URL}/FocusClub360_logo_turuncu.
 // hem acik hem koyu modda turuncu 'o'lu logo dogru gorunur.
 const MAIL_LOGO_URL = `${SITE_URL}/FocusClub360_logo_mail.png`;
 
-// Tahmin edilemez, okunabilir üyelik kodu: FC360-XXXXXX
+// Tahmin edilemez, okunabilir dahili kayıt referansı: FC360-XXXXXX
+// (Veliye gösterilmez; yalnızca Sheets kaydı ve info@ bildirimi için.)
 function kodUret(): string {
   const harfler = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // karışabilen 0/O/1/I çıkarıldı
   const bytes = new Uint8Array(6);
@@ -162,10 +163,6 @@ function mailKabuk(govde: string): string {
         <tr><td align="center" style="background:#ffffff;padding:22px 28px 16px;">
           <img src="${MAIL_LOGO_URL}" alt="FocusClub 360" height="56" style="height:56px;width:auto;display:block;border:0;outline:none;text-decoration:none;border-radius:8px;" />
         </td></tr>
-        <!-- 3 Agustos bandi -->
-        <tr><td align="center" style="background-color:#F1683C;background:linear-gradient(120deg,#F1683C,#FF9A5C);padding:13px 28px;">
-          <span style="color:#ffffff;font-size:15px;font-weight:bold;">🎉 Ücretsiz Deneyim Kontenjanı Sınırlıdır</span>
-        </td></tr>
         <!-- Govde -->
         <tr><td style="padding:30px 28px;color:#5B6488;font-size:15px;line-height:1.65;">
           ${govde}
@@ -182,24 +179,15 @@ function mailKabuk(govde: string): string {
 </body></html>`;
 }
 
-function kodKutusu(kod: string): string {
-  return `<div style="margin:24px 0;padding:20px;text-align:center;background:#FFF6EF;border:2px dashed #F1683C;border-radius:12px;">
-    <div style="font-size:12px;color:#F1683C;letter-spacing:1px;text-transform:uppercase;font-weight:bold;">Deneyim Kodunuz</div>
-    <div style="margin-top:8px;font-size:28px;font-weight:bold;color:#2A2F52;letter-spacing:3px;">${esc(kod)}</div>
-  </div>`;
-}
-
 function veliMaili(k: Record<string, string>) {
   const govde = `
     <p style="margin:0 0 14px;color:#2A2F52;font-size:17px;font-weight:bold;">Sayın ${esc(k['Veli Adı'])} ${esc(k['Veli Soyadı'])},</p>
-    <p style="margin:0 0 8px;">FocusClub 360 ailesine hoş geldiniz. ${esc(k['Öğrenci Adı'])} için <strong style="color:#2A2F52;">2 Haftalık Ücretsiz Deneyim</strong> başvurunuz alındı.</p>
-    ${kodKutusu(k.Kod)}
-    <p style="margin:0 0 8px;">Ücretsiz deneyiminiz, ilk açılacak etüt grubuyla başlar; başlangıç tarihini ve detaylı programı e-posta ile paylaşacağız.</p>
-    <p style="margin:0 0 8px;">2 haftalık deneyim sonunda dilerseniz ücretli üyeliğe geçersiniz; karar tamamen sizindir. Deneyim için kredi kartı gerekmez.</p>
-    <p style="margin:14px 0 0;">Sorularınız için <a href="mailto:${INFO_EMAIL}" style="color:#F1683C;text-decoration:none;">${INFO_EMAIL}</a> adresinden bize ulaşabilirsiniz.</p>`;
+    <p style="margin:0 0 8px;">${esc(k['Öğrenci Adı'])} için <strong style="color:#2A2F52;">ön kayıt talebinizi</strong> aldık. İlginiz için teşekkür ederiz.</p>
+    <p style="margin:0 0 8px;">Ekibimiz en kısa sürede sizinle iletişime geçerek FocusClub 360'ın işleyişini, kayıt dönemlerini ve çocuğunuzun düzenine nasıl oturacağını paylaşacak.</p>
+    <p style="margin:14px 0 0;">Bu arada sorularınız olursa <a href="mailto:${INFO_EMAIL}" style="color:#F1683C;text-decoration:none;">${INFO_EMAIL}</a> adresinden bize yazabilirsiniz.</p>`;
   return {
     to: k['Veli E-posta'],
-    subject: 'FocusClub 360 | 2 Haftalık Ücretsiz Deneyim Kodunuz',
+    subject: 'FocusClub 360 | Ön Kaydınızı Aldık',
     html: mailKabuk(govde),
   };
 }
@@ -218,11 +206,11 @@ function infoMaili(k: Record<string, string>) {
     )
     .join('');
   const govde = `
-    <p style="margin:0 0 14px;color:#2A2F52;font-size:16px;font-weight:bold;">Yeni Üyelik Başvurusu</p>
+    <p style="margin:0 0 14px;color:#2A2F52;font-size:16px;font-weight:bold;">Yeni Ön Kayıt</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">${satirlar}</table>`;
   return {
     to: INFO_EMAIL,
-    subject: `Yeni Üyelik Başvurusu | ${k['Öğrenci Adı']} ${k['Öğrenci Soyadı']} — ${k.Kod}`,
+    subject: `Yeni Ön Kayıt | ${k['Öğrenci Adı']} ${k['Öğrenci Soyadı']} — ${k.Kod}`,
     html: mailKabuk(govde),
   };
 }

@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import { KAYIT_URL } from '../config';
+import { ROUTES } from '../config';
 import heroGorsel from '../assets/hero-masaustu.jpg';
 ---
 
@@ -45,18 +45,14 @@ import heroGorsel from '../assets/hero-masaustu.jpg';
         <!-- CTA + not -->
         <div class="mt-8 md:mt-10">
           <a
-            href={KAYIT_URL}
+            href={ROUTES.bizeUlasin}
             class="inline-flex items-center gap-2 rounded-buton bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] py-1.5 pl-4 pr-1.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 md:gap-3 md:py-2.5 md:pl-6 md:pr-2.5 md:text-base"
           >
-            Ücretsiz Deneyim
+            Bize Ulaşın
             <span class="grid h-7 w-7 place-items-center rounded-full bg-white text-[#3b6ef0] md:h-9 md:w-9">
               <Icon name="arrow" size={15} />
             </span>
           </a>
-          <p class="mt-5 text-xs font-semibold leading-relaxed text-white md:mt-6 md:text-sm">
-            <span class="text-[#F1683C]">Ücretsiz kontenjan sınırlıdır</span>, dolmadan yerinizi ayırtın.<br />
-            Ücretsiz deneyim için hiçbir ücret ödemeniz ve kredi kartınızı kaydetmeniz gerekmez!
-          </p>
         </div>
 
       </div>

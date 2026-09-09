@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { UYELIK_URL, ROUTES } from '../config';
+import { ROUTES } from '../config';
 ---
 
 <section class="bg-[#f5f8ff] px-6 pb-14 pt-0 md:px-10 md:pb-20">
@@ -11,16 +11,16 @@ import { UYELIK_URL, ROUTES } from '../config';
         Bu Düzeni Çocuğunuz İçin Biz Kuralım
       </h2>
       <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/75 md:text-base">
-        Çocuğunuzun düzenli çalışma alışkanlığı kazanmasına yardımcı oluyoruz. İki hafta ücretsiz deneyimleyin.
+        Çocuğunuzun düzenli çalışma alışkanlığı kazanmasına yardımcı oluyoruz.
       </p>
 
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a
-          href={UYELIK_URL}
+          href={ROUTES.bizeUlasin}
           class="inline-flex items-center gap-2 rounded-buton py-2.5 pl-6 pr-2 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
           style="background-color: #FFFFFF; color: #2D3AAE;"
         >
-          Üye Ol
+          Bize Ulaşın
           <span class="grid h-8 w-8 place-items-center rounded-full text-white" style="background-color: #3b6ef0;">
             <Icon name="arrow" size={15} />
           </span>

@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import YaziBosGecirmeyin from '../components/YaziBosGecirmeyin.astro';
 
 const inputClass =
   'w-full rounded-[8px] border border-[#2A2F52] bg-[#10142B] px-4 py-3 text-sm text-white placeholder:text-[#5b6488] transition focus:border-[#6E7CFF] focus:outline-none focus:ring-2 focus:ring-[#6E7CFF]/25';
@@ -11,8 +10,8 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 ---
 
 <Layout
-  title="Üye Ol | FocusClub 360"
-  description="FocusClub 360'a üye olun. 2 Haftalık Ücretsiz Deneyim kodunuzu alın; deneyiminiz dönem başında, ilk açılacak etüt grubuyla başlar."
+  title="Ön Kayıt | FocusClub 360"
+  description="FocusClub 360 ön kayıt formu. Bilgilerinizi bırakın, ekibimiz sizinle iletişime geçsin."
 >
   <div class="theme-v13 bg-[#131629] md:bg-[#131629] md:p-4">
     <div class="mx-auto max-w-[1400px] bg-white md:rounded-[8px] md:shadow-[0_30px_80px_rgba(110,124,255,.18)]">
@@ -26,17 +25,17 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
           <div class="reveal text-center">
             <span class="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-[#7c5cfc]/20 to-[#3b6ef0]/20 px-3 py-1 text-xs font-semibold text-[#8B9BFF]">
               <Icon name="star" size={12} />
-              Üyelik Başvurusu
+              Ön Kayıt
             </span>
             <h1 class="mt-4 font-baslik text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl">
-              Üye Olun
+              Ön Kayıt Formu
             </h1>
           </div>
 
-          <!-- Kontenjan şeridi -->
-          <div class="reveal mt-6 rounded-[8px] border border-[#F1683C]/40 bg-[#F1683C]/10 px-5 py-6 text-center text-[#F1683C] md:px-8">
-            <p class="text-base font-semibold leading-relaxed md:text-lg">
-              Ücretsiz etütlerin kontenjanı sınırlıdır. Hemen aşağıdaki kısa formu doldurun, çocuğunuz <strong class="font-extrabold">ücretsiz canlı etütlerde</strong> yerini alsın!
+          <!-- Bilgi şeridi -->
+          <div class="reveal mt-6 rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] px-5 py-6 text-center text-[#C7CEEF] md:px-8">
+            <p class="text-base leading-relaxed md:text-lg">
+              Aşağıdaki kısa formu doldurun; ekibimiz sizinle iletişime geçerek süreci ve güncel dönem bilgisini paylaşsın.
             </p>
           </div>
 
@@ -117,11 +116,11 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
                 id="gonder-btn"
                 class="inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3.5 text-sm font-semibold text-beyaz shadow-[0_12px_30px_rgba(40,40,120,.35)] transition hover:brightness-105 disabled:opacity-60 sm:w-auto sm:px-10"
               >
-                Ücretsiz Üyeliği Başlatın
+                Ön Kaydı Gönder
                 <Icon name="arrow" size={16} />
               </button>
               <p class="mt-3 text-xs font-medium text-[#6B78AA]">
-                2 Haftalık Ücretsiz Deneyim için kredi kartınızı kaydetmeniz gerekmez.
+                Bilgileriniz yalnızca sizinle iletişime geçmek için kullanılır.
               </p>
             </div>
           </form>
@@ -131,9 +130,9 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
             <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-turkuaz/15 text-turkuaz">
               <Icon name="check" size={28} />
             </span>
-            <h2 class="mt-5 font-baslik text-2xl font-bold text-white">Başvurunuz Alındı!</h2>
+            <h2 class="mt-5 font-baslik text-2xl font-bold text-white">Ön Kaydınız Alındı!</h2>
             <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#8B96CC]">
-              2 Haftalık Ücretsiz Deneyim kodunuz e-posta adresinize gönderilecektir. Ücretsiz etüt çalışmasının başlangıç tarihi size e-posta yoluyla bildirilecektir.
+              Kaydınızı aldık. Ekibimiz en kısa sürede sizinle iletişime geçecek; ayrıca e-posta adresinize bir bilgilendirme gönderdik.
             </p>
             <a href="/" class="mt-6 inline-flex items-center gap-2 rounded-[8px] border border-[#2A2F52] px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/5">
               Ana Sayfaya Dön
@@ -142,8 +141,6 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
 
         </div>
       </section>
-
-      <YaziBosGecirmeyin butonMetin="Kontenjan Dolmadan Ücretsiz Kaydolun ↑" butonHref="#uye-form" />
 
       <Footer />
     </div>
@@ -231,7 +228,7 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-white';
       basari?.classList.remove('hidden');
       basari?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
-      if (btn) { btn.disabled = false; btn.textContent = 'Ücretsiz Üyeliği Başlatın'; }
+      if (btn) { btn.disabled = false; btn.textContent = 'Ön Kaydı Gönder'; }
       hataGoster((err as Error)?.message || 'Başvuru gönderilemedi. Lütfen tekrar deneyin veya info@focusclub360.com ile iletişime geçin.');
     }
   });

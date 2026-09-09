@@ -3,20 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Footer from '../components/Footer.astro';
-import { UYELIK_URL } from '../config';
+import { KAYIT_URL } from '../config';
 
 const gruplar = [
   {
-    baslik: 'Üyelik ve Ücretsiz Deneyim',
+    baslik: 'Üyelik',
     sorular: [
       {
-        soru: '2 haftalık deneyim nasıl çalışır?',
-        cevap: 'Üye olursunuz ve canlı etütler ile canlı koçluk desteğini iki hafta boyunca ücretsiz deneyimlersiniz. Deneyime başlamak için kredi kartı bilgisi vermeniz gerekmez; devam edip etmemeye süre sonunda siz karar verirsiniz. <a href="/uye-ol" class="font-semibold text-[#7c5cfc] underline underline-offset-2 hover:opacity-80">Ücretsiz üye olmak için tıklayın.</a>',
+        soru: 'Kulübe nasıl katılırım?',
+        cevap: 'Ön kayıt formunu doldurmanız yeterli. Ekibimiz sizinle iletişime geçerek süreci ve güncel dönem bilgisini paylaşır. <a href="/uye-ol" class="font-semibold text-[#7c5cfc] underline underline-offset-2 hover:opacity-80">Ön kayıt formu için tıklayın.</a>',
         html: true,
-      },
-      {
-        soru: 'Üyelik ücreti ne kadar, taksit var mı?',
-        cevap: 'Tek üyelik 54.945 TL\'dir ve 2027 LGS hazırlık sürecini kapsar. Tüm kredi kartlarına peşin fiyatına 9 taksit yapılabilir, taksitte fiyat artmaz.',
       },
       {
         soru: 'Üyeliğe neler dahil?',
@@ -24,7 +20,7 @@ const gruplar = [
       },
       {
         soru: 'Üyelik iptali nasıl olur?',
-        cevap: 'Deneme süresince hiçbir yükümlülük olmadan ayrılabilirsiniz. Ücretli üyelik iptali ve iade koşulları için <a href="/bize-ulasin" class="text-[#7c5cfc] underline underline-offset-2 hover:opacity-80">Bize Ulaşın</a> sayfasından bizimle iletişime geçebilirsiniz.',
+        cevap: 'Üyelik iptali ve iade koşulları için <a href="/bize-ulasin" class="text-[#7c5cfc] underline underline-offset-2 hover:opacity-80">Bize Ulaşın</a> sayfasından bizimle iletişime geçebilirsiniz.',
         html: true,
       },
     ],
@@ -178,37 +174,19 @@ const faqSemasi = {
       <div class="reveal rounded-[8px] border border-[#2A2F52] bg-[#13162E] px-6 py-10 md:px-10 md:py-12">
 
         <div class="mb-8 text-center">
-          <h2 class="font-baslik text-2xl font-bold text-[#FFFFFF] md:text-3xl">Tek Üyelik, Her Şey Dahil</h2>
+          <span class="inline-flex items-center rounded-md bg-gradient-to-r from-[#7c5cfc]/20 to-[#3b6ef0]/20 px-3 py-1 text-xs font-semibold text-[#8B9BFF]">
+            2027 LGS Hazırlık
+          </span>
+          <h2 class="mt-4 font-baslik text-2xl font-bold text-[#FFFFFF] md:text-3xl">Tek Üyelik, Her Şey Dahil</h2>
           <p class="mt-2 text-sm text-[#8B96CC]">İhtiyacınız olan her şey bir arada.</p>
         </div>
 
         <div class="rounded-[8px] border border-[#2A2F52] bg-[#1A1E3A] shadow-yumusak">
-          <div class="grid gap-0 md:grid-cols-[1fr_1px_2fr]">
+          <div>
 
-            <!-- Sol: fiyat -->
             <div class="p-8 md:p-10">
-              <span class="inline-flex items-center rounded-md bg-gradient-to-r from-[#7c5cfc]/20 to-[#3b6ef0]/20 px-3 py-1 text-xs font-semibold text-[#8B9BFF]">
-                2027 LGS Hazırlık
-              </span>
-              <p class="mt-6 font-baslik text-4xl font-extrabold text-[#FFFFFF] sm:text-5xl">
-                54.945 <span class="text-2xl font-bold sm:text-3xl">TL</span>
-              </p>
-              <p class="mt-2 text-sm text-[#8B96CC]">Tüm kartlara 9 taksit</p>
-              <a
-                href={UYELIK_URL}
-                class="mt-8 inline-flex w-full items-center justify-center rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(80,90,240,.30)] transition hover:brightness-105"
-              >
-                Ücretsiz Deneyim
-              </a>
-            </div>
-
-            <!-- Dikey ayraç -->
-            <div class="hidden bg-[#2A2F52] md:block"></div>
-
-            <!-- Sağ: özellikler -->
-            <div class="border-t border-[#2A2F52] p-8 md:border-t-0 md:p-10">
               <p class="text-xs font-semibold uppercase tracking-widest text-[#5B6E9E]">Dahil Olanlar</p>
-              <ul class="mt-6 grid gap-5 sm:grid-cols-2">
+              <ul class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {ozellikler.map((o) => (
                   <li class="flex items-start gap-4">
                     <span class={`grid h-10 w-10 shrink-0 place-items-center rounded-[8px] text-white ${o.renk}`}>
@@ -221,6 +199,15 @@ const faqSemasi = {
                   </li>
                 ))}
               </ul>
+
+              <div class="mt-10 border-t border-[#2A2F52] pt-8 text-center">
+                <a
+                  href={KAYIT_URL}
+                  class="inline-flex items-center justify-center rounded-[8px] bg-gradient-to-r from-[#7c5cfc] to-[#3b6ef0] px-8 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(80,90,240,.30)] transition hover:brightness-105"
+                >
+                  Ön Kayıt Formu
+                </a>
+              </div>
             </div>
 
           </div>

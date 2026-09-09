@@ -2,10 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
-import TopBar from '../components/TopBar.astro';
 import { Image } from 'astro:assets';
 import heroGorsel from '../assets/nasil-calisir-hero.jpg';
-import { UYELIK_URL, KAYIT_URL, SATIN_AL_URL, ROUTES } from '../config';
+import { ROUTES } from '../config';
 
 const menu = [
   { ad: 'Kulüpte Neler Var', href: ROUTES.kulupteNelerVar },
@@ -66,9 +65,7 @@ const veliKartlari = [
 
       <!-- Sticky header -->
       <div class="sticky top-0 z-50">
-        <TopBar />
-
-        <header class="flex items-center justify-between gap-4 px-6 py-3 backdrop-blur-sm md:py-4 md:px-10" style="background-color: rgba(27,33,64,0.97);">
+        <header class="flex items-center justify-between gap-4 px-6 py-3 backdrop-blur-sm md:rounded-t-[8px] md:py-4 md:px-10" style="background-color: rgba(27,33,64,0.97);">
           <a href="/" class="flex items-center" aria-label="FocusClub 360"><img src="/FocusClub360_logo_turuncu.png" alt="FocusClub 360" class="h-[54px] w-auto md:h-[72px]" /></a>
 
           <nav class="hidden items-center gap-7 lg:flex">
@@ -83,12 +80,10 @@ const veliKartlari = [
           </nav>
 
           <div class="flex items-center gap-2 sm:gap-3">
-            <a href={KAYIT_URL} class="hidden text-sm font-semibold text-[#FFFFFF] hover:opacity-70 sm:block">Üye Olun</a>
             <a
-              href={UYELIK_URL}
+              href={ROUTES.bizeUlasin}
               class="hidden rounded-buton bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] px-5 py-2.5 text-sm font-semibold text-beyaz shadow-[0_8px_20px_rgba(110,124,255,.40)] transition hover:brightness-110 sm:inline-block"
-            >2 Hafta Ücretsiz</a>
-            <a href={SATIN_AL_URL} class="hidden text-sm font-semibold text-turkuaz hover:opacity-70 sm:block">Satın Al</a>
+            >Bize Ulaşın</a>
             <button id="mob-tog" aria-label="Menüyü aç" class="grid h-9 w-9 shrink-0 place-items-center rounded-[8px] border border-kenar text-[#FFFFFF] transition hover:bg-bulut focus:outline-none active:bg-[#1E2848] lg:hidden" style="-webkit-tap-highlight-color: transparent; background-color: #1B2140; -webkit-appearance: none; appearance: none;">
               <Icon name="menu" size={20} />
             </button>
@@ -107,14 +102,12 @@ const veliKartlari = [
             {menu.map((m) => (
               <a href={m.href} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">{m.ad}</a>
             ))}
-            <a href={KAYIT_URL} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-[#8B96CC] transition hover:bg-bulut hover:text-[#FFFFFF]">Üye Olun</a>
-            <a href={SATIN_AL_URL} class="mob-link rounded-[8px] px-3 py-2.5 text-sm font-medium text-turkuaz transition hover:bg-bulut">Satın Al</a>
           </div>
           <a
-            href={UYELIK_URL}
+            href={ROUTES.bizeUlasin}
             class="mt-3 flex items-center justify-center gap-2 rounded-[8px] bg-gradient-to-r from-[#6E7CFF] to-[#2D3AAE] py-3 text-sm font-semibold text-beyaz"
           >
-            2 Hafta Ücretsiz Dene
+Bize Ulaşın
             <Icon name="arrow" size={16} />
           </a>
         </nav>
@@ -328,19 +321,19 @@ const veliKartlari = [
           <div class="reveal overflow-hidden rounded-[8px] bg-gradient-to-br from-[#2D3AAE] via-[#3D4EC8] to-[#5060E0] px-6 py-12 text-center md:px-10 md:py-16">
 
             <h2 class="font-baslik text-2xl font-bold text-white md:text-3xl">
-              Süreci İki Hafta Ücretsiz Deneyin
+              Sürecin Detaylarını Konuşalım
             </h2>
             <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/80 md:text-base">
-              Canlı etütleri, koçluğu ve tüm içerikleri 2 hafta boyunca ücretsiz deneyimleyin.
+              Sistemin çocuğunuzun çalışma düzenine nasıl oturacağını birlikte değerlendirelim.
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
-                href={UYELIK_URL}
+                href={ROUTES.bizeUlasin}
                 class="inline-flex items-center gap-2 rounded-buton py-2.5 pl-6 pr-2 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,.20)] transition hover:brightness-95"
                 style="background-color: #FFFFFF; color: #2D3AAE;"
               >
-                2 Hafta Ücretsiz Dene
+                Bize Ulaşın
                 <span class="grid h-8 w-8 place-items-center rounded-full text-white" style="background-color: #3b6ef0;">
                   <Icon name="arrow" size={15} />
                 </span>

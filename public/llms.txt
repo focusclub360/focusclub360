@@ -9,8 +9,6 @@ FocusClub 360, veliyi ders çalıştırma yükünden kurtarmayı hedefler. Çocu
 - Hedef kitle: 8. sınıf öğrencileri ve velileri (LGS süreci)
 - Hizmetler: Canlı etüt, canlı soru-cevap dersleri, gerçek başarı koçluğu, yapay zekâ takibi ve analizler, online ders içerikleri, veli raporlaması, adrese basılı deneme paketi
 - Üyelik: 2027 LGS hazırlık dönemini kapsar; tek plan, tam erişim
-- Ücret: 54.945 TL, tüm kredi kartlarına peşin fiyatına 9 taksit
-- Ücretsiz deneme: 2 Haftalık Ücretsiz Deneyim, kredi kartı gerekmez
 - Teknoloji altyapısı: Yıldız Teknik Üniversitesi Teknokent'te, TÜBİTAK desteğiyle geliştirilmiştir
 - 120'den fazla gerçek branş öğretmeni
 
@@ -20,8 +18,8 @@ FocusClub 360, veliyi ders çalıştırma yükünden kurtarmayı hedefler. Çocu
 - [Kulüpte Neler Var](https://focusclub360.com/kulupte-neler-var): Üyeliğe dahil olan tüm sistem ve hizmetler
 - [Nasıl Çalışır](https://focusclub360.com/nasil-calisir): Kayıttan LGS'ye kadar işleyen sistem, adım adım
 - [Velilere](https://focusclub360.com/velilere): Velinin süreçteki rolü ve kazanımları
-- [Nasıl Üye Olunur](https://focusclub360.com/nasil-uye-olunur): Üyelik adımları ve ücretsiz deneme
-- [Üye Ol](https://focusclub360.com/uye-ol): Üyelik başvuru formu
+- [Nasıl Üye Olunur](https://focusclub360.com/nasil-uye-olunur): Üyelik adımları
+- [Ön Kayıt](https://focusclub360.com/uye-ol): Ön kayıt formu
 - [Merak Edilenler](https://focusclub360.com/merak-edilenler): Sık sorulan sorular ve yanıtları
 - [Bize Ulaşın](https://focusclub360.com/bize-ulasin): İletişim bilgileri
 
